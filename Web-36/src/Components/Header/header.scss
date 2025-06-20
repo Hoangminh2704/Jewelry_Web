@@ -1,10 +1,70 @@
-.demo {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  color: white;
-  font-size: 20px;
+@import "../Utils/Color.scss";
+.jr-header {
+  border: 1px solid $-neutral-text-300;
+  position: fixed;
+  padding: 10px 320px 10px 320px;
   display: flex;
+  justify-content: space-between;
+  height: 60px;
+  width: 1280px;
+  // background-color: $-neutral-text-300;
   align-items: center;
-  justify-content: center;
+  // logo Noven
+  &-logo {
+    display: flex;
+    align-items: center;
+    padding: 12px 32px 12px 32px;
+    height: 31.79px;
+    font-size: 24px;
+    color: $-theme-primary-1;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    gap: 5px;
+  }
+  &-links {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    &-detail {
+      margin: 0 15px;
+      font-size: 18px;
+      // align-items: center;
+      text-align: center;
+      font-weight: 500;
+      color: $-theme-primary-1;
+      height: 28px;
+      width: 85px;
+      gap: 8px;
+      padding: 16px 12px 16px 8px;
+      text-align: center;
+    }
+  }
+  &-final {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-search {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2e7ed;
+      border-radius: 999px;
+      gap: 8px;
+      padding: 8px 120px 8px 16px;
+      width: 182px;
+    }
+    &-column {
+      width: 1px;
+      height: 16px;
+    }
+    &-cart {
+      width: 24px;
+      height: 24px;
+      border-radius: 2px;
+    }
+  }
 }
