@@ -10,20 +10,19 @@
 body {
   // font-family: "Open Sans";
   font-family: "Open Sans", sans-serif;
-  margin: 0;
   position: relative;
   height: 3000px;
 }
 
 .header {
   box-sizing: border-box;
-  width: 1280px;
+  // width: 1280px;
   max-width: 1920px;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // padding: 10px 320px 10px 320px;
+  padding: 10px 320px 10px 320px;
   &__logo {
     width: 184px;
     height: 60px;
@@ -531,6 +530,34 @@ body {
     line-height: 22px;
     color: $-neutral-text-400;
   }
+  &__button {
+    position: absolute;
+    box-sizing: border-box;
+    width: 392px;
+    height: 48px;
+    top: 393px;
+    left: 767px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    &-buying,
+    &-more {
+      box-sizing: border-box;
+      width: 186px;
+      height: 48px;
+      padding: 13px 56px 13px 56px;
+      text-align: center;
+      color: white;
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      cursor: pointer;
+    }
+    &-active {
+      background-color: $-theme-secondary-1;
+    }
+  }
 }
 .star-icon-top {
   position: absolute;
@@ -540,12 +567,28 @@ body {
   left: 611px;
   color: $-neutral-text-500;
 }
-.star-icon-right {
+.star-icon-bottom {
   position: absolute;
   width: 34.89px;
   height: 34.88px;
-  top: 2153px;
-  left: 611px;
+  top: 2404px;
+  left: 1515px;
+  color: $-neutral-text-500;
+}
+.star-icon-right {
+  position: absolute;
+  width: 59.6px;
+  height: 59.6px;
+  top: 2140px;
+  left: 1250px;
+  color: $-neutral-text-500;
+}
+.star-icon-left {
+  position: absolute;
+  width: 59.6px;
+  height: 59.6px;
+  top: 2457px;
+  left: 402px;
   color: $-neutral-text-500;
 }
 .swiper-pagination-bullet {
@@ -607,41 +650,31 @@ body {
 //   align-items: center;
 //   color: $-theme-primary-1;
 // }
-/* home.scss */
 
-// Đảm bảo container chính của Swiper có position: relative
-// Bạn có thể dùng class .mySwiper hoặc class của chính component
 .swiper-container,
 .mySwiper,
 .body__intro.swiper {
-  position: relative; // Rất quan trọng!
+  position: relative;
 }
 
-// Style cho khu vực pagination
 .swiper-pagination {
-  /* XÓA các thuộc tính top, left cũ */
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
 
-  position: absolute; // Giữ lại position: absolute
-  bottom: 30px; // Cách mép dưới của slider 30px
-  left: 50%; // Đặt ở giữa theo chiều ngang
-  transform: translateX(-50%); // Tinh chỉnh để nó nằm chính xác ở giữa
-
-  // Để Swiper tự quyết định chiều rộng, không set cứng
   width: auto !important;
 }
-
-// Style cho từng chấm tròn
 .swiper-pagination-bullet {
   width: 6px;
   height: 6px;
-  background-color: $-theme-primary-1; // Màu mặc định
+  background-color: $-theme-primary-1;
   opacity: 1;
-  margin: 0 5px !important; // Tạo khoảng cách giữa các chấm
+  margin: 0 5px !important;
 }
 
-// Style cho chấm tròn đang active
 .swiper-pagination-bullet-active {
-  background-color: $-theme-primary-1; // Dùng biến màu của bạn
+  background-color: $-theme-primary-1;
 }
 
 .swiper-horizontal > .swiper-pagination-bullets,
