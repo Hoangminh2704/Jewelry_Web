@@ -681,11 +681,65 @@ body {
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
-  left: 910px;
+  left: 920px;
   display: flex;
   justify-content: space-between;
   width: 100px !important;
   align-items: center;
   height: 12px !important;
   top: 673px;
+}
+
+.Production {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 2726px;
+  left: 320px;
+  gap: 40px;
+  box-sizing: border-box;
+  width: 1280px;
+  height: 1074px;
+  &__title {
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 920px;
+    height: 110px;
+    // border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &-overall {
+      margin: 0 auto;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 42px;
+      color: $-neutral-text-900;
+      width: 397px;
+      height: 42px;
+      text-align: center;
+    }
+    &-detail {
+      width: 920px;
+      height: 52px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+      color: $-neutral-text-600;
+      text-align: center;
+    }
+  }
+  &__items {
+    box-sizing: border-box;
+    width: 1280px;
+    height: 924px;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    &-top {
+    }
+    &-another {
+    }
+  }
 }
