@@ -10,6 +10,7 @@ body {
   font-family: "Open Sans", sans-serif;
   height: auto;
   width: 100%;
+  margin: 0;
 }
 
 .header {
@@ -306,7 +307,7 @@ body {
 //body
 .body__intro {
   box-sizing: border-box;
-  max-width: 1920px;
+  // max-width: 1920px;
   width: 100%;
   height: 716px;
   background-image: url(../Home_Image/Home.jpg);
