@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "../Utils/Color.scss";
+@font-face {
+  font-family: "Open Sans";
+  src: url(../Open_Sans/OpenSans-VariableFont_wdth\wght.ttf);
+  src: url(../Open_Sans/OpenSans-Italic-VariableFont_wdth\wght.ttf);
+}
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -351,7 +356,7 @@ body {
     width: 100%;
     text-align: center;
     margin: 0 auto;
-    padding-top: 233px;
+    padding-top: 281px;
   }
   &-more {
     width: 190px;
