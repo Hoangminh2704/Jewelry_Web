@@ -11,7 +11,7 @@ body {
   // font-family: "Open Sans";
   font-family: "Open Sans", sans-serif;
   // position: relative;
-  height: 2000px;
+  height: auto;
   width: 100%;
 }
 
@@ -38,6 +38,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 485px;
     height: 60px;
     gap: 24px;
 
@@ -147,11 +148,8 @@ body {
       padding: 18px 0 18px 24px;
     }
     &__logo {
-      position: absolute;
       width: 184px;
       height: 60px;
-      left: 50%;
-      transform: translate(-50%);
     }
 
     &__links {
@@ -232,16 +230,9 @@ body {
     padding: 10px 0 10px 0;
     height: fit-content;
     .menu-icon {
-      display: block;
       width: 24px;
       height: 24px;
       padding: 18px 0 18px 16px;
-    }
-    &__logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
     }
 
     &__links {
