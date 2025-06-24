@@ -45,7 +45,8 @@ body {
       // width: 85px;
       font-weight: 500;
       font-size: 18px;
-      color: $-neutral-text-500;
+      // color: $-neutral-text-500;
+      color: var(--neutral-text-500);
       // padding: 16px 12px 16px 12px;
       padding: 0 12px;
       cursor: pointer;
@@ -63,7 +64,7 @@ body {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    border: 1px solid $-neutral-border-200;
+    border: 1px solid var(--neutral-border-200);
     border-radius: 999px;
     padding: 7px 16px 7px 16px;
 
@@ -74,14 +75,15 @@ body {
     &-icon {
       width: 24px;
       height: 24px;
-      color: $-neutral-text-600;
+      color: var(--neutral-text-600);
     }
     &-bar {
       border: none;
       padding: none;
       font-size: 15px;
       line-height: 26px;
-      color: $-neutral-text-600;
+      color: var(--neutral-text-600);
+
       box-sizing: border-box;
       width: 100%;
       height: 26px;
@@ -109,8 +111,8 @@ body {
       position: absolute;
       top: -10px;
       right: -10px;
-      background-color: $-functional-error-400;
-      color: white;
+      background-color: var(--functional-error-400);
+      color: var(--neutral-background-white);
       box-sizing: border-box;
       width: 20px;
       height: 20px;
@@ -124,7 +126,7 @@ body {
 }
 
 .position {
-  color: $-theme-primary-1;
+  color: var(--theme-primary-1);
 }
 // header for 814px
 @media (max-width: 814px) {
@@ -176,7 +178,7 @@ body {
       &-icon {
         width: 24px;
         height: 24px;
-        color: $-neutral-text-600;
+        color: var(--neutral-text-600);
       }
       &-bar {
         display: none;
@@ -201,8 +203,8 @@ body {
         position: absolute;
         top: -10px;
         right: -10px;
-        background-color: $-functional-error-400;
-        color: white;
+        background-color: var(--functional-error-400);
+        color: var(--neutral-background-white);
         box-sizing: border-box;
         width: 20px;
         height: 20px;
@@ -259,7 +261,7 @@ body {
       &-icon {
         width: 24px;
         height: 24px;
-        color: $-neutral-text-600;
+        color: var(--neutral-text-600);
       }
       &-bar {
         display: none;
@@ -284,8 +286,8 @@ body {
         position: absolute;
         top: -10px;
         right: -10px;
-        background-color: $-functional-error-400;
-        color: white;
+        background-color: var(--functional-error-400);
+        color: var(--neutral-background-white);
         box-sizing: border-box;
         width: 20px;
         height: 20px;
@@ -321,7 +323,7 @@ body {
     box-sizing: border-box;
     width: 730px;
 
-    color: $-neutral-text-900;
+    color: var(--neutral-text-900);
     text-align: center;
     padding-top: 56px;
     margin: 0 auto;
@@ -350,7 +352,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    color: $-neutral-text-600;
+    color: var(--neutral-text-600);
     // width: 846px;
     max-width: 846px;
     width: 100%;
@@ -362,8 +364,8 @@ body {
     width: 190px;
 
     padding: 13px 16px 13px 16px;
-    background-color: $-theme-primary-1;
-    color: white;
+    background-color: var(--theme-primary-1);
+    color: var(--neutral-background-white);
     border: none;
     cursor: pointer;
     margin: 0 auto;
@@ -376,7 +378,7 @@ body {
   }
 }
 .body__discount {
-  color: $-theme-secondary-1;
+  color: var(--theme-primary-1);
 }
 .swiper-pagination-bullet {
   height: 6px;
@@ -397,7 +399,7 @@ body {
       left: -3px;
       width: 12px;
       height: 12px;
-      border: 1px solid $-theme-primary-1;
+      border: 1px solid var(--theme-primary-1);
       border-radius: 50%;
       box-sizing: border-box;
     }
@@ -419,13 +421,13 @@ body {
 .swiper-pagination-bullet {
   width: 6px;
   height: 6px;
-  background-color: $-theme-primary-1;
+  background-color: var(--theme-primary-1);
   opacity: 1;
   margin: 0 !important;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: $-theme-primary-1;
+  background-color: var(--theme-primary-1);
 }
 
 .swiper-horizontal > .swiper-pagination-bullets,
@@ -457,7 +459,7 @@ body {
     box-sizing: border-box;
     max-width: 730px;
     width: 100%;
-    color: $-neutral-text-900;
+    color: var(--neutral-text-900);
     text-align: center;
     padding-top: 40px;
     margin: 0 auto;
@@ -489,7 +491,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    color: #637381;
+    color: var(--neutral-text-600);
     max-width: 564px;
     width: 100%;
     text-align: center;
@@ -522,7 +524,7 @@ body {
     box-sizing: border-box;
     max-width: 365px;
     width: 100%;
-    color: $-neutral-text-900;
+    color: var(--neutral-text-900);
     text-align: center;
     padding-top: 39px;
     margin: 0 auto;
@@ -554,7 +556,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    color: #637381;
+    color: var(--neutral-text-600);
     max-width: 378px;
     width: 100%;
     text-align: center;
@@ -621,7 +623,7 @@ body {
     // width: 368px;
     // height: 60px;
     box-sizing: border-box;
-    color: $-neutral-text-900;
+    color: var(--neutral-text-900);
     margin: 0;
     &-redNote {
       color: red;
@@ -633,7 +635,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    color: $-neutral-text-600;
+    color: var(--neutral-text-600);
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -724,7 +726,7 @@ body {
         font-weight: 400;
         font-size: 14px;
         line-height: 22px;
-        color: $-theme-primary-1;
+        color: var(--theme-primary-1);
         // font-family: "Inter", sans-serif;
         cursor: pointer;
       }
@@ -772,7 +774,7 @@ body {
       font-weight: 500;
       font-size: 28px;
       line-height: 42px;
-      color: $-neutral-text-900;
+      color: var(--neutral-text-900);
     }
     &-links {
       position: absolute;
@@ -795,7 +797,7 @@ body {
           font-weight: 400;
           font-size: 14px;
           line-height: 22px;
-          color: $-theme-primary-1;
+          color: var(--theme-primary-1);
           width: 68px;
           height: 22px;
           cursor: pointer;
@@ -821,7 +823,7 @@ body {
           line-height: 22px;
           // width: 91px;
           height: 22px;
-          color: $-neutral-text-600;
+          color: var(--neutral-text-600);
           cursor: pointer;
         }
       }
@@ -856,7 +858,7 @@ body {
         line-height: 22px;
         // width: 250px;
         height: 22px;
-        color: $-theme-primary-1;
+        color: var(--theme-primary-1);
       }
       &-arrow {
         width: 24px;
@@ -872,7 +874,7 @@ body {
   height: 488px;
   border: 1px solid red;
   top: 2118px;
-  background-color: $-theme-primary-1;
+  background-color: var(--theme-primary-1);
   &__head {
     position: absolute;
     box-sizing: border-box;
@@ -888,9 +890,9 @@ body {
       font-weight: 500;
       font-size: 64px;
       line-height: 88px;
-      color: white;
+      color: var(--neutral-background-white);
       &-freeShip {
-        color: $-theme-secondary-1;
+        color: var(--theme-secondary-1);
       }
     }
     &-icon {
@@ -910,7 +912,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    color: $-neutral-text-400;
+    color: var(--neutral-text-400);
   }
   &__button {
     position: absolute;
@@ -929,7 +931,7 @@ body {
       height: 48px;
       padding: 13px 56px 13px 56px;
       text-align: center;
-      color: white;
+      color: var(--neutral-background-white);
       display: block;
       font-weight: 400;
       font-size: 14px;
@@ -937,7 +939,7 @@ body {
       cursor: pointer;
     }
     &-active {
-      background-color: $-theme-secondary-1;
+      background-color: var(--theme-primary-1);
     }
   }
 }
@@ -947,7 +949,7 @@ body {
   height: 34.88px;
   top: 2153px;
   left: 611px;
-  color: $-neutral-text-500;
+  color: var(--neutral-text-500);
 }
 .star-icon-bottom {
   position: absolute;
@@ -955,7 +957,7 @@ body {
   height: 34.88px;
   top: 2404px;
   left: 1515px;
-  color: $-neutral-text-500;
+  color: var(--neutral-text-500);
 }
 .star-icon-right {
   position: absolute;
@@ -963,7 +965,7 @@ body {
   height: 59.6px;
   top: 2140px;
   left: 1250px;
-  color: $-neutral-text-500;
+  color: var(--neutral-text-500);
 }
 .star-icon-left {
   position: absolute;
@@ -971,7 +973,7 @@ body {
   height: 59.6px;
   top: 2457px;
   left: 402px;
-  color: $-neutral-text-500;
+  color: var(--neutral-text-500);
 }
 
 .Production {
@@ -999,7 +1001,7 @@ body {
       font-weight: 500;
       font-size: 28px;
       line-height: 42px;
-      color: $-neutral-text-900;
+      color: var(--neutral-text-900);
       width: 397px;
       height: 42px;
       text-align: center;
@@ -1010,7 +1012,7 @@ body {
       font-weight: 400;
       font-size: 16px;
       line-height: 26px;
-      color: $-neutral-text-600;
+      color: var(--neutral-text-600);
       text-align: center;
     }
   }
