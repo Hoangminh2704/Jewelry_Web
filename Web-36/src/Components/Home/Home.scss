@@ -3,7 +3,6 @@
 @font-face {
   font-family: "Open Sans";
   src: url(../Open_Sans/OpenSans-VariableFont_wdth\wght.ttf);
-  src: url(../Open_Sans/OpenSans-Italic-VariableFont_wdth\wght.ttf);
 }
 
 body {
@@ -40,6 +39,7 @@ body {
     gap: 24px;
 
     &-item {
+      text-decoration: none;
       text-align: center;
       height: 28px;
       // width: 85px;
@@ -75,9 +75,10 @@ body {
     &-icon {
       width: 24px;
       height: 24px;
-      color: var(--neutral-text-600);
+      color: var(--neutral-text-500);
     }
     &-bar {
+      outline: none;
       border: none;
       padding: none;
       font-size: 15px;
@@ -307,7 +308,7 @@ body {
   max-width: 1920px;
   width: 100%;
   height: 716px;
-  background-image: url(../Image/Home.jpg);
+  background-image: url(../Home_Image/Home.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -362,6 +363,7 @@ body {
   }
   &-more {
     width: 190px;
+    font-family: "Open Sans";
 
     padding: 13px 16px 13px 16px;
     background-color: var(--theme-primary-1);
@@ -483,7 +485,7 @@ body {
       width: 229px;
       height: 16px;
       top: 184px;
-      left: 75px;
+      left: 95px;
       border-radius: 10px;
     }
   }
@@ -688,16 +690,16 @@ body {
   gap: 24px;
   &__item {
     // .item1 {
-    //   background-image: url(../Image/Rectangle\ 153.png);
+    //   background-image: url(../Home_Image/Rectangle\ 153.png);
     // }
     // .item2 {
-    //   background-image: url(../Image/Rectangle\ 153-2.png);
+    //   background-image: url(../Home_Image/Rectangle\ 153-2.png);
     // }
     // .item3 {
-    //   background-image: url(../Image/Rectangle\ 153-3.png);
+    //   background-image: url(../Home_Image/Rectangle\ 153-3.png);
     // }
     // .item4 {
-    //   background-image: url(../Image/Rectangle\ 153-4.png);
+    //   background-image: url(../Home_Image/Rectangle\ 153-4.png);
     // }
     // .item1,
     // .item2,
