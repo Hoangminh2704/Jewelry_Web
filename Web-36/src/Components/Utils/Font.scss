@@ -1,7 +1,10 @@
 @import "./Color.scss";
 @font-face {
   font-family: "Open Sans";
-  src: url(../Open_Sans/OpenSans-VariableFont_wdth\wght.ttf);
+  src: url(../Open_Sans/static/OpenSans-Bold.ttf);
+  src: url(../Open_Sans/static/OpenSans-BoldItalic.ttf);
+  src: url(../Open_Sans/static/OpenSans-ExtraBold.ttf);
+  src: url(../Open_Sans/static/OpenSans-ExtraBoldItalic.ttf);
 }
 .caption-2-regular {
   font-family: Open Sans;

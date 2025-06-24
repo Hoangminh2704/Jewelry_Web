@@ -2,8 +2,7 @@
 @import "../Utils/Color.scss";
 @font-face {
   font-family: "Open Sans";
-  src: url(../Open_Sans/OpenSans-VariableFont_wdth\wght.ttf);
-  src: url(../Open_Sans/OpenSans-Italic-VariableFont_wdth\wght.ttf);
+  src: url(../Open_Sans/);
 }
 @import "../Utils/Font.scss";
 body {
@@ -43,7 +42,7 @@ body {
     &-item {
       text-decoration: none;
       text-align: center;
-      height: 28px;
+      // height: 28px;
       // width: 85px;
       font-weight: 500;
       font-size: 18px;
