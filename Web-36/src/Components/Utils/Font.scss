@@ -42,6 +42,51 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Poppins";
+  src: url("../Poppins/static/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../Poppins/static/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../Poppins/static/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Poppins - SemiBold */
+@font-face {
+  font-family: "Poppins";
+  src: url("../Poppins/static/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Poppins - Bold */
+@font-face {
+  font-family: "Poppins";
+  src: url("../Poppins/static/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Poppins - ExtraBold */
+@font-face {
+  font-family: "Poppins";
+  src: url("../Poppins/static/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
 @mixin caption-2-regular {
   font-family: "Open Sans";
   font-weight: 400;
@@ -192,4 +237,31 @@
   font-weight: 600;
   font-size: 80px;
   line-height: 114px;
+}
+@mixin poppins-regular {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 42px;
+}
+
+@mixin poppins-heading-5 {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 28px;
+}
+
+@mixin poppins-semibold {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+@mixin poppins-bold {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
 }
