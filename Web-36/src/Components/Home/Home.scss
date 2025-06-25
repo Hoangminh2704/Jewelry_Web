@@ -125,13 +125,13 @@ body {
         .header--search-icon {
           display: flex;
           align-items: center;
-          color: var(--neutral-text-900);
+          --my-color: var(--neutral-text-900);
           box-sizing: border-box;
           width: 24px;
           height: 24px;
 
           @include xl {
-            color: var(--neutral-text-500);
+            --my-color: var(--neutral-text-500);
             margin-left: 16px;
             margin-right: 1px;
           }
