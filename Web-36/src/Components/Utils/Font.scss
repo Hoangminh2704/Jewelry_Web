@@ -1,238 +1,428 @@
 @import "./Color.scss";
 @font-face {
   font-family: "Open Sans";
-  src: url(../Open_Sans/static/OpenSans-Bold.ttf);
-  src: url(../Open_Sans/static/OpenSans-BoldItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans-ExtraBold.ttf);
-  src: url(../Open_Sans/static/OpenSans-ExtraBoldItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans-Italic.ttf);
-  src: url(../Open_Sans/static/OpenSans-Light.ttf);
-  src: url(../Open_Sans/static/OpenSans-LightItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans-Medium.ttf);
-  src: url(../Open_Sans/static/OpenSans-Medium.ttf);
-  src: url(../Open_Sans/static/OpenSans-MediumItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans-Regular.ttf);
-  src: url(../Open_Sans/static/OpenSans-Regular.ttf);
-  src: url(../Open_Sans/static/OpenSans-SemiBold.ttf);
-  src: url(../Open_Sans/static/OpenSans-SemiBoldItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-Bold.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-BoldItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-ExtraBold.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-ExtraBoldItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-Italic.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-Light.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-LightItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-Medium.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-MediumItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-Regular.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-SemiBold.ttf);
-  src: url(../Open_Sans/static/OpenSans_Condensed-SemiBoldItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-Bold.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-BoldItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-ExtraBold.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-ExtraBoldItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-Italic.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-Light.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-LightItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-Medium.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-MediumItalic.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-Regular.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-SemiBold.ttf);
-  src: url(../Open_Sans/static/OpenSans_SemiCondensed-SemiBoldItalic.ttf);
+  src: url("../Open_Sans/static/OpenSans-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
 }
-.caption-2-regular {
-  font-family: Open Sans;
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-BoldItalic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-ExtraBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-ExtraBoldItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-Italic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-LightItalic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-MediumItalic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans-SemiBoldItalic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-BoldItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-ExtraBold.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-ExtraBoldItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-Italic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-Light.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-LightItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-Medium.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-MediumItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-Regular.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-SemiBold.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_Condensed-SemiBoldItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-Bold.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-BoldItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-ExtraBold.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-ExtraBoldItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-Italic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-Light.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-LightItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-Medium.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-MediumItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-Regular.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-SemiBold.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../Open_Sans/static/OpenSans_SemiCondensed-SemiBoldItalic.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@mixin caption-2-regular {
+  font-family: "Open Sans";
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.caption-2-semibold {
-  font-family: Open Sans;
+@mixin caption-2-semibold {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
-  letter-spacing: 0%;
-  background: #111827;
 }
 
-.caption-1-regular {
-  font-family: Open Sans;
+@mixin caption-1-regular {
+  font-family: "Open Sans";
   font-weight: 400;
   font-size: 13px;
   line-height: 22px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.caption-1-semibold {
-  font-family: Open Sans;
+@mixin caption-1-semibold {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 13px;
   line-height: 22px;
-  letter-spacing: 0%;
-  background: #111827;
 }
 
-.body-2-regular {
-  font-family: Open Sans;
+@mixin body-2-regular {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 13px;
   line-height: 22px;
-  letter-spacing: 0%;
-  background: #111827;
 }
 
-.body-2-semibold {
-  font-family: Open Sans;
+@mixin body-2-semibold {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 14px;
   line-height: 22px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.body-2-bold {
-  font-family: Open Sans;
+@mixin body-2-bold {
+  font-family: "Open Sans";
   font-weight: 700;
   font-size: 14px;
   line-height: 22px;
-  letter-spacing: 0%;
-  background: #111827;
 }
 
-.body-1 {
-  font-family: Open Sans;
+@mixin body-1 {
+  font-family: "Open Sans";
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.title-2 {
-  font-family: Open Sans;
+@mixin title-2 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 14px;
   line-height: 26px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.title-1 {
-  font-family: Open Sans;
+@mixin title-1 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
-  letter-spacing: 0%;
-  background: #111827;
 }
-.header-2 {
-  font-family: Open Sans;
+@mixin header-2 {
+  font-family: "Open Sans";
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
-.header-1 {
-  font-family: Open Sans;
+@mixin header-1 {
+  font-family: "Open Sans";
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.heading-4 {
-  font-family: Open Sans;
+@mixin heading-4 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 24px;
   line-height: 36px;
-  letter-spacing: 0%;
-  background: #111827;
 }
 
-.heading-3 {
-  font-family: Open Sans;
+@mixin heading-3 {
+  font-family: "Open Sans";
   font-weight: 500;
   font-size: 28px;
   line-height: 42px;
-  letter-spacing: 0%;
-  background: #111827;
 }
 
-.heading-2 {
-  font-family: Open Sans;
+@mixin heading-2 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 32px;
   line-height: 48px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.heading-1 {
-  font-family: Open Sans;
+@mixin heading-1 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 40px;
   line-height: 58px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
 /* Display */
-.display-6 {
-  font-family: Open Sans;
+@mixin display-6 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 40px;
   line-height: 58px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.display-5 {
-  font-family: Open Sans;
+@mixin display-5 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 48px;
   line-height: 70px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.display-4 {
-  font-family: Open Sans;
+@mixin display-4 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 56px;
   line-height: 82px;
-  letter-spacing: 0%;
-  background: #111827;
 }
 
-.display-3 {
-  font-family: Open Sans;
+@mixin display-3 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 64px;
   line-height: 92px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.display-2 {
-  font-family: Open Sans;
+@mixin display-2 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 72px;
   line-height: 104px;
-  letter-spacing: 0%;
-  background: #161c24;
 }
 
-.display-1 {
-  font-family: Open Sans;
+@mixin display-1 {
+  font-family: "Open Sans";
   font-weight: 600;
   font-size: 80px;
   line-height: 114px;
-  letter-spacing: 0%;
-  background: #161c24;
 }

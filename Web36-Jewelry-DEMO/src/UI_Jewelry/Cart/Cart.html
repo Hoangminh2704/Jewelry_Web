@@ -4,289 +4,407 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./home.scss" />
   </head>
   <body>
-    <div class="header">
-      <div class="header__logo">
-        <img src="../Payment/Logo.png" alt="" class="header__logo-image" />
-      </div>
-      <div class="header__links">
-        <a class="header__links-item position">Trang chủ</a>
-        <a class="header__links-item">Sản Phẩm</a>
-        <a class="header__links-item">Giới thiệu</a>
-        <a class="header__links-item">Liên hệ</a>
-      </div>
-      <div class="header__actions">
-        <div class="header__search">
-          <img
-            src="../Search/search-line.svg"
-            alt="Search Icon"
-            class="header__search-icon"
-          />
-
-          <input
-            type="text"
-            placeholder="Tìm kiếm"
-            class="header__search-bar"
-          />
+    <header>
+      <div class="header">
+        <!-- <svg class="menu-icon" ></svg> -->
+        <img class="menu-icon" src="../Home_Image/menu-line.svg" alt="" />
+        <div class="header__logo">
+          <img src="../Payment/Logo.png" alt="" class="header__logo-image" />
         </div>
-        <img class="header__separator" src="../Search/_.svg" alt="Separator" />
-        <div class="header__cart">
-          <img
-            class="header__cart-icon"
-            src="../Search/cart-line.svg"
-            alt="Cart Icon"
-          />
-          <div class="header__cart-badge">0</div>
+        <div class="header__links">
+          <a href="#" class="header__links-item position">Trang chủ</a>
+          <a href="#" class="header__links-item">Sản Phẩm</a>
+          <a href="#" class="header__links-item">Giới thiệu</a>
+          <a href="#" class="header__links-item">Liên hệ</a>
         </div>
-      </div>
-    </div>
-
-    <div class="swiper body__intro-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="body__intro">
-            <div class="body__intro-header">
-              <h1 class="body__intro-header-title">
-                Bộ sưu tập mới
-                <span class="body__intro-header-subtitle">
-                  <span class="body__discount">Giảm 15%</span> giá sản phẩm
-                </span>
-              </h1>
-              <img
-                class="body__intro-header-ellipse"
-                src="../Image/Ellipse 6.png"
-                alt=""
-              />
-            </div>
-            <div class="body__intro-caption">
-              Chúng tôi tự tin cung cấp cho quý khách những sản phẩm đá quý tốt
-              nhất, dịch vụ của chúng tôi đã có mặt hơn 12 tỉnh thành Việt Nam.
-              Sang trọng, quý phái là những gì chúng tôi mang lại cho khách
-              hàng.
-            </div>
-            <button type="button" class="body__intro-more">XEM THÊM</button>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div
-            class="body__intro"
-            style="background-image: url(../Image/Home2.jpg)"
-          >
-            <div class="body__intro-header">
-              <h1 class="body__intro-header-title">
-                Khám phá ngay
-                <span class="body__intro-header-subtitle">
-                  <span class="body__discount">Ưu đãi lớn</span> trong tháng
-                </span>
-              </h1>
-              <img
-                class="body__intro-header-ellipse"
-                src="../Image/Ellipse 6.png"
-                alt=""
-              />
-            </div>
-            <div class="body__intro-caption">
-              Chúng tôi mang đến những sản phẩm độc đáo, chất lượng cao, phản
-              ánh phong cách và cá tính của bạn. Trải nghiệm sự khác biệt với
-              dịch vụ chăm sóc khách hàng tận tâm.
-            </div>
-            <button type="button" class="body__intro-more">MUA NGAY</button>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div
-            class="body__intro"
-            style="background-image: url(../Image/Home3.jpg)"
-          >
-            <div class="body__intro-header">
-              <h1 class="body__intro-header-title">
-                Thiết kế tinh xảo
-                <span class="body__intro-header-subtitle">
-                  <span class="body__discount">Sự hoàn hảo</span> trong từng chi
-                  tiết
-                </span>
-              </h1>
-              <img
-                class="body__intro-header-ellipse"
-                src="../Image/Ellipse 6.png"
-                alt=""
-              />
-            </div>
-            <div class="body__intro-caption">
-              Mỗi sản phẩm là một tác phẩm nghệ thuật, được chế tác thủ công bởi
-              những nghệ nhân lành nghề. Đem lại vẻ đẹp vượt thời gian.
-            </div>
-            <button type="button" class="body__intro-more">
-              TÌM HIỂU THÊM
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-
-    <div class="features">
-      <div class="features__item">
-        <img class="features__img" src="../Image/Search.png" alt="" />
-        <div class="features__icon"></div>
-        <div class="features__text">
-          <p class="features__text-title">
-            <span class="features__text-title-redNote">01. </span>Đồ trang
-            sức<br />
-            độc đáo &amp; ý nghĩa <br />
-          </p>
-          <p class="features__text-description">
-            Từ những kho báu thô công đến những món đồ cổ điển <br />
-            đến các biểu tượng di sản <br />
-          </p>
-        </div>
-      </div>
-
-      <div class="features__item">
-        <img class="features__img" src="../Image/Search.png" alt="" />
-        <div class="features__icon"></div>
-        <div class="features__text">
-          <p class="features__text-title">
-            <span class="features__text-title-redNote">02. </span>Chất lượng
-            được kiểm tra chuyên<br />
-            nghiệp<br />
-          </p>
-          <p class="features__text-description">
-            Những kim loại quý, bền nhất và đá quý đạt tiêu chuẩn
-          </p>
-        </div>
-      </div>
-
-      <div class="features__item">
-        <img class="features__img" src="../Image/Search.png" alt="" />
-        <div class="features__icon"></div>
-        <div class="features__text">
-          <p class="features__text-title">
-            <span class="features__text-title-redNote">02. </span>Tuổi đời và sự
-            tái tạo<br />
-            của sản phẩm<br />
-          </p>
-          <p class="features__text-description">
-            Được thiết kế bền vững để được làm mới, có thể tái chế <br />
-            hoặc bán lại liên tục <br />
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="categories">
-      <div class="categories__item">
-        <img src="../Image/Rectangle 153.png" alt="" />
-        <div class="categories__item-text">
-          <div class="categories__item-text-link">NHẪN CƯỚI</div>
-          <div class="categories__item-text-arrow">
-            <img src="../Image/Arrow-Right.svg" alt="" />
-          </div>
-        </div>
-      </div>
-      <div class="categories__item">
-        <img src="../Image/Rectangle 153-2.png" alt="" />
-        <div class="categories__item-text">
-          <div class="categories__item-text-link">VÒNG CỔ</div>
-          <div class="categories__item-text-arrow">
-            <img src="../Image/Arrow-Right.svg" alt="" />
-          </div>
-        </div>
-      </div>
-      <div class="categories__item">
-        <img src="../Image/Rectangle 153-3.png" alt="" />
-        <div class="categories__item-text">
-          <div class="categories__item-text-link">VÒNG TAY</div>
-          <div class="categories__item-text-arrow">
-            <img src="../Image/Arrow-Right.svg" alt="" />
-          </div>
-        </div>
-      </div>
-      <div class="categories__item">
-        <img src="../Image/Rectangle 153-4.png" alt="" />
-        <div class="categories__item-text">
-          <div class="categories__item-text-link">BÔNG TAI</div>
-          <div class="categories__item-text-arrow">
-            <img src="../Image/Arrow-Right.svg" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Collection">
-      <div class="Collection__category">
-        <div class="Collection__category-title">Bộ sưu tập của chúng tôi</div>
-        <div class="Collection__category-links">
-          <div class="Collection__category-links-title">
+        <div class="header__actions">
+          <div class="header__search">
             <img
-              class="Collection__category-links-title-img"
-              src="../Image/Rectangle 152.svg"
-              alt=""
+              src="../Search/search-line.svg"
+              alt="Search Icon"
+              class="header__search-icon"
             />
-            <div class="Collection__category-links-title-detail">Nhẫn cưới</div>
-            <img
-              class="Collection__category-links-title-img"
-              src="../Image/Rectangle 152.svg"
-              alt=""
+
+            <input
+              type="text"
+              placeholder="Tìm kiếm"
+              class="header__search-bar"
             />
           </div>
-          <div class="Collection__category-links-indicators">
-            <div class="Collection__category-links-indicators-elements">
-              Trang sức bạc
+          <img
+            class="header__separator"
+            src="../Search/_.svg"
+            alt="Separator"
+          />
+          <div class="header__cart">
+            <img
+              class="header__cart-icon"
+              src="../Search/cart-line.svg"
+              alt="Cart Icon"
+            />
+            <div class="header__cart-badge">0</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="swiper-container mySwiper swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="body__intro">
+              <div class="body__intro-header">
+                <h1 class="body__intro-header-title">
+                  Bộ sưu tập mới
+                  <span class="body__intro-header-subtitle">
+                    <span class="body__discount">Giảm 15%</span> giá sản phẩm
+                  </span>
+                </h1>
+
+                <img
+                  class="body__intro-header-ellipse"
+                  src="../Home_Image/Ellipse 6.png"
+                  alt=""
+                />
+              </div>
+              <div class="body__intro-caption">
+                Chúng tôi tự tin cung cấp cho quý khách những sản phẩm đá quý
+                tốt nhất, dịch vụ của chúng tôi đã có mặt hơn 12 tỉnh thành Việt
+                Nam. Sang trọng, quý phái là những gì chúng tôi mang lại cho
+                khách hàng.
+              </div>
+              <button type="button" class="body__intro-more">XEM THÊM</button>
             </div>
-            <div class="Collection__category-links-indicators-elements">
-              Trang sức vàng
+          </div>
+          <div class="swiper-slide">
+            <div class="body__intro">
+              <div class="body__intro-header">
+                <h1 class="body__intro-header-title">
+                  Bộ sưu tập mới
+                  <span class="body__intro-header-subtitle">
+                    <span class="body__discount">Giảm 15%</span> giá sản phẩm
+                  </span>
+                </h1>
+
+                <img
+                  class="body__intro-header-ellipse"
+                  src="../Home_Image/Ellipse 6.png"
+                  alt=""
+                />
+              </div>
+              <div class="body__intro-caption">
+                Chúng tôi tự tin cung cấp cho quý khách những sản phẩm đá quý
+                tốt nhất, dịch vụ của chúng tôi đã có mặt hơn 12 tỉnh thành Việt
+                Nam. Sang trọng, quý phái là những gì chúng tôi mang lại cho
+                khách hàng.
+              </div>
+              <button type="button" class="body__intro-more">XEM THÊM</button>
             </div>
-            <div class="Collection__category-links-indicators-elements">
-              Dây chuyền bạc
+          </div>
+          <div class="swiper-slide">
+            <div class="body__intro">
+              <div class="body__intro-header">
+                <h1 class="body__intro-header-title">
+                  Bộ sưu tập mới
+                  <span class="body__intro-header-subtitle">
+                    <span class="body__discount">Giảm 15%</span> giá sản phẩm
+                  </span>
+                </h1>
+
+                <img
+                  class="body__intro-header-ellipse"
+                  src="../Home_Image/Ellipse 6.png"
+                  alt=""
+                />
+              </div>
+              <div class="body__intro-caption">
+                Chúng tôi tự tin cung cấp cho quý khách những sản phẩm đá quý
+                tốt nhất, dịch vụ của chúng tôi đã có mặt hơn 12 tỉnh thành Việt
+                Nam. Sang trọng, quý phái là những gì chúng tôi mang lại cho
+                khách hàng.
+              </div>
+              <button type="button" class="body__intro-more">XEM THÊM</button>
             </div>
-            <div class="Collection__category-links-indicators-elements">
-              Dây chuyền vàng
+          </div>
+          <div class="swiper-slide">
+            <div class="body__intro">
+              <div class="body__intro-header">
+                <h1 class="body__intro-header-title">
+                  Bộ sưu tập mới
+                  <span class="body__intro-header-subtitle">
+                    <span class="body__discount">Giảm 15%</span> giá sản phẩm
+                  </span>
+                </h1>
+
+                <img
+                  class="body__intro-header-ellipse"
+                  src="../Home_Image/Ellipse 6.png"
+                  alt=""
+                />
+              </div>
+              <div class="body__intro-caption">
+                Chúng tôi tự tin cung cấp cho quý khách những sản phẩm đá quý
+                tốt nhất, dịch vụ của chúng tôi đã có mặt hơn 12 tỉnh thành Việt
+                Nam. Sang trọng, quý phái là những gì chúng tôi mang lại cho
+                khách hàng.
+              </div>
+              <button type="button" class="body__intro-more">XEM THÊM</button>
             </div>
-            <div class="Collection__category-links-indicators-elements">
-              Bông tai bạc
+          </div>
+          <div class="swiper-slide">
+            <div class="body__intro">
+              <div class="body__intro-header">
+                <h1 class="body__intro-header-title">
+                  Bộ sưu tập mới
+                  <span class="body__intro-header-subtitle">
+                    <span class="body__discount">Giảm 15%</span> giá sản phẩm
+                  </span>
+                </h1>
+
+                <img
+                  class="body__intro-header-ellipse"
+                  src="../Home_Image/Ellipse 6.png"
+                  alt=""
+                />
+              </div>
+              <div class="body__intro-caption">
+                Chúng tôi tự tin cung cấp cho quý khách những sản phẩm đá quý
+                tốt nhất, dịch vụ của chúng tôi đã có mặt hơn 12 tỉnh thành Việt
+                Nam. Sang trọng, quý phái là những gì chúng tôi mang lại cho
+                khách hàng.
+              </div>
+              <button type="button" class="body__intro-more">XEM THÊM</button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <div class="features">
+        <div class="features__item">
+          <img class="features__img" src="../Home_Image/Search.png" alt="" />
+          <div class="features__icon"></div>
+          <div class="features__text">
+            <p class="features__text-title">
+              <span class="features__text-title-redNote">01. </span>Đồ trang sức
+              độc đáo &amp; ý nghĩa
+            </p>
+            <p class="features__text-description">
+              Từ những kho báu thô công đến những món đồ cổ điển đến các biểu
+              tượng di sản
+            </p>
+          </div>
+        </div>
+
+        <div class="features__item wrap2">
+          <img class="features__img" src="../Home_Image/Qality.png" alt="" />
+          <div class="features__icon"></div>
+          <div class="features__text">
+            <p class="features__text-title">
+              <span class="features__text-title-redNote">02. </span>Chất lượng
+              được kiểm tra chuyên nghiệp
+            </p>
+            <p class="features__text-description">
+              Những kim loại quý, bền nhất và đá quý đạt tiêu chuẩn
+            </p>
+          </div>
+        </div>
+
+        <div class="features__item wrap3">
+          <img class="features__img" src="../Home_Image/Repeat_.png" alt="" />
+          <div class="features__icon"></div>
+          <div class="features__text">
+            <p class="features__text-title">
+              <span class="features__text-title-redNote">03. </span>Tuổi đời và
+              sự tái tạo của sản phẩm
+            </p>
+            <p class="features__text-description">
+              Được thiết kế bền vững để được làm mới, có thể tái chế hoặc bán
+              lại liên tục
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- categeries -->
+
+      <div class="categories">
+        <div class="categories__item item1">
+          <img
+            class="categories__item-image"
+            src="../Home_Image/Rectangle 153.png"
+            alt=""
+          />
+          <div class="categories__item-text">
+            <div class="categories__item-text-link">NHẪN CƯỚI</div>
+            <div class="categories__item-text-arrow">
+              <img src="../Home_Image/Arrow-Right.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="categories__item item2">
+          <img
+            class="categories__item-image"
+            src="../Home_Image/Rectangle 153-2.png"
+            alt=""
+          />
+          <div class="categories__item-text">
+            <div class="categories__item-text-link">VÒNG CỔ</div>
+            <div class="categories__item-text-arrow">
+              <img src="../Home_Image/Arrow-Right.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="categories__item item3">
+          <img
+            class="categories__item-image"
+            src="../Home_Image/Rectangle 153-3.png"
+            alt=""
+          />
+          <div class="categories__item-text">
+            <div class="categories__item-text-link">VÒNG TAY</div>
+            <div class="categories__item-text-arrow">
+              <img src="../Home_Image/Arrow-Right.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="categories__item item4">
+          <img
+            class="categories__item-image"
+            src="../Home_Image/Rectangle 153-4.png"
+            alt=""
+          />
+          <div class="categories__item-text">
+            <div class="categories__item-text-link">BÔNG TAI</div>
+            <div class="categories__item-text-arrow">
+              <img src="../Home_Image/Arrow-Right.svg" alt="" />
             </div>
           </div>
         </div>
       </div>
-      <div class="Collection__explore">
-        <div class="Collection__explore-img">
-          <img class="first-img" src="../Image/Rectangle 152.png" alt="" />
-          <img class="second-img" src="../Image/Rectangle 150.png" alt="" />
-        </div>
-        <div class="Collection__explore-newest">
-          <div class="Collection__explore-newest-content">
-            KHÁM PHÁ BỘ SƯU TẬP MỚI NHẤT
+      <!-- Colection -->
+      <!-- <div class="Collection">
+        <div class="Collection__category">
+          <div class="Collection__category-title">Bộ sưu tập của chúng tôi</div>
+          <div class="Collection__category-links">
+            <div class="Collection__category-links-title">
+              <img
+                class="Collection__category-links-title-img"
+                src="../Home_Image/Rectangle 152.svg"
+                alt=""
+              />
+              <div class="Collection__category-links-title-detail">
+                Nhẫn cưới
+              </div>
+              <img
+                class="Collection__category-links-title-img"
+                src="../Home_Image/Rectangle 152.svg"
+                alt=""
+              />
+            </div>
+            <div class="Collection__category-links-indicators">
+              <div class="Collection__category-links-indicators-elements">
+                Trang sức bạc
+              </div>
+              <div class="Collection__category-links-indicators-elements">
+                Trang sức vàng
+              </div>
+              <div class="Collection__category-links-indicators-elements">
+                Dây chuyền bạc
+              </div>
+              <div class="Collection__category-links-indicators-elements">
+                Dây chuyền vàng
+              </div>
+              <div class="Collection__category-links-indicators-elements">
+                Bông tai bạc
+              </div>
+            </div>
           </div>
-          <div class="Collection__explore-newest-arrow">
-            <img src="../Image/Arrow-Right.svg" alt="" />
+        </div>
+        <div class="Collection__explore">
+          <div class="Collection__explore-img">
+            <img class="first-img" src="../Home_Image/Rectangle 152.png" alt="" />
+            <img class="second-img" src="../Home_Image/Rectangle 150.png" alt="" />
+          </div>
+          <div class="Collection__explore-newest">
+            <div class="Collection__explore-newest-content">
+              KHÁM PHÁ BỘ SƯU TẬP MỚI NHẤT
+            </div>
+            <div class="Collection__explore-newest-arrow">
+              <img src="../Home_Image/Arrow-Right.svg" alt="" />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div> -->
 
-    <div class="Shipping">
-      <div class="Shipping__head">
-        <div class="Shipping__head-title">
-          Shopping online không ngại khoảng cách
-          <span class="Shipping__head-title-freeShip">FREE SHIP</span>
+      <!-- <div class="Shipping">
+        <div class="Shipping__head">
+          <div class="Shipping__head-title">
+            Shopping online không ngại khoảng cách
+            <span class="Shipping__head-title-freeShip">FREE SHIP</span>
+          </div>
+
+          <img
+            class="Shipping__head-icon"
+            src="../Home_Image/Ellipse 6.png"
+            alt=""
+          />
         </div>
+        <div class="Shipping__caption">
+          Chúng tôi tự tin cung cấp cho quý khách những sản phẩm đá quý tốt
+          nhất, dịch vụ của chúng tôi đã có mặt hơn <br />12 tỉnh thành Việt
+          Nam. Sang trọng, quý phái là những gì chúng tôi mang lại cho khách
+          hàng. <br />
+        </div>
+        <div class="Shipping__button">
+          <a class="Shipping__button-buying Shipping__button-active"
+            >MUA NGAY</a
+          >
+          <a class="Shipping__button-more">XEM THÊM</a>
+        </div>
+      </div> -->
+      <!-- <img class="star-icon-top" src="../Home_Image/Vector-2.svg" alt="" />
+      <img class="star-icon-right" src="../Home_Image/Vector.svg" alt="" />
+      <img class="star-icon-bottom" src="../Home_Image/Vector-2.svg" alt="" />
+      <img class="star-icon-left" src="../Home_Image/Vector-2.svg" alt="" /> -->
 
-        <img class="Shipping__head-icon" src="../Image/Ellipse 6.png" alt="" />
-      </div>
-      <div class="Shipping__caption">
-        Chúng tôi tự tin cung cấp cho quý khách những sản phẩm đá quý tốt nhất,
-        dịch vụ của chúng tôi đã có mặt hơn <br />12 tỉnh thành Việt Nam. Sang
-        trọng, quý phái là những gì chúng tôi mang lại cho khách hàng. <br />
-      </div>
-      <div></div>
-    </div>
-    <img class="star-icon-top" src="../Image/Vector-2.svg" alt="" />
-    <img class="star-icon-right" src="../Image/Vector-2.svg" alt="" />
-    <img class="star-icon-top" src="../Image/Vector-2.svg" alt="" />
-    <img class="star-icon-top" src="../Image/Vector-2.svg" alt="" />
+      <!-- <div class="Production">
+        <div class="Production__title">
+          <div class="Production__title-overall">
+            Sản phẩm nổi bật trong tháng
+          </div>
+          <div class="Production__title-detail">
+            Mua sắm ngay các sản phẩm bán chạy nhất của tháng, có thể bạn cũng
+            sẽ thích những mặt hàng này, <br />hãy thêm chúng vào giỏ hàng của
+            bạn ngay bây giờ. <br />
+          </div>
+        </div>
+        <div class="Production__items">
+          <div class="Production__items-top"></div>
+          <div class="Production__items-another"></div>
+        </div>
+      </div> -->
+    </main>
+    <footer></footer>
 
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./home.ts"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
   </body>
 </html>
