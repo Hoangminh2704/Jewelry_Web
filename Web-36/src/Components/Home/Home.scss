@@ -406,9 +406,7 @@ body {
     margin: 0 auto;
     display: inline-block;
     text-align: center;
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 400px;
+    @include body-2-regular;
     margin-top: 40px;
     @include xs {
       margin-top: 16px;
