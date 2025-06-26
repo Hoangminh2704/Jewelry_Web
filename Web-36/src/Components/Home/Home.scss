@@ -391,11 +391,11 @@ body {
 
 .body__intro {
   width: 100%;
-  // background-image: url(../Home_Image/Home.jpg);
-  // object-fit: contain;
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
+  background-image: url(../Home_Image/Home.jpg);
+  object-fit: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -641,3 +641,166 @@ body {
     justify-content: flex-start;
   }
 }
+
+.categories {
+  padding-top: 80px;
+  box-sizing: border-box;
+  max-width: 1280px;
+  width: 100%;
+  height: 352px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  .categories__item {
+    height: 352px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    .categories__item-text {
+      box-sizing: border-box;
+      width: 100%;
+      height: 48px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      .categories__item-text-link {
+        @include body-2-regular;
+        color: var(--theme-primary-1);
+        cursor: pointer;
+      }
+      &-arrow {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+// .Collection {
+//   max-width: 1280px;
+//   width: 100%;
+//   height: 528px;
+//   box-sizing: border-box;
+//   position: absolute;
+//   top: 1556px;
+//   left: 320px;
+//   gap: 215px;
+//   display: flex;
+//   justify-content: space-between;
+//   // border: 1px solid $-neutral-text-300;
+//   &__category {
+//     position: relative;
+//     box-sizing: border-box;
+//     height: 486px;
+//     width: 350px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     gap: 233px;
+//     // border: 1px solid $-neutral-text-300;
+//     &-title {
+//       position: absolute;
+//       width: 100%;
+//       height: 41px;
+//       box-sizing: border-box;
+//       font-weight: 500;
+//       font-size: 28px;
+//       line-height: 42px;
+//       color: var(--neutral-text-900);
+//     }
+//     &-links {
+//       position: absolute;
+//       left: 0;
+//       bottom: 0;
+//       box-sizing: border-box;
+//       width: 124px;
+//       height: 212px;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: space-between;
+//       gap: 16px;
+//       &-title {
+//         display: flex;
+//         justify-content: space-between;
+//         height: 22px;
+//         gap: 12px;
+//         &-detail {
+//           font-family: "Inter"; // Inter mới đúng
+//           font-weight: 400;
+//           font-size: 14px;
+//           line-height: 22px;
+//           color: var(--theme-primary-1);
+//           width: 68px;
+//           height: 22px;
+//           cursor: pointer;
+//         }
+//         &-img {
+//           width: 16px;
+//           height: 2px;
+//           margin: auto;
+//         }
+//       }
+//       &-indicators {
+//         box-sizing: border-box;
+//         width: 111px;
+//         height: 174px;
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: space-between;
+//         gap: 16px;
+//         &-elements {
+//           // font-family: "Inter";
+//           font-weight: 400;
+//           font-size: 14px;
+//           line-height: 22px;
+//           // width: 91px;
+//           height: 22px;
+//           color: var(--neutral-text-600);
+//           cursor: pointer;
+//         }
+//       }
+//     }
+//   }
+//   &__explore {
+//     box-sizing: border-box;
+//     width: 715px;
+//     height: 528px;
+//     display: flex;
+//     flex-direction: column;
+
+//     &-img {
+//       width: 715px;
+//       height: 480px;
+//       box-sizing: border-box;
+//       .first-img {
+//         margin-right: 10px;
+//       }
+//     }
+//     &-newest {
+//       box-sizing: border-box;
+//       width: 273px;
+//       height: 48px;
+//       display: flex;
+//       gap: 8px;
+//       align-items: center;
+//       &-content {
+//         // font-family: "Inter";
+//         font-weight: 400;
+//         font-size: 14px;
+//         line-height: 22px;
+//         // width: 250px;
+//         height: 22px;
+//         color: var(--theme-primary-1);
+//       }
+//       &-arrow {
+//         width: 24px;
+//         height: 24px;
+//       }
+//     }
+//   }
+// }
