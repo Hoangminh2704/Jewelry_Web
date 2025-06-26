@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    /> -->
+    <title>Home</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -16,21 +20,27 @@
     <header>
       <div class="header">
         <div class="header--wrapper">
-          <div class="header-hamberger-mobile">
-            <div class="header-hamberger-mobile-line"></div>
-            <div class="header-hamberger-mobile-line"></div>
-            <div class="header-hamberger-mobile-line"></div>
-          </div>
+          <button
+            title="hamburger"
+            type="button"
+            class="header-hamberger-mobile header-hamberger-mobile--htx"
+          >
+            <span class="header-hamberger-mobile-line"></span>
+          </button>
           <div class="header--logo">
             <img src="../Payment/Logo.png" alt="" />
           </div>
+          <nav class="header--sub-menu open">
+            <ul class="header--menu">
+              <li>
+                <a class="header--menu-link active" href="#">Trang chủ</a>
+              </li>
+              <li><a class="header--menu-link" href="#">Sản phẩm</a></li>
+              <li><a class="header--menu-link" href="#">Giới thiệu</a></li>
+              <li><a class="header--menu-link" href="#">Liên hệ</a></li>
+            </ul>
+          </nav>
 
-          <ul class="header--menu">
-            <li><a class="header--menu-link active" href="#">Trang chủ</a></li>
-            <li><a class="header--menu-link" href="#">Sản phẩm</a></li>
-            <li><a class="header--menu-link" href="#">Giới thiệu</a></li>
-            <li><a class="header--menu-link" href="#">Liên hệ</a></li>
-          </ul>
           <div class="header--right">
             <div class="header--search_bar">
               <svg
@@ -255,6 +265,43 @@
           el: ".swiper-pagination",
           clickable: true,
         },
+      });
+      document.addEventListener(
+        "dblclick",
+        function (event) {
+          event.preventDefault();
+        },
+        { passive: false }
+      );
+
+      const hamburgerButtons = document.querySelectorAll(
+        ".header-hamberger-mobile"
+      );
+      const menu = document.querySelector(".open");
+
+      const handleToggle = (event) => {
+        event.preventDefault();
+        const button = event.currentTarget;
+
+        button.classList.toggle("is-active");
+        if (menu) {
+          menu.classList.toggle("oppenned");
+        }
+      };
+
+      hamburgerButtons.forEach((button) => {
+        button.addEventListener("click", handleToggle);
+      });
+
+      const menuLinks = document.querySelectorAll(".header--sub-menu li a");
+
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (menu) {
+            menu.classList.remove("oppenned");
+          }
+          hamburgerButtons.forEach((btn) => btn.classList.remove("is-active"));
+        });
       });
     </script>
   </body>

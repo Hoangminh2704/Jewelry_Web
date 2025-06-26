@@ -6,31 +6,77 @@
     @content;
   }
 }
-// @mixin s {
-//   @media (min-width: 640px) {
-//     @content;
-//   }
-// }
 @mixin m {
   @media (min-width: 768px) and (max-width: 1279px) {
     @content;
   }
 }
-// @mixin l {
-//   @media (min-width: 1024px) {
-//     @content;
-//   }
-// }
 @mixin xl {
   @media (min-width: 1280px) {
     @content;
   }
 }
-// @mixin xxl {
-//   @media (min-width: 1536px) {
-//     @content;
-//   }
-// }
+@mixin hamberger-effect {
+  float: right;
+  left: -150px;
+  top: 0;
+  transition: all 0.3s ease;
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 0;
+  z-index: 10;
+  overflow: hidden;
+  &.oppenned {
+    left: 0;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 12px;
+  }
+  li {
+    display: block;
+    list-style: none;
+    height: auto;
+    margin-left: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    &:first-child {
+      margin-top: 100px;
+    }
+
+    a {
+      color: #fff;
+      font-size: 16px;
+      // width: 100;
+      display: block;
+      float: left;
+      text-transform: uppercase;
+      line-height: 30px;
+      text-decoration: none;
+      // color: var(--neutral-text-500);
+      @include header-2;
+      cursor: pointer;
+      transition: font-weight 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .active {
+        color: var(--theme-primary-1);
+      }
+    }
+  }
+}
 body {
   overflow-x: hidden;
   margin: 0;
@@ -50,7 +96,13 @@ body {
     justify-content: space-between;
 
     .header-hamberger-mobile {
+      // display: block;
+      position: relative;
+      overflow: hidden;
+      border: none;
       box-sizing: border-box;
+      z-index: 2;
+      text-indent: -9999px;
       width: 24px;
       height: 24px;
       margin: 28px 0px 28px 24px;
@@ -58,14 +110,84 @@ body {
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      padding: 0.75px 0;
+      padding: 0;
+      background-color: var(--neutral-background-white);
+      background: transparent;
+      transition: background 0.3s;
+      &:focus {
+        outline: none;
+      }
+      cursor: pointer;
       .header-hamberger-mobile-line {
-        width: 17.5px;
-        height: 1.5px;
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        top: 12px;
         background-color: var(--neutral-text-900);
+        &:before,
+        &:after {
+          position: absolute;
+          display: block;
+          left: 0;
+          width: 18px;
+          height: 2px;
+          background-color: var(--neutral-text-900);
+          content: "";
+        }
+        &:before {
+          top: -5px;
+        }
+        &:after {
+          bottom: -5px;
+        }
       }
       @include xl {
         display: none;
+      }
+    }
+    .header-hamberger-mobile--htx {
+      span {
+        -webkit-transition: background 0s 0.3s;
+        transition: background 0s 0.3s;
+        &:before,
+        &:after {
+          -webkit-transition-duration: 0.3s, 0.3s;
+          transition-duration: 0.3s, 0.3s;
+          -webkit-transition-delay: 0.3s, 0s;
+          transition-delay: 0.3s, 0s;
+        }
+        &:before {
+          -webkit-transition-property: top, -webkit-transform;
+          transition-property: top, transform;
+        }
+        &:after {
+          -webkit-transition-property: bottom, -webkit-transform;
+          transition-property: bottom, transform;
+        }
+      }
+      &.is-active {
+        span {
+          background: none;
+
+          &:before,
+          &:after {
+            -webkit-transition-delay: 0s, 0.3s;
+            transition-delay: 0s, 0.3s;
+          }
+
+          &:before {
+            top: 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+          &:after {
+            bottom: 0;
+            -webkit-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+        }
       }
     }
     .header--logo {
@@ -73,32 +195,43 @@ body {
       align-items: center;
       padding: 10px 0;
     }
-    .header--menu {
-      display: none;
+    .header--sub-menu {
+      // display: none;
+      @include m {
+        @include hamberger-effect;
+      }
+      @include xs {
+        @include hamberger-effect;
+      }
+
       @include xl {
         display: flex;
-        gap: 24px;
-        height: 60px;
-        text-align: center;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        align-items: center;
-        max-width: 485px;
-        width: 100%;
-        justify-content: space-between;
-        .header--menu-link {
-          text-decoration: none;
-          padding: 16px 12px;
+        .header--menu {
+          display: flex;
+          gap: 24px;
+          height: 60px;
+          text-align: center;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          align-items: center;
+          max-width: 485px;
+          width: 100%;
+          justify-content: space-between;
+          .header--menu-link {
+            text-decoration: none;
+            padding: 16px 12px;
 
-          color: var(--neutral-text-500);
-          @include header-2;
-        }
-        .active {
-          color: var(--theme-primary-1);
+            color: var(--neutral-text-500);
+            @include header-2;
+          }
+          .active {
+            color: var(--theme-primary-1);
+          }
         }
       }
     }
+
     .header--right {
       display: flex;
       align-items: center;
@@ -188,8 +321,6 @@ body {
 .swiper-pagination-bullet {
   height: 6px;
   width: 6px;
-  // color: $-theme-primary-1 !important;
-  // background-color: $-theme-primary-1 !important;
   margin: 0px;
   cursor: pointer;
   transition: background-color 0.3s ease;
