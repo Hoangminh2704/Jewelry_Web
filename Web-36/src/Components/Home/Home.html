@@ -542,13 +542,6 @@
           clickable: true,
         },
       });
-      document.addEventListener(
-        "dblclick",
-        function (event) {
-          event.preventDefault();
-        },
-        { passive: false }
-      );
 
       const hamburgerButtons = document.querySelectorAll(
         ".header-hamberger-mobile"
@@ -564,11 +557,25 @@
           menu.classList.toggle("oppenned");
         }
       };
+      const handleClickOutside = (event) => {
+        const isClickInsideMenu = menu.contains(event.target);
+        const isClickOnHamburger = Array.from(hamburgerButtons).some((button) =>
+          button.contains(event.target)
+        );
+
+        if (!isClickInsideMenu && !isClickOnHamburger) {
+          menu.classList.remove("oppenned");
+          hamburgerButtons.forEach((btn) => btn.classList.remove("is-active"));
+        }
+      };
 
       hamburgerButtons.forEach((button) => {
         button.addEventListener("click", handleToggle);
       });
 
+      document.addEventListener("click", handleClickOutside);
+
+      // Đóng menu khi click vào liên kết trong menu
       const menuLinks = document.querySelectorAll(".header--sub-menu li a");
 
       menuLinks.forEach((link) => {
