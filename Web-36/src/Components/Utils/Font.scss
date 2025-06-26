@@ -327,6 +327,7 @@
   font-stretch: semi-condensed;
 }
 
+// --- Poppins Light ---
 @font-face {
   font-family: "Poppins";
   src: local("Poppins Light"),
@@ -334,7 +335,15 @@
   font-weight: 300;
   font-style: normal;
 }
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins Light Italic"),
+    url("../Poppins/Poppins-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
 
+// --- Poppins Regular ---
 @font-face {
   font-family: "Poppins";
   src: local("Poppins Regular"),
@@ -342,7 +351,15 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins Italic"),
+    url("../Poppins/Poppins-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
 
+// --- Poppins Medium ---
 @font-face {
   font-family: "Poppins";
   src: local("Poppins Medium"),
@@ -350,7 +367,15 @@
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins Medium Italic"),
+    url("../Poppins/Poppins-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
 
+// --- Poppins SemiBold ---
 @font-face {
   font-family: "Poppins";
   src: local("Poppins SemiBold"),
@@ -358,7 +383,15 @@
   font-weight: 600;
   font-style: normal;
 }
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins SemiBold Italic"),
+    url("../Poppins/Poppins-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
 
+// --- Poppins Bold ---
 @font-face {
   font-family: "Poppins";
   src: local("Poppins Bold"),
@@ -366,7 +399,15 @@
   font-weight: 700;
   font-style: normal;
 }
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins Bold Italic"),
+    url("../Poppins/Poppins-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
 
+// --- Poppins ExtraBold ---
 @font-face {
   font-family: "Poppins";
   src: local("Poppins ExtraBold"),
@@ -374,182 +415,42 @@
   font-weight: 800;
   font-style: normal;
 }
-
-@mixin caption-2-regular {
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-}
-
-@mixin caption-2-semibold {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
-}
-
-@mixin caption-1-regular {
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 22px;
-}
-
-@mixin caption-1-semibold {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 22px;
-}
-
-@mixin body-2-regular {
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-}
-
-@mixin body-2-semibold {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 22px;
-}
-
-@mixin body-2-bold {
-  font-family: "Open Sans";
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 22px;
-}
-
-@mixin body-1 {
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-@mixin title-2 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 26px;
-}
-
-@mixin title-1 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-}
-@mixin header-2 {
-  font-family: "Open Sans";
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 28px;
-}
-@mixin header-1 {
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 30px;
-}
-
-@mixin heading-4 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
-}
-
-@mixin heading-3 {
-  font-family: "Open Sans";
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 42px;
-}
-
-@mixin heading-2 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 48px;
-}
-
-@mixin heading-1 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 58px;
-}
-
-@mixin display-6 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 58px;
-}
-
-@mixin display-5 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 70px;
-}
-
-@mixin display-4 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 56px;
-  line-height: 82px;
-}
-
-@mixin display-3 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 64px;
-  line-height: 92px;
-}
-
-@mixin display-2 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 72px;
-  line-height: 104px;
-}
-
-@mixin display-1 {
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 80px;
-  line-height: 114px;
-}
-@mixin poppins-regular {
+@font-face {
   font-family: "Poppins";
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 42px;
+  src: local("Poppins ExtraBold Italic"),
+    url("../Poppins/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
 }
 
-@mixin poppins-heading-5 {
+// --- Poppins Black ---
+@font-face {
   font-family: "Poppins";
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 28px;
+  src: local("Poppins Black"),
+    url("../Poppins/Poppins-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins Black Italic"),
+    url("../Poppins/Poppins-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
 }
 
-@mixin poppins-semibold {
+// --- Poppins Thin ---
+@font-face {
   font-family: "Poppins";
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 30px;
+  src: local("Poppins Thin"),
+    url("../Poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
 }
-
-@mixin poppins-bold {
+@font-face {
   font-family: "Poppins";
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 36px;
+  src: local("Poppins Thin Italic"),
+    url("../Poppins/Poppins-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
 }
