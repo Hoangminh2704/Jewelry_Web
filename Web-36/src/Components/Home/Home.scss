@@ -82,13 +82,18 @@
   }
 }
 @mixin reponsive_Collection {
-  max-width: 768px;
+  max-width: 786px;
   .Collection__category {
     width: 624px;
     height: 117px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .Collection__category-links {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
+      position: static;
       .Collection__category-links-title {
         object-fit: contain;
         width: 124px;
@@ -647,6 +652,9 @@ body {
     .wrap2 {
       margin-top: 40px;
     }
+    .wrap3 {
+      margin-top: 40px;
+    }
   }
 }
 .features__img {
@@ -865,7 +873,7 @@ body {
       display: flex;
       gap: 16px;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
       left: 0;
       bottom: 0;
       .Collection__category-links-title {
@@ -875,7 +883,7 @@ body {
         @include body-2-regular;
         color: var(--theme-primary-1);
       }
-      .Collection__category-links-indicators {
+      .Collection__category-links-elements {
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -891,6 +899,8 @@ body {
       justify-content: space-between;
       align-items: flex-end;
       box-sizing: border-box;
+      gap: 15px;
+      flex-wrap: wrap;
       // .first-img {
       //   background-image: url("../Home_Image/Rectangle 152.png");
       //   object-fit: contain;
@@ -920,6 +930,23 @@ body {
     @include reponsive_Collection;
   }
   @include xs {
-    display: none;
+    // display: none;
+    @include reponsive_Collection;
+    max-width: 382px;
+    .Collection__explore {
+      .Collection__explore-img {
+        flex-wrap: wrap-reverse;
+        .first-img {
+          width: 382px;
+          height: 220px;
+          object-fit: cover;
+        }
+        .second-img {
+          max-width: 382px;
+          max-height: 480px;
+          object-fit: cover;
+        }
+      }
+    }
   }
 }
