@@ -901,18 +901,23 @@ body {
       box-sizing: border-box;
       gap: 15px;
       flex-wrap: wrap;
-      // .first-img {
-      //   background-image: url("../Home_Image/Rectangle 152.png");
-      //   object-fit: contain;
-      //   background-position: center;
-      //   background-repeat: no-repeat;
-      // }
-      // .second-img {
-      //   background-image: url("../Home_Image/Rectangle 150.png");
-      //   object-fit: contain;
-      //   background-position: center;
-      //   background-repeat: no-repeat;
-      // }
+      .first-img {
+        background-image: url("../Home_Image/Rectangle 152.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 255px;
+        height: 220px;
+      }
+      .second-img {
+        background-image: url("../Home_Image/Rectangle 150.png");
+        object-fit: cover;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 516px;
+        height: 480px;
+      }
     }
     .Collection__explore-newest {
       display: flex;
