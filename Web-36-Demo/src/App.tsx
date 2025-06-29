@@ -4,6 +4,7 @@ import Slides from "./Components/Slides/Slides";
 import Features from "./Components/Features/Features";
 import Categories from "./Components/Categories/Categories";
 import Collection from "./Components/Collection/Collection";
+import Shipping from "./Components/Shipping/Shipping";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Features />
       <Categories />
       <Collection />
+      <Shipping />
     </>
   );
 }
