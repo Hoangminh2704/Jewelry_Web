@@ -1,0 +1,107 @@
+@use "../Utils/Color.scss";
+@import "../Utils/Font_styles.scss";
+
+@mixin xs {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+@mixin m {
+  @media (min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+
+  touch-action: manipulation;
+}
+.features {
+  max-width: 1280px;
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+  justify-content: center;
+
+  &__item {
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    gap: 8px;
+    padding: 0 16px 16px 16px;
+  }
+  @include m {
+    flex-wrap: wrap;
+    margin-top: 40px;
+    max-width: 720px;
+    &__item {
+      max-width: 340px;
+    }
+    .wrap3 {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+  }
+  @include xs {
+    flex-wrap: wrap;
+    margin-top: 40px;
+    max-width: 382px;
+    &__item {
+      max-width: 340px;
+    }
+
+    .wrap2 {
+      margin-top: 40px;
+    }
+    .wrap3 {
+      margin-top: 40px;
+    }
+  }
+}
+.features__img {
+  width: 24px;
+  height: 24px;
+}
+.features__text {
+  width: 100%;
+  height: auto;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  &-title {
+    text-align: center;
+    @include header-1;
+    min-height: 60px;
+    box-sizing: border-box;
+    color: var(--neutral-text-900);
+    margin: 0;
+    &-redNote {
+      color: red;
+    }
+  }
+  &-description {
+    text-align: center;
+    @include body-2-regular;
+    color: var(--neutral-text-600);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}

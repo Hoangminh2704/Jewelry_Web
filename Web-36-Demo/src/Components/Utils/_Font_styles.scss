@@ -1,4 +1,4 @@
-@import "./Font.scss";
+@use "./Font.scss";
 @mixin caption-2-regular {
   font-family: "Open Sans";
   font-weight: 400;
