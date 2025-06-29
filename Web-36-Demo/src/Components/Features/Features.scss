@@ -1,5 +1,5 @@
-@use "../Utils/Color.scss";
-@import "../Utils/Font_styles.scss";
+@use "../../assets/Utils/Color";
+@import "../../assets/Utils/Font_styles";
 
 @mixin xs {
   @media (max-width: 767px) {
