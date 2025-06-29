@@ -1,4 +1,3 @@
-// src/App.tsx
 import React from "react";
 import Header from "./Components/Header/Header";
 import Slides from "./Components/Slides/Slides";
