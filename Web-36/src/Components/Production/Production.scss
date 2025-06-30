@@ -73,7 +73,7 @@ body {
         gap: 16px;
         align-items: center;
         .Production-image {
-          background-image: url("../../assets/Rectangle\ 81.png");
+          background-image: url("../../assets/Product1.png");
           background-position: center;
           background-repeat: no-repeat;
           box-sizing: border-box;
@@ -123,6 +123,81 @@ body {
       border: 1px solid var(--neutral-border-200);
       max-width: 628px;
       width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      .Production__card {
+        max-width: 302px;
+        width: 100%;
+        height: 454px;
+        box-sizing: border-box;
+        border: 1px solid var(--neutral-border-200);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        .Production__card-image {
+          background-image: url("../../assets/Product2.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          width: 265px;
+          height: 237px;
+        }
+        .Production__card-information {
+          max-width: 302px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+          padding: 16px;
+          .Production__card-text {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+            text-align: center;
+            max-width: 270px;
+            width: 100%;
+            .Production__card-name {
+              color: var(--theme-primary-1);
+              text-align: center;
+              @include header-1;
+            }
+            .Production__card-price {
+              color: var(--theme-secondary-1);
+              @include header-1;
+            }
+            .Production__card-discount {
+              color: var(--neutral-text-600);
+              @include body-1;
+              font-style: italic;
+              font-weight: 300;
+              .Discount-old {
+                text-decoration: line-through;
+              }
+              .Discount-percent {
+                font-weight: 400;
+                text-decoration: none;
+              }
+            }
+          }
+          .Production__card-select {
+            max-width: 270px;
+            width: 100%;
+            display: flex;
+            box-sizing: border-box;
+            height: 20px;
+            background-color: red;
+          }
+        }
+      }
     }
+  }
+  @include m {
+    display: none;
+  }
+  @include xs {
+    display: none;
   }
 }

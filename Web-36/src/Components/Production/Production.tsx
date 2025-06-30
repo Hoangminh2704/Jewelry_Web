@@ -37,7 +37,88 @@ function Production() {
             XEM THÊM
           </button>
         </div>
-        <div className="Production__others"></div>
+        <div className="Production__others">
+          <div className="Production__card">
+            <div className="Production__card-image"></div>
+            <div className="Production__card-information">
+              <div className="Production__card-text">
+                <div className="Production__card-name">
+                  Nhẫn cưới Kim cương, Chung Đôi Vàng trắng
+                </div>
+                <div className="Production__card-price">15.000.000 đ</div>
+                <div className="Production__card-discount">
+                  <span className="Production__card-discount-old">
+                    22.000.000 đ{" "}
+                  </span>
+                  <span className="Production__card-discount-percent">
+                    (-15%)
+                  </span>
+                </div>
+              </div>
+              <div className="Production__card-select"></div>
+            </div>
+          </div>
+          <div className="Production__card">
+            <div className="Production__card-image"></div>
+            <div className="Production__card-information">
+              <div className="Production__card-text">
+                <div className="Production__card-name">
+                  Nhẫn cưới Kim cương, Chung Đôi Vàng trắng
+                </div>
+                <div className="Production__card-price">15.000.000 đ</div>
+                <div className="Production__card-discount">
+                  <span className="Production__card-discount-old">
+                    22.000.000 đ{" "}
+                  </span>
+                  <span className="Production__card-discount-percent">
+                    (-15%)
+                  </span>
+                </div>
+              </div>
+              <div className="Production__card-select"></div>
+            </div>
+          </div>
+          <div className="Production__card">
+            <div className="Production__card-image"></div>
+            <div className="Production__card-information">
+              <div className="Production__card-text">
+                <div className="Production__card-name">
+                  Nhẫn cưới Kim cương, Chung Đôi Vàng trắng
+                </div>
+                <div className="Production__card-price">15.000.000 đ</div>
+                <div className="Production__card-discount">
+                  <span className="Production__card-discount-old">
+                    22.000.000 đ{" "}
+                  </span>
+                  <span className="Production__card-discount-percent">
+                    (-15%)
+                  </span>
+                </div>
+              </div>
+              <div className="Production__card-select"></div>
+            </div>
+          </div>
+          <div className="Production__card">
+            <div className="Production__card-image"></div>
+            <div className="Production__card-information">
+              <div className="Production__card-text">
+                <div className="Production__card-name">
+                  Nhẫn cưới Kim cương, Chung Đôi Vàng trắng
+                </div>
+                <div className="Production__card-price">15.000.000 đ</div>
+                <div className="Production__card-discount">
+                  <span className="Production__card-discount-old">
+                    22.000.000 đ{" "}
+                  </span>
+                  <span className="Production__card-discount-percent">
+                    (-15%)
+                  </span>
+                </div>
+              </div>
+              <div className="Production__card-select"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -62,3 +143,35 @@ const ProductionTop = () => {
     </svg>
   );
 };
+// const products = [
+//   {
+//     id: 1,
+//     image: "url1.png",
+//     name: "Nhẫn cưới Kim cương, Chung Đôi Vàng trắng",
+//     price: "15.000.000 đ",
+//     oldPrice: "22.000.000 đ",
+//     discount: "-15%",
+//     isNew: false,
+//     isSale: true,
+//   },
+//   {
+//     id: 2,
+//     image: "url2.png",
+//     name: "Nhẫn cưới Kim cương, Chung Đôi Vàng trắng",
+//     price: "15.000.000 đ",
+//     oldPrice: "22.000.000 đ",
+//     discount: "-15%",
+//     isNew: false,
+//     isSale: true,
+//   },
+//   {
+//     id: 3,
+//     image: "url3.png",
+//     name: "Nhẫn cưới Kim cương, Chung Đôi Vàng trắng",
+//     price: "15.000.000 đ",
+//     oldPrice: "22.000.000 đ",
+//     discount: "-15%",
+//     isNew: true,
+//     isSale: false,
+//   },
+// ];
