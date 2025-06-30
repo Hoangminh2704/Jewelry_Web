@@ -173,10 +173,10 @@ body {
               @include body-1;
               font-style: italic;
               font-weight: 300;
-              .Discount-old {
+              .Production__card-discount-old {
                 text-decoration: line-through;
               }
-              .Discount-percent {
+              .Production__card-discount-percent {
                 font-weight: 400;
                 text-decoration: none;
               }
@@ -187,8 +187,41 @@ body {
             width: 100%;
             display: flex;
             box-sizing: border-box;
-            height: 20px;
-            background-color: red;
+            max-height: 20px;
+            justify-content: space-between;
+            align-items: center;
+            .Production__card-select-watch {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              .icon {
+                width: 20px;
+                height: 20px;
+              }
+              .text {
+                margin: 0;
+                @include poppins-caption;
+                max-height: 19px;
+                color: var(--theme-primary-1);
+              }
+            }
+            .Production__card-select-more {
+              display: flex;
+              align-self: center;
+              gap: 8px;
+              .icon {
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+              }
+              .text {
+                margin: 0;
+                @include poppins-caption;
+                max-height: 19px;
+                color: var(--theme-primary-1);
+              }
+            }
           }
         }
       }
