@@ -5,6 +5,7 @@ import Features from "../Features/Features";
 import Categories from "../Categories/Categories";
 import Collection from "../Collection/Collection";
 import Shipping from "../Shipping/Shipping";
+import Production from "../Production/Production";
 import { createRoot } from "react-dom/client";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Categories />
       <Collection />
       <Shipping />
+      <Production />
     </>
   );
 }

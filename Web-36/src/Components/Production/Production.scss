@@ -1,0 +1,120 @@
+@use "../Utils/Color.scss";
+@import "../Utils/Font_styles.scss";
+
+@mixin xs {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+@mixin m {
+  @media (min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  height: auto;
+  touch-action: manipulation;
+}
+.Production {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 120px;
+  height: 1074px;
+  gap: 40px;
+  .Production__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 920px;
+    width: 100%;
+    margin: 0 auto;
+    .Production__header-caption {
+      color: var(--neutral-text-900);
+      @include heading-3;
+    }
+    .Production__header-detail {
+      display: flex;
+      text-align: center;
+      color: var(--neutral-text-600);
+      @include body-1;
+    }
+  }
+  .Production__items {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    .Production__top1 {
+      max-width: 628px;
+      width: 100%;
+      .Production__top1-infomation {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--neutral-border-200);
+        gap: 16px;
+        align-items: center;
+        .Production-image {
+          background-image: url("../../assets/Rectangle\ 81.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          box-sizing: border-box;
+          width: 628px;
+          height: 709px;
+        }
+        .Production-price {
+          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          max-width: 596px;
+          width: 100%;
+          .Name {
+            color: var(--theme-primary-1);
+            @include heading-4;
+          }
+          .Price {
+            color: var(--theme-secondary-1);
+            @include heading-2;
+          }
+          .Discount {
+            color: var(--neutral-text-600);
+            @include body-1;
+            font-style: italic;
+            font-weight: 300;
+            .Discount-old {
+              text-decoration: line-through;
+            }
+            .Discount-percent {
+              font-weight: 400;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      .Production__top1-button {
+        background-color: var(--theme-primary-1);
+        width: 100%;
+        @include body-2-regular;
+        color: var(--neutral-background-white);
+        padding: 13px 16px;
+      }
+    }
+    .Production__others {
+      border: 1px solid var(--neutral-border-200);
+      width: 620px;
+    }
+  }
+}
