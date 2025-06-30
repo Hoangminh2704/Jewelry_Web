@@ -54,11 +54,18 @@ body {
   }
   .Production__items {
     display: flex;
-    gap: 24px;
+    // gap: 24px;
     flex-wrap: wrap;
+    justify-content: space-between;
     .Production__top1 {
+      position: relative;
       max-width: 628px;
       width: 100%;
+      .Production__top1-svg {
+        position: absolute;
+        top: 0;
+        left: 32px;
+      }
       .Production__top1-infomation {
         display: flex;
         flex-direction: column;
@@ -114,7 +121,8 @@ body {
     }
     .Production__others {
       border: 1px solid var(--neutral-border-200);
-      width: 620px;
+      max-width: 628px;
+      width: 100%;
     }
   }
 }
