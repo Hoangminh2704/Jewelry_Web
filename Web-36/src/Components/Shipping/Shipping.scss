@@ -1,0 +1,105 @@
+@use "../Utils/Color.scss";
+@import "../Utils/Font_styles.scss";
+
+@mixin xs {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+@mixin m {
+  @media (min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  height: auto;
+  touch-action: manipulation;
+}
+.Shipping {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--theme-primary-1);
+  //   height: 488px; // demo height
+  margin-top: 34px;
+  &__title {
+    position: relative;
+    margin: 0 auto;
+    max-width: 870px;
+    width: 100%;
+    object-fit: cover;
+    padding-top: 88px;
+    height: 185px;
+
+    &-caption {
+      font-family: "Open Sans";
+      font-weight: 500;
+      font-size: 64px;
+      line-height: 84px;
+      text-align: center;
+      color: var(--neutral-background-white);
+      margin: 0;
+    }
+    &-subtitle {
+      color: var(--theme-secondary-2);
+    }
+    &-icon {
+      position: absolute;
+      left: 468px;
+    }
+  }
+  &__description {
+    max-width: 729px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    @include body-2-regular;
+    color: var(--neutral-text-400);
+    padding-top: 38px;
+  }
+  &__button {
+    box-sizing: border-box;
+    max-width: 392px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 38px;
+    padding-bottom: 47px;
+    &-buying {
+      box-sizing: border-box;
+
+      padding: 13px 56px;
+      @include body-2-regular;
+      color: var(--neutral-background-white);
+      background-color: transparent;
+      border: none;
+    }
+    &-more {
+      box-sizing: border-box;
+
+      padding: 13px 56px;
+      @include body-2-regular;
+      color: var(--neutral-background-white);
+      background-color: transparent;
+      border: none;
+    }
+    .active {
+      background-color: var(--theme-secondary-1);
+    }
+  }
+  @include m {
+    // display: none;
+  }
+  @include xs {
+    display: none;
+  }
+}
