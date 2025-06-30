@@ -9,8 +9,8 @@ function Production() {
         </div>
         <div className="Production__header-detail">
           Mua sắm ngay các sản phẩm bán chạy nhất của tháng, có thể bạn cũng sẽ
-          thích những mặt hàng này, <br /> hãy thêm chúng vào giỏ hàng của bạn
-          ngay bây giờ.
+          thích những mặt hàng này, hãy thêm chúng vào giỏ hàng của bạn ngay bây
+          giờ.
         </div>
       </div>
       <div className="Production__items">
