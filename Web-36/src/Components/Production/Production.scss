@@ -100,7 +100,7 @@ body {
           width: 628px;
           height: 709px;
           @include m {
-            width: 786px;
+            // width: 786px;
           }
           @include xs {
             width: 382px;
