@@ -33,6 +33,9 @@ body {
   height: 1074px;
   gap: 40px;
   align-items: center;
+  @include xs {
+    margin-top: 64px;
+  }
 
   .Production__header {
     display: flex;
@@ -46,6 +49,7 @@ body {
     .Production__header-caption {
       color: var(--neutral-text-900);
       @include heading-3;
+      text-align: center;
     }
     .Production__header-detail {
       display: flex;
@@ -56,6 +60,9 @@ body {
     @include m {
       max-width: 720px;
     }
+    @include xs {
+      max-width: 382px;
+    }
   }
   .Production__items {
     display: flex;
@@ -65,6 +72,13 @@ body {
     .Production__top1 {
       position: relative;
       max-width: 628px;
+      @include m {
+        max-width: 786px;
+      }
+      @include xs {
+        max-width: 382px;
+        margin: 0 auto;
+      }
       width: 100%;
       .Production__top1-svg {
         position: absolute;
@@ -81,18 +95,27 @@ body {
           background-image: url("../../assets/Product1.png");
           background-position: center;
           background-repeat: no-repeat;
+          background-size: cover;
           box-sizing: border-box;
           width: 628px;
           height: 709px;
+          @include m {
+            width: 786px;
+          }
+          @include xs {
+            width: 382px;
+            height: 400px;
+          }
         }
         .Production-price {
-          padding: 16px;
+          box-sizing: border-box;
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: 8px;
-          max-width: 596px;
+          //   max-width: 596px;
           width: 100%;
+          padding: 16px;
           .Name {
             color: var(--theme-primary-1);
             @include heading-4;
@@ -106,6 +129,8 @@ body {
             @include body-1;
             font-style: italic;
             font-weight: 300;
+            max-height: 19px;
+
             .Discount-old {
               text-decoration: line-through;
             }
@@ -122,6 +147,7 @@ body {
         @include body-2-regular;
         color: var(--neutral-background-white);
         padding: 13px 16px;
+        border: none;
       }
     }
     .Production__others {
@@ -129,9 +155,26 @@ body {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+
+      justify-content: space-between;
+      row-gap: 16px;
+      @include m {
+        max-width: fit-content;
+      }
+      @include xs {
+        flex-direction: column;
+        max-width: 382px;
+        width: 100%;
+        align-items: center;
+        margin: 0 auto;
+        .Production__card {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+
       .Production__card {
-        max-width: 302px;
+        // max-width: 302px;
         width: 100%;
         height: 454px;
         box-sizing: border-box;
@@ -141,6 +184,13 @@ body {
         align-items: center;
         justify-content: space-between;
         gap: 16px;
+        @include m {
+          max-width: 382px;
+          width: 100%;
+        }
+        @include xl {
+          max-width: 302px;
+        }
         .Production__card-image {
           background-image: url("../../assets/Product2.png");
           background-position: center;
@@ -149,8 +199,8 @@ body {
           height: 237px;
         }
         .Production__card-information {
-          max-width: 302px;
-          width: 100%;
+          //   max-width: 302px;
+          //   width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -161,8 +211,8 @@ body {
             gap: 8px;
             flex-direction: column;
             text-align: center;
-            max-width: 270px;
-            width: 100%;
+            // max-width: 270px;
+            // width: 100%;
             .Production__card-name {
               color: var(--theme-primary-1);
               text-align: center;
@@ -187,7 +237,7 @@ body {
             }
           }
           .Production__card-select {
-            max-width: 270px;
+            // max-width: 270px;
             width: 100%;
             display: flex;
             box-sizing: border-box;
@@ -232,9 +282,21 @@ body {
     }
   }
   @include m {
-    display: none;
+    // display: none;
+    max-width: 786px;
+
+    .Production__header {
+      max-width: 720px;
+    }
+    .Production__items {
+      max-width: 786px;
+      margin: 0 auto;
+      justify-content: center;
+    }
   }
   @include xs {
-    display: none;
+    .Production__header {
+      max-width: 382px;
+    }
   }
 }

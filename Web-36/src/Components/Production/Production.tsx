@@ -1,5 +1,6 @@
 import React from "react";
 import "./Production.scss";
+
 function Production() {
   return (
     <div className="Production">
@@ -176,6 +177,106 @@ function Production() {
   );
 }
 export default Production;
+// import React from "react";
+// import "./Production.scss";
+// import { products, ProductItem } from "../../data/ProductData";
+
+// const featuredProducts: ProductItem[] = products.filter(
+//   (p: ProductItem) => p.isFeatured
+// );
+
+// const topProduct: ProductItem | undefined = featuredProducts.find(
+//   (p) => p.isTop
+// );
+
+// const otherProducts: ProductItem[] = featuredProducts
+//   .filter((p) => !p.isTop && (p.isNew || p.isSale))
+//   .slice(0, 4);
+
+// function Production() {
+//   return (
+//     <div className="Production">
+//       <div className="Production__header">
+//         <div className="Production__header-caption">
+//           Sản phẩm nổi bật trong tháng
+//         </div>
+//         <div className="Production__header-detail">
+//           Mua sắm ngay các sản phẩm bán chạy nhất của tháng, có thể bạn cũng sẽ
+//           thích những mặt hàng này, hãy thêm chúng vào giỏ hàng của bạn ngay bây
+//           giờ.
+//         </div>
+//       </div>
+
+//       <div className="Production__items">
+//         {topProduct && (
+//           <div className="Production__top1">
+//             <ProductionTop />
+//             <div className="Production__top1-infomation">
+//               <div
+//                 className="Production-image"
+//                 style={{ backgroundImage: `url(${topProduct.image})` }}
+//               ></div>
+//               <div className="Production-price">
+//                 <div className="Name">{topProduct.name}</div>
+//                 <div className="Price">{topProduct.price}</div>
+//                 <div className="Discount">
+//                   <span className="Discount-old">{topProduct.oldPrice}</span>
+//                   <span className="Discount-percent">
+//                     {topProduct.discount}
+//                   </span>
+//                 </div>
+//               </div>
+//             </div>
+//             <button className="Production__top1-button" title="Xem thêm">
+//               XEM THÊM
+//             </button>
+//           </div>
+//         )}
+
+//         <div className="Production__others">
+//           {otherProducts.map((product) => (
+//             <div className="Production__card" key={product.id}>
+//               <div
+//                 className="Production__card-image"
+//                 style={{ backgroundImage: `url(${product.image})` }}
+//               ></div>
+//               <div className="Production__card-information">
+//                 <div className="Production__card-text">
+//                   <div className="Production__card-name">{product.name}</div>
+//                   <div className="Production__card-price">{product.price}</div>
+//                   <div className="Production__card-discount">
+//                     <span className="Production__card-discount-old">
+//                       {product.oldPrice}
+//                     </span>
+//                     <span className="Production__card-discount-percent">
+//                       {product.discount}
+//                     </span>
+//                   </div>
+//                 </div>
+//                 <div className="Production__card-select">
+//                   <div className="Production__card-select-watch">
+//                     <div className="icon">
+//                       <EyeLine />
+//                     </div>
+//                     <p className="text">Xem</p>
+//                   </div>
+//                   <div className="Production__card-select-more">
+//                     <div className="icon">
+//                       <CartLine />
+//                     </div>
+//                     <p className="text">Thêm</p>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Production;
 
 const ProductionTop = () => {
   return (
@@ -269,36 +370,3 @@ const EyeLine = () => {
     </svg>
   );
 };
-
-// const products = [
-//   {
-//     id: 1,
-//     image: "url1.png",
-//     name: "Nhẫn cưới Kim cương, Chung Đôi Vàng trắng",
-//     price: "15.000.000 đ",
-//     oldPrice: "22.000.000 đ",
-//     discount: "-15%",
-//     isNew: false,
-//     isSale: true,
-//   },
-//   {
-//     id: 2,
-//     image: "url2.png",
-//     name: "Nhẫn cưới Kim cương, Chung Đôi Vàng trắng",
-//     price: "15.000.000 đ",
-//     oldPrice: "22.000.000 đ",
-//     discount: "-15%",
-//     isNew: false,
-//     isSale: true,
-//   },
-//   {
-//     id: 3,
-//     image: "url3.png",
-//     name: "Nhẫn cưới Kim cương, Chung Đôi Vàng trắng",
-//     price: "15.000.000 đ",
-//     oldPrice: "22.000.000 đ",
-//     discount: "-15%",
-//     isNew: true,
-//     isSale: false,
-//   },
-// ];
