@@ -7,7 +7,7 @@ import Collection from "../Collection/Collection";
 import Shipping from "../Shipping/Shipping";
 import Production from "../Production/Production";
 import { createRoot } from "react-dom/client";
-
+import Banner from "../Banner/Banner";
 function App() {
   return (
     <>
@@ -18,6 +18,7 @@ function App() {
       <Collection />
       <Shipping />
       <Production />
+      <Banner />
     </>
   );
 }
