@@ -175,7 +175,7 @@ body {
 
       .Production__card {
         // max-width: 302px;
-        width: 100%;
+        width: 48.08%;
         height: 454px;
         box-sizing: border-box;
         border: 1px solid var(--neutral-border-200);
@@ -185,8 +185,7 @@ body {
         justify-content: space-between;
         gap: 16px;
         @include m {
-          max-width: 382px;
-          width: 100%;
+          width: 48.47%;
         }
         @include xl {
           max-width: 302px;
@@ -283,7 +282,8 @@ body {
   }
   @include m {
     // display: none;
-    max-width: 786px;
+    // max-width: 786px;
+    width: 96.56%;
 
     .Production__header {
       max-width: 720px;
