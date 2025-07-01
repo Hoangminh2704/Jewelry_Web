@@ -146,6 +146,7 @@ body {
   }
   @include m {
     @include reponsive_Collection;
+    width: 98.5%;
   }
   @include xs {
     // display: none;
