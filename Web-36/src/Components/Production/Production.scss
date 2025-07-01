@@ -185,7 +185,7 @@ body {
         justify-content: space-between;
         gap: 16px;
         @include m {
-          max-width: 48.47%px;
+          width: 48.47%;
         }
         @include xl {
           max-width: 302px;
