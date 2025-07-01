@@ -163,6 +163,12 @@
   font-size: 28px;
   line-height: 28px;
 }
+@mixin poppins-header-H6 {
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+}
 
 @mixin poppins-semibold {
   font-family: "Poppins";

@@ -8,6 +8,7 @@ import Shipping from "../Shipping/Shipping";
 import Production from "../Production/Production";
 import { createRoot } from "react-dom/client";
 import Banner from "../Banner/Banner";
+import Footer from "../Footer/Footer";
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
       <Shipping />
       <Production />
       <Banner />
+      <Footer />
     </>
   );
 }
