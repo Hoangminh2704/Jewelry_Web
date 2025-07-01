@@ -175,7 +175,7 @@ body {
 
       .Production__card {
         // max-width: 302px;
-        width: 48.08%;
+        width: 100%;
         height: 454px;
         box-sizing: border-box;
         border: 1px solid var(--neutral-border-200);
@@ -185,7 +185,7 @@ body {
         justify-content: space-between;
         gap: 16px;
         @include m {
-          width: 48.47%;
+          max-width: 48.47%px;
         }
         @include xl {
           max-width: 302px;
