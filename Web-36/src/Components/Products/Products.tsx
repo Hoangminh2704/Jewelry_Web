@@ -1,9 +1,9 @@
-import React from "react";
+// import React from "react";
 import Header from "../Header/Header";
 import Banner from "../Banner/Banner";
 import Footer from "../Footer/Footer";
-import { createRoot } from "react-dom/client";
-function App() {
+
+function Products() {
   return (
     <>
       <Header />
@@ -14,9 +14,4 @@ function App() {
     </>
   );
 }
-export default App;
-const container = document.getElementById("root");
-if (container) {
-  const root = createRoot(container);
-  root.render(<App />);
-}
+export default Products;

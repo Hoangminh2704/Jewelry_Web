@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import "./header.scss";
 import logo from "../Payment/Logo.png";
 import { createRoot } from "react-dom/client";
+import { Link } from "react-router-dom";
 
 const menuItems = [
-  { label: "Trang chủ", href: "#", active: true },
-  { label: "Sản phẩm", href: "#" },
+  { label: "Trang chủ", href: "/", active: true },
+  { label: "Sản phẩm", href: "products" },
   { label: "Giới thiệu", href: "#" },
   { label: "Liên hệ", href: "#" },
 ];
@@ -77,12 +78,12 @@ const Header = () => {
           <ul className="header--menu">
             {menuItems.map((item, index) => (
               <li key={index}>
-                <a
-                  href={item.href}
+                <Link
+                  to={item.href}
                   className={`header--menu-link${item.active ? " active" : ""}`}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
