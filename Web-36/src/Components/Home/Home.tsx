@@ -9,6 +9,7 @@ import Production from "../Production/Production";
 import { createRoot } from "react-dom/client";
 import Banner from "../Banner/Banner";
 import Footer from "../Footer/Footer";
+import Testimonials from "../Testimotionals/Testimonials";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
       <Shipping />
       <Production />
       <Banner />
+      <Testimonials></Testimonials>
       <Footer />
     </>
   );

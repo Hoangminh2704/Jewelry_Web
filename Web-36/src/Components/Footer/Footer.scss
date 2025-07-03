@@ -27,163 +27,219 @@ body {
   max-width: 1920px;
   width: 100%;
   background-color: var(--theme-primary-2);
-  margin: 120px auto 0 auto;
-  display: flex;
-
-  gap: 80px;
   padding: 80px 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 
-  .About {
-    max-width: 340px;
+  .Overrall {
+    max-width: 1280px;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 36px;
+    gap: 80px;
+    // justify-content: center;
+    flex-wrap: wrap;
+    @include m {
+      width: 96.56%;
+      gap: 0;
+      row-gap: 48px;
+      column-gap: 8px;
+    }
+    @include xs {
+      width: 96.56%;
+      gap: 0;
+      row-gap: 48px;
+      column-gap: 8px;
+    }
+    .About {
+      width: 26.56%;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
 
-    .About__script {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      .About__script-header {
-        color: var(--neutral-background-white);
-        @include poppins-header-H6;
-        margin: 0;
-        text-transform: uppercase;
-      }
-      .About__script-title {
-        color: var(--neutral-text-400);
-        @include body-2-regular;
-        margin: 0;
-      }
-    }
-    .About__payment {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      justify-content: space-between;
-      .About__payment-header {
-        color: var(--neutral-text-400);
-        @include body-2-regular;
-        margin: 0;
-      }
-      .About__payment-icons {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-      }
-    }
-  }
-  .Info {
-    max-width: 180px;
-    width: 100%;
-    display: flex;
-    gap: 32px;
-    flex-direction: column;
-    .Info__header {
-      @include poppins-header-H6;
-      color: var(--neutral-background-white);
-      text-transform: uppercase;
-    }
-    .Info__property {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      .Introduction,
-      .Information,
-      .Contact,
-      .Event {
-        color: var(--neutral-text-400);
-        @include body-2-regular;
-        margin: 0;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    }
-  }
-  .Polity {
-    max-width: 180px;
-    width: 100%;
-    display: flex;
-    gap: 32px;
-    flex-direction: column;
-    .Polity__header {
-      @include poppins-header-H6;
-      color: var(--neutral-background-white);
-      text-transform: uppercase;
-    }
-    .Polity__property {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      .Tranfer,
-      .Support,
-      .Change,
-      .Pay {
-        color: var(--neutral-text-400);
-        @include body-2-regular;
-        margin: 0;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    }
-  }
-  .Newest {
-    max-width: 340px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    justify-content: space-between;
-    .Newest__script {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      justify-content: space-between;
-      .Newest__script-header {
-        @include poppins-header-H6;
-        color: var(--neutral-background-white);
-        text-transform: uppercase;
-        margin: 0;
-      }
-      .Newest__script-title {
-        color: var(--neutral-text-400);
-        @include body-2-regular;
-        margin: 0;
-      }
-    }
-    .Newest__email {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      max-width: 264px;
-      object-fit: contain;
-      .Newest__email-input {
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid var(--neutral-border-100);
-        color: var(--neutral-text-400);
-        padding: 0;
+      .About__script {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        height: 27px;
-        width: 194px;
-        outline: none;
-      }
-      .Newest__email-icon {
-        padding: 8px 20px;
-        background-color: var(--theme-primary-1);
-        .Newest__email {
-          width: 24px;
-          height: 24px;
+        gap: 32px;
+        .About__script-header {
+          color: var(--neutral-background-white);
+          @include poppins-header-H6;
+          margin: 0;
+          text-transform: uppercase;
+        }
+        .About__script-title {
+          color: var(--neutral-text-400);
+          @include body-2-regular;
+          margin: 0;
         }
       }
+      .About__payment {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        justify-content: space-between;
+        .About__payment-header {
+          color: var(--neutral-text-400);
+          @include body-2-regular;
+          margin: 0;
+        }
+        .About__payment-icons {
+          display: flex;
+          gap: 16px;
+          align-items: center;
+        }
+      }
+      @include m {
+        flex: 0 0 100%;
+        order: 1;
+        // max-width: 741px;
+        // max-width: 96.56%;
+      }
+      @include xs {
+        flex: 0 0 100%;
+        order: 1;
+        // max-width: 741px;
+        // max-width: 96.56%;
+      }
     }
-  }
-}
-@include m {
-  .Header:nth-child(1) {
-    flex-basis: 100%;
+    .Info {
+      max-width: 180px;
+      width: 100%;
+      display: flex;
+      gap: 32px;
+      flex-direction: column;
+      .Info__header {
+        @include poppins-header-H6;
+        color: var(--neutral-background-white);
+        text-transform: uppercase;
+      }
+      .Info__property {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        .Introduction,
+        .Information,
+        .Contact,
+        .Event {
+          color: var(--neutral-text-400);
+          @include body-2-regular;
+          margin: 0;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+      @include m {
+        flex: 1 0 auto; // flex-grow: 1, flex-shrink: 0 (không co lại), flex-basis: auto (dựa vào width/max-width)
+        min-width: 0; // Để tránh overflow nếu nội dung quá dài
+        order: 2;
+        // Đảm bảo width/max-width được tôn trọng
+        width: 180px;
+      }
+      @include xs {
+        order: 2;
+      }
+    }
+    .Polity {
+      max-width: 180px;
+      width: 100%;
+      display: flex;
+      gap: 32px;
+      flex-direction: column;
+      .Polity__header {
+        @include poppins-header-H6;
+        color: var(--neutral-background-white);
+        text-transform: uppercase;
+      }
+      .Polity__property {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        .Tranfer,
+        .Support,
+        .Change,
+        .Pay {
+          color: var(--neutral-text-400);
+          @include body-2-regular;
+          margin: 0;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+      @include m {
+        flex: 1 0 auto;
+        min-width: 0;
+        order: 2;
+
+        width: 180px;
+      }
+      @include xs {
+        order: 2;
+      }
+    }
+    .Newest {
+      max-width: 340px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      justify-content: space-between;
+      .Newest__script {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        justify-content: space-between;
+        .Newest__script-header {
+          @include poppins-header-H6;
+          color: var(--neutral-background-white);
+          text-transform: uppercase;
+          margin: 0;
+        }
+        .Newest__script-title {
+          color: var(--neutral-text-400);
+          @include body-2-regular;
+          margin: 0;
+        }
+      }
+      .Newest__email {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        max-width: 264px;
+        object-fit: contain;
+        .Newest__email-input {
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid var(--neutral-border-100);
+          color: var(--neutral-text-400);
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          height: 27px;
+          width: 194px;
+          outline: none;
+        }
+        .Newest__email-icon {
+          padding: 8px 20px;
+          background-color: var(--theme-primary-1);
+          .Newest__email {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      @include m {
+        flex: 1 0 auto; // flex-grow: 1, flex-shrink: 0 (không co lại), flex-basis: auto (dựa vào width/max-width)
+        min-width: 0; // Để tránh overflow nếu nội dung quá dài
+        order: 2;
+        // Đảm bảo width/max-width được tôn trọng
+        width: 180px;
+      }
+      @include xs {
+        flex: 0 0 100%;
+        order: 3;
+      }
+    }
   }
 }

@@ -3,73 +3,75 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <div className="Footer">
-      <div className="About">
-        <div className="About__script">
-          <p className="About__script-header">Về chúng tôi</p>
-          <p className="About__script-title">
-            Chúng tôi luôn cung cấp cho bạn những sản phẩm trang sức đẹp và chất
-            lượng nhất, mẫu mã được thiết kế tinh xảo hoàn mỹ nhất!
-          </p>
-        </div>
-        <div className="About__payment">
-          <p className="About__payment-header">Phương thức thanh toán</p>
-          <div className="About__payment-icons">
-            <Visa></Visa>
-            <MasterCart></MasterCart>
-            <JCB></JCB>
+      <div className="Overrall">
+        <div className="About">
+          <div className="About__script">
+            <p className="About__script-header">Về chúng tôi</p>
+            <p className="About__script-title">
+              Chúng tôi luôn cung cấp cho bạn những sản phẩm trang sức đẹp và
+              chất lượng nhất, mẫu mã được thiết kế tinh xảo hoàn mỹ nhất!
+            </p>
+          </div>
+          <div className="About__payment">
+            <p className="About__payment-header">Phương thức thanh toán</p>
+            <div className="About__payment-icons">
+              <Visa></Visa>
+              <MasterCart></MasterCart>
+              <JCB></JCB>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="Info">
-        <div className="Info__header">Thông tin</div>
-        <div className="Info__property">
-          <a href="#" className="Introduction" title="Introduction">
-            Giới thiệu
-          </a>
-          <a href="#" className="Information" title="Information">
-            Thông tin
-          </a>
-          <a href="#" className="Contact" title="Contact">
-            Liên hệ
-          </a>
-          <a href="#" className="Event" title="Event">
-            Sự kiện
-          </a>
+        <div className="Info">
+          <div className="Info__header">Thông tin</div>
+          <div className="Info__property">
+            <a href="#" className="Introduction" title="Introduction">
+              Giới thiệu
+            </a>
+            <a href="#" className="Information" title="Information">
+              Thông tin
+            </a>
+            <a href="#" className="Contact" title="Contact">
+              Liên hệ
+            </a>
+            <a href="#" className="Event" title="Event">
+              Sự kiện
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="Polity">
-        <div className="Polity__header">Chính sách</div>
-        <div className="Polity__property">
-          <a href="#" className="Tranfer" title="tranfer">
-            Vận chuyển
-          </a>
-          <a href="#" className="Support" title="Support">
-            Hỗ trợ
-          </a>
-          <a href="#" className="Change" title="Change">
-            Đổi & trả hàng
-          </a>
-          <a href="#" className="Pay" title="Pay">
-            Thanh toán
-          </a>
+        <div className="Polity">
+          <div className="Polity__header">Chính sách</div>
+          <div className="Polity__property">
+            <a href="#" className="Tranfer" title="tranfer">
+              Vận chuyển
+            </a>
+            <a href="#" className="Support" title="Support">
+              Hỗ trợ
+            </a>
+            <a href="#" className="Change" title="Change">
+              Đổi & trả hàng
+            </a>
+            <a href="#" className="Pay" title="Pay">
+              Thanh toán
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="Newest">
-        <div className="Newest__script">
-          <p className="Newest__script-header">NHẬN TIN MỚI NHẤT</p>
-          <p className="Newest__script-title">
-            Đăng ký theo dõi để cập nhật những tin tức mới nhanh nhất và nhiều
-            chương trình khuyến mãi từ cữa hàng của chúng tôi.
-          </p>
-        </div>
-        <div className="Newest__email">
-          <input
-            className="Newest__email-input"
-            type="text"
-            placeholder="Nhập email của bạn"
-          />
-          <div className="Newest__email-icon">
-            <EmailIcon></EmailIcon>
+        <div className="Newest">
+          <div className="Newest__script">
+            <p className="Newest__script-header">NHẬN TIN MỚI NHẤT</p>
+            <p className="Newest__script-title">
+              Đăng ký theo dõi để cập nhật những tin tức mới nhanh nhất và nhiều
+              chương trình khuyến mãi từ cữa hàng của chúng tôi.
+            </p>
+          </div>
+          <div className="Newest__email">
+            <input
+              className="Newest__email-input"
+              type="text"
+              placeholder="Nhập email của bạn"
+            />
+            <div className="Newest__email-icon">
+              <EmailIcon></EmailIcon>
+            </div>
           </div>
         </div>
       </div>

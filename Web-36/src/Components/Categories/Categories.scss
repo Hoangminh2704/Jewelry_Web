@@ -27,9 +27,7 @@ body {
   padding-top: 80px;
   box-sizing: border-box;
   max-width: 1280px;
-
   width: 100%;
-  // height: 352px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -37,8 +35,7 @@ body {
   justify-content: center;
   gap: 24px;
   @include m {
-    max-width: 768px;
-    width: 100%;
+    width: 96.56%;
     gap: 18px;
   }
   .categories__item {
@@ -46,19 +43,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // gap: 8px;
     width: 23.59%;
     @include m {
       width: 48.47%;
     }
     @include xs {
-      max-width: 382px;
-      width: 100%;
+      // max-width: 382px;
+      width: 92.27%;
     }
 
     .categories__item-image {
       height: 84.09%;
-      // height: 100%;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
