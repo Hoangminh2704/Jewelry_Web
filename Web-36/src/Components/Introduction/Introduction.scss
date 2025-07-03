@@ -1,0 +1,77 @@
+@use "../Utils/Color.scss";
+@import "../Utils/Font_styles.scss";
+
+@mixin xs {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+@mixin m {
+  @media (min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+
+  touch-action: manipulation;
+}
+.Introduction {
+  position: relative;
+  background-image: url(../../assets/Introduction.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 52, 104, 0.82);
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+  .Introduction__link {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 115px auto;
+    width: fit-content;
+    text-align: center;
+    &-name {
+      @include heading-2;
+      color: var(--neutral-background-white);
+    }
+    &-path {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      &-from {
+        margin: 0;
+        @include body-1;
+        color: var(--neutral-background-white);
+        opacity: 0.8;
+      }
+      &-to {
+        margin: 0;
+        @include title-1;
+        color: var(--neutral-background-white);
+      }
+    }
+  }
+}

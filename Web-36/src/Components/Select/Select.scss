@@ -1,0 +1,32 @@
+@use "../Utils/Color.scss";
+@import "../Utils/Font_styles.scss";
+
+@mixin xs {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+@mixin m {
+  @media (min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+s body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  touch-action: manipulation;
+}
+.Select {
+  max-width: 1280px;
+  width: 100%;
+  height: 1554px;
+  border: 1px solid;
+  margin: 0 auto;
+  margin-top: 80px;
+}

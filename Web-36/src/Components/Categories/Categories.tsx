@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import "./Categories.scss";
 import arrow from "../Home_Image/Arrow-Right.svg";
 

@@ -118,10 +118,10 @@ body {
         display: flex;
         flex-direction: column;
         gap: 12px;
-        .Introduction,
-        .Information,
-        .Contact,
-        .Event {
+        .Info__Introduction,
+        .Info__Information,
+        .Info__Contact,
+        .Info__Event {
           color: var(--neutral-text-400);
           @include body-2-regular;
           margin: 0;

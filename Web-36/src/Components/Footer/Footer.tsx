@@ -24,16 +24,16 @@ const Footer = () => {
         <div className="Info">
           <div className="Info__header">Thông tin</div>
           <div className="Info__property">
-            <a href="#" className="Introduction" title="Introduction">
+            <a href="#" className="Info__Introduction" title="Introduction">
               Giới thiệu
             </a>
-            <a href="#" className="Information" title="Information">
+            <a href="#" className="Info__Information" title="Information">
               Thông tin
             </a>
-            <a href="#" className="Contact" title="Contact">
+            <a href="#" className="Info__Contact" title="Contact">
               Liên hệ
             </a>
-            <a href="#" className="Event" title="Event">
+            <a href="#" className="Info__Event" title="Event">
               Sự kiện
             </a>
           </div>
