@@ -93,9 +93,15 @@ s body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    @include m {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
     .Select__filter-title {
       @include header-1;
       color: var(--neutral-text-600);
+      display: inline-block;
+      width: 100%;
     }
     .Select__filter-price-inputs {
       display: flex;

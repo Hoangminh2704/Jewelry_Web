@@ -35,10 +35,10 @@ body {
   flex-wrap: wrap;
   gap: 22px;
   @include m {
-    max-width: 786px;
+    // max-width: 786px;
   }
   @include xs {
-    max-width: 382px;
+    // max-width: 382px;
   }
   .Necklet,
   .Ring {
