@@ -1,10 +1,30 @@
 // import React from "react";
+import React, { useEffect, useState } from "react";
+
 import "./Select.scss";
 import "../Testimotionals/Testimonials";
 import ProductCard from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
 
 const Select = () => {
+  const [cardCount, setCardCount] = useState(6);
+
+  useEffect(() => {
+    const updateCardCount = () => {
+      if (window.matchMedia("(min-width: 1280px)").matches) {
+        setCardCount(9);
+      } else if (
+        window.matchMedia("(min-width: 768px) and (max-width: 1279px)").matches
+      ) {
+        setCardCount(6);
+      } else {
+        setCardCount(6);
+      }
+    };
+    updateCardCount();
+    window.addEventListener("resize", updateCardCount);
+    return () => window.removeEventListener("resize", updateCardCount);
+  }, []);
   return (
     <div className="Select">
       <div className="Select__filter">
@@ -53,7 +73,7 @@ const Select = () => {
           </div>
         </div>
         <div className="Select__product-list">
-          {products.slice(0, 6).map((product) => (
+          {products.slice(0, cardCount).map((product) => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>

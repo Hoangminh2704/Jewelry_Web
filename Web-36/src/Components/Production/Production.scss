@@ -189,93 +189,93 @@ body {
         @include xl {
           max-width: 302px;
         }
-        .Production__card-image {
-          background-image: url("../../assets/Product2.png");
-          background-position: center;
-          background-repeat: no-repeat;
-          width: 265px;
-          height: 237px;
-        }
-        .Production__card-information {
-          //   max-width: 302px;
-          //   width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 24px;
-          padding: 16px;
-          .Production__card-text {
-            display: flex;
-            gap: 8px;
-            flex-direction: column;
-            text-align: center;
-            // max-width: 270px;
-            // width: 100%;
-            .Production__card-name {
-              color: var(--theme-primary-1);
-              text-align: center;
-              @include header-1;
-            }
-            .Production__card-price {
-              color: var(--theme-secondary-1);
-              @include header-1;
-            }
-            .Production__card-discount {
-              color: var(--neutral-text-600);
-              @include body-1;
-              font-style: italic;
-              font-weight: 300;
-              .Production__card-discount-old {
-                text-decoration: line-through;
-              }
-              .Production__card-discount-percent {
-                font-weight: 400;
-                text-decoration: none;
-              }
-            }
-          }
-          .Production__card-select {
-            // max-width: 270px;
-            width: 100%;
-            display: flex;
-            box-sizing: border-box;
-            max-height: 20px;
-            justify-content: space-between;
-            align-items: center;
-            .Production__card-select-watch {
-              display: flex;
-              align-items: center;
-              gap: 8px;
-              .icon {
-                width: 20px;
-                height: 20px;
-              }
-              .text {
-                margin: 0;
-                @include poppins-caption;
-                max-height: 19px;
-                color: var(--theme-primary-1);
-              }
-            }
-            .Production__card-select-more {
-              display: flex;
-              align-self: center;
-              gap: 8px;
-              .icon {
-                width: 20px;
-                height: 20px;
-                display: flex;
-                align-items: center;
-              }
-              .text {
-                margin: 0;
-                @include poppins-caption;
-                max-height: 19px;
-                color: var(--theme-primary-1);
-              }
-            }
-          }
-        }
+        // .Production__card-image {
+        //   background-image: url("../../assets/Product2.png");
+        //   background-position: center;
+        //   background-repeat: no-repeat;
+        //   width: 265px;
+        //   height: 237px;
+        // }
+        // .Production__card-information {
+        //   //   max-width: 302px;
+        //   //   width: 100%;
+        //   display: flex;
+        //   flex-direction: column;
+        //   align-items: center;
+        //   gap: 24px;
+        //   padding: 16px;
+        //   .Production__card-text {
+        //     display: flex;
+        //     gap: 8px;
+        //     flex-direction: column;
+        //     text-align: center;
+        //     // max-width: 270px;
+        //     // width: 100%;
+        //     .Production__card-name {
+        //       color: var(--theme-primary-1);
+        //       text-align: center;
+        //       @include header-1;
+        //     }
+        //     .Production__card-price {
+        //       color: var(--theme-secondary-1);
+        //       @include header-1;
+        //     }
+        //     .Production__card-discount {
+        //       color: var(--neutral-text-600);
+        //       @include body-1;
+        //       font-style: italic;
+        //       font-weight: 300;
+        //       .Production__card-discount-old {
+        //         text-decoration: line-through;
+        //       }
+        //       .Production__card-discount-percent {
+        //         font-weight: 400;
+        //         text-decoration: none;
+        //       }
+        //     }
+        //   }
+        //   .Production__card-select {
+        //     // max-width: 270px;
+        //     width: 100%;
+        //     display: flex;
+        //     box-sizing: border-box;
+        //     max-height: 20px;
+        //     justify-content: space-between;
+        //     align-items: center;
+        //     .Production__card-select-watch {
+        //       display: flex;
+        //       align-items: center;
+        //       gap: 8px;
+        //       .icon {
+        //         width: 20px;
+        //         height: 20px;
+        //       }
+        //       .text {
+        //         margin: 0;
+        //         @include poppins-caption;
+        //         max-height: 19px;
+        //         color: var(--theme-primary-1);
+        //       }
+        //     }
+        //     .Production__card-select-more {
+        //       display: flex;
+        //       align-self: center;
+        //       gap: 8px;
+        //       .icon {
+        //         width: 20px;
+        //         height: 20px;
+        //         display: flex;
+        //         align-items: center;
+        //       }
+        //       .text {
+        //         margin: 0;
+        //         @include poppins-caption;
+        //         max-height: 19px;
+        //         color: var(--theme-primary-1);
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
   }
