@@ -40,6 +40,10 @@ body {
   @include xl {
     max-width: 302px;
   }
+  @include xs {
+    width: 100%;
+    margin: 0 auto;
+  }
   .Production__card-image {
     background-image: url("../../assets/Product2.png");
     background-position: center;
