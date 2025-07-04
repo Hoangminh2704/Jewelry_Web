@@ -1,4 +1,3 @@
-// import React from "react";
 import React, { useEffect, useState } from "react";
 
 import "./Select.scss";
@@ -21,6 +20,7 @@ const Select = () => {
         setCardCount(6);
       }
     };
+
     updateCardCount();
     window.addEventListener("resize", updateCardCount);
     return () => window.removeEventListener("resize", updateCardCount);

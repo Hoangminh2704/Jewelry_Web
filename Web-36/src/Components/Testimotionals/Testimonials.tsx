@@ -1,66 +1,123 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Testimonials.scss";
+// Import Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import avatarImage from "../../assets/Avatar.png";
+interface NavigationOptions {
+  prevEl?: HTMLElement | null;
+  nextEl?: HTMLElement | null;
+}
+
+const testimonialsData = [
+  {
+    id: 1,
+    comment:
+      '"Sản phẩm chất lượng, nhân viên vui vẻ hoà đồng, rất hài lòng với cách tư vấn của nhân viên. Sẽ quay lại mua hàng".',
+    name: "Trần Thị Tuyết Mai",
+    address: "Khách hàng, TP HCM",
+    avatar: avatarImage,
+  },
+  {
+    id: 2,
+    comment:
+      '"Rất hài lòng với cách tư vấn của nhân viên. Sẽ quay lại mua hàng".',
+    name: "Trần Thị Tuyết Minh",
+    address: "Khách hàng, TP HCM",
+    avatar: avatarImage,
+  },
+  {
+    id: 3,
+    comment:
+      '"Sản phẩm chất lượng, nhân viên vui vẻ hoà đồng, rất hài lòng với cách tư vấn của nhân viên. Sẽ quay lại mua hàng".',
+    name: "Trần Thị Tuyết Dung",
+    address: "Khách hàng, TP HCM",
+    avatar: avatarImage,
+  },
+  {
+    id: 4,
+    comment:
+      '"Sản phẩm chất lượng, nhân viên vui vẻ hoà đồng, rất hài lòng với cách tư vấn của nhân viên. Sẽ quay lại mua hàng".',
+    name: "Trần Thị Tuyết Linh",
+    address: "Khách hàng, TP HCM",
+    avatar: avatarImage,
+  },
+];
+
 const Testimonials = () => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   return (
-    <div className="Test">
-      <div className="Test__control">
-        <div className="Header">Nhận xét</div>
-        <div className="Body">
-          Đánh giá <br /> của khách hàng
-        </div>
-        <div className="Arrow">
-          <Arrow className="Arrow-back"></Arrow>
-          <Arrow className="Arrow-next"></Arrow>
-        </div>
-      </div>
-      <div className="Test__info">
-        <div className="Test__info-slides">
-          <div className="Slides-1">
-            <div className="Comment">
-              “Sản phẩm chất lượng, nhân viên vui vẻ hoà đồng, rất hài lòng với
-              cách tư vấn của nhân viên. Sẽ quay lại mua hàng”.
+    <div className="testimonials-container">
+      <div className="Test">
+        <div className="Test__control">
+          <div className="Header">Nhận xét</div>
+          <div className="Body">
+            Đánh giá <br /> của khách hàng
+          </div>
+          <div className="Arrow">
+            <div ref={prevRef} className="Arrow-button">
+              <Arrow className="Arrow-back" />
             </div>
-            <div className="Infomation">
-              <Line></Line>
-              <div className="Infomation__detail">
-                <img
-                  className="Infomation__detail-avatar"
-                  src="../../assets/Avatar.png"
-                  alt=""
-                />
-                <div className="Infomation__detail-info">
-                  <div className="Name">Trần Thị Tuyết Mai</div>
-                  <div className="Address">Khách hàng, TP HCM</div>
-                </div>
-              </div>
+            <div ref={nextRef} className="Arrow-button">
+              <Arrow className="Arrow-next" />
             </div>
           </div>
-          <div className="Slides-2">
-            <div className="Comment">
-              “Sản phẩm chất lượng, nhân viên vui vẻ hoà đồng, rất hài lòng với
-              cách tư vấn của nhân viên. Sẽ quay lại mua hàng”.
-            </div>
-            <div className="Infomation">
-              <Line></Line>
-              <div className="Infomation__detail">
-                <img
-                  className="Infomation__detail-avatar"
-                  src="../../assets/Avatar.png"
-                  alt=""
-                />
-                <div className="Infomation__detail-info">
-                  <div className="Name">Trần Thị Tuyết Mai</div>
-                  <div className="Address">Khách hàng, TP HCM</div>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div className="Test__info">
+          <div className="Test__info-slides">
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={-350}
+              slidesPerView={2.5}
+              centeredSlides={false}
+              loop={true}
+              onInit={(swiper) => {
+                const navigation = swiper.params
+                  .navigation as NavigationOptions;
+                if (navigation && typeof navigation === "object") {
+                  navigation.prevEl = prevRef.current;
+                  navigation.nextEl = nextRef.current;
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }
+              }}
+              className="test-swiper"
+            >
+              {testimonialsData.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <div className="Slides-content">
+                    <div className="Comment">{item.comment}</div>
+                    <div className="Infomation">
+                      <Line />
+                      <div className="Infomation__detail">
+                        <img
+                          className="Infomation__detail-avatar"
+                          src={item.avatar}
+                          alt=""
+                        />
+                        <div className="Infomation__detail-info">
+                          <div className="Name">{item.name}</div>
+                          <div className="Address">{item.address}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 export default Testimonials;
+
 type ArrowProps = {
   className?: string;
 };
@@ -106,6 +163,7 @@ const Arrow: React.FC<ArrowProps> = ({ className = "" }) => {
     </svg>
   );
 };
+
 const Line = () => {
   return (
     <svg

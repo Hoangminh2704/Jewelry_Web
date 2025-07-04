@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import Swiper from "swiper";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -7,34 +7,26 @@ import "./Slides.scss";
 import ellipse from "../Home_Image/Ellipse 6.png";
 
 const Slides = () => {
-  useEffect(() => {
-    const swiperElement = document.querySelector(".mySwiper");
-    if (!swiperElement) return;
-
-    const swiper = new Swiper(".mySwiper", {
-      modules: [Pagination],
-      spaceBetween: 30,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    });
-
-    return () => swiper.destroy();
-  }, []);
-
   const slides = Array.from({ length: 5 });
 
   return (
-    <div className="swiper-container mySwiper swiper">
-      <div className="swiper-wrapper">
+    <div className="slides-container">
+      <Swiper
+        modules={[Pagination]}
+        spaceBetween={30}
+        pagination={{
+          el: ".slides-pagination",
+          clickable: true,
+        }}
+        className="slides-swiper"
+      >
         {slides.map((_, i) => (
-          <div className="swiper-slide" key={i}>
+          <SwiperSlide key={i} className="slides-slide">
             <SlideContent />
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
-      <div className="swiper-pagination"></div>
+        <div className="slides-pagination"></div>
+      </Swiper>
     </div>
   );
 };

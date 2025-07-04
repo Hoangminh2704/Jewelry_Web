@@ -23,116 +23,182 @@ body {
 
   touch-action: manipulation;
 }
-.Test {
-  display: flex;
-  width: calc(1280px + (100vw - 1280px) / 2);
-
-  height: 375px;
-  margin-left: auto;
-  margin-top: 120px;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  @include m {
-    display: none;
-  }
-  @include xs {
-    display: none;
-  }
-  .Test__control {
-    width: 21.87%;
-    min-width: 350px;
-    height: 146px;
+.testimonials-container {
+  .Test {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    width: calc(1280px + (100vw - 1280px) / 2);
+
+    height: 375px;
+    margin-left: auto;
+    margin-top: 120px;
     justify-content: space-between;
-    .Header {
-      @include body-2-regular;
-      color: var(--neutral-text-600);
+    align-items: center;
+    flex-wrap: wrap;
+    @include m {
+      // display: none;
     }
-    .Body {
-      @include heading-3;
-      color: var(--neutral-text-900);
+    @include xs {
+      display: none;
     }
-    .Arrow {
+    .Test__control {
+      width: 21.87%;
+      min-width: 350px;
+      height: 146px;
       display: flex;
-      gap: 16px;
-      .Arrow-back {
-        rotate: 180deg;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: space-between;
+      @include m {
+        width: 100%;
+      }
+
+      .Header {
+        @include body-2-regular;
+        color: var(--neutral-text-600);
+      }
+      .Body {
+        @include heading-3;
+        color: var(--neutral-text-900);
+      }
+      .Arrow {
+        display: flex;
+        gap: 16px;
+
+        .Arrow-button {
+          cursor: pointer; // ✅ Thêm cursor pointer
+          transition: transform 0.2s ease;
+          padding: 8px; // ✅ Tăng vùng click
+          border-radius: 4px;
+
+          // ✅ Đảm bảo button có thể click được
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+
+        .Arrow-back {
+          rotate: 180deg;
+        }
       }
     }
-  }
 
-  .Test__info {
-    width: 66%;
-    height: 375px;
-    background-color: var(--neutral-background-50);
-    position: relative;
-    .Test__info-slides {
-      position: absolute;
-      left: 12.5%;
-      top: 14.4%;
-      width: 604px;
-      height: 290px;
+    .Test__info {
+      width: 66%;
+      height: 375px;
+      background-color: var(--neutral-background-50);
       position: relative;
-      .Slides-1,
-      .Slides-2 {
+      .Test__info-slides {
         position: absolute;
-        width: 435.93px;
-        box-sizing: border-box;
-        padding: 24px 32px;
-        border-radius: 2px;
-        background-color: var(--neutral-background-white);
+        left: 12.5%;
+        top: 14.4%;
+        width: 604px;
+        height: 290px;
+        overflow: visible;
 
-        display: flex;
-        flex-direction: column;
-        gap: 36px;
+        .test-swiper {
+          .swiper-wrapper {
+            overflow: visible;
+            height: 290px;
+            align-items: none;
+          }
 
-        box-shadow: 0px 12px 105px rgba(35, 41, 49, 0.08);
-        .Comment {
-          @include header-1;
-          color: var(--neutral-text-900);
-        }
-        .Infomation {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          .Infomation__detail {
-            width: 100%;
+          .swiper-slide {
             display: flex;
-            gap: 16px;
-            align-items: center;
-            .Infomation__detail-avatar {
-              border-radius: 999px;
+
+            transition: all 0.3s ease;
+            width: 436px !important;
+          }
+
+          .swiper-slide-active {
+            z-index: 20;
+            transform: translate(0, 0);
+            opacity: 1;
+
+            .Slides-content {
+              transform: scale(1);
             }
-            .Infomation__detail-info {
+          }
+          .swiper-slide-next {
+            z-index: 10;
+            transform: translate(45px, 40px);
+            opacity: 0.8;
+          }
+
+          .swiper-slide-prev {
+            z-index: 5;
+
+            opacity: 0.8;
+
+            .Slides-content {
+              transform: scale(0.9);
+              box-shadow: none;
+            }
+          }
+
+          .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-next):not(
+              .swiper-slide-prev
+            ) {
+            opacity: 0;
+            transform: translate(60px, 80px);
+            z-index: 1;
+          }
+          .Slides-content {
+            height: 245px;
+            width: 435.93px;
+            box-sizing: border-box;
+            padding: 24px 32px;
+            border-radius: 2px;
+            background-color: var(--neutral-background-white);
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            transition: all 0.3s ease;
+            position: relative;
+
+            .Comment {
+              @include header-1;
+              color: var(--neutral-text-900);
+              min-height: 90px;
+            }
+            .Infomation {
               display: flex;
               flex-direction: column;
-              gap: 8px;
-              width: 100%;
-              .Name {
-                @include header-1;
-                color: var(--theme-primary-1);
-              }
-              .Address {
-                @include poppins-caption;
-                color: var(--neutral-text-600);
+              gap: 14px;
+
+              .Infomation__detail {
+                width: 100%;
+                display: flex;
+                gap: 16px;
+                align-items: center;
+
+                .Infomation__detail-avatar {
+                  border-radius: 999px;
+                  width: 48px;
+                  height: 48px;
+                  object-fit: cover;
+                }
+
+                .Infomation__detail-info {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                  width: 100%;
+
+                  .Name {
+                    @include header-1;
+                    color: var(--theme-primary-1);
+                  }
+
+                  .Address {
+                    @include poppins-caption;
+                    color: var(--neutral-text-600);
+                  }
+                }
               }
             }
           }
         }
-      }
-      .Slides-1 {
-        z-index: 2;
-        opacity: 1;
-      }
-
-      .Slides-2 {
-        z-index: 1;
-        opacity: 0.92;
-        bottom: 0;
-        right: 0;
       }
     }
   }
