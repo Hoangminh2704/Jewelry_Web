@@ -28,7 +28,7 @@ body {
     display: flex;
     width: calc(1280px + (100vw - 1280px) / 2);
 
-    height: 375px;
+    // height: 375px;
     margin-left: auto;
     margin-top: 120px;
     justify-content: space-between;
@@ -65,16 +65,9 @@ body {
         gap: 16px;
 
         .Arrow-button {
-          cursor: pointer; // ✅ Thêm cursor pointer
+          cursor: pointer;
           transition: transform 0.2s ease;
-          padding: 8px; // ✅ Tăng vùng click
           border-radius: 4px;
-
-          // ✅ Đảm bảo button có thể click được
-          &:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-          }
         }
 
         .Arrow-back {
@@ -123,6 +116,7 @@ body {
             z-index: 10;
             transform: translate(45px, 40px);
             opacity: 0.8;
+            left: 40px;
           }
 
           .swiper-slide-prev {
