@@ -55,9 +55,7 @@ const Testimonials = () => {
       <div className="Test">
         <div className="Test__control">
           <div className="Header">Nhận xét</div>
-          <div className="Body">
-            Đánh giá <br /> của khách hàng
-          </div>
+          <div className="Body">Đánh giá của khách hàng</div>
           <div className="Arrow">
             <div ref={prevRef} className="Arrow-button">
               <Arrow className="Arrow-back" />
@@ -75,6 +73,7 @@ const Testimonials = () => {
               slidesPerView={2.5}
               centeredSlides={false}
               loop={true}
+              watchOverflow={false}
               onInit={(swiper) => {
                 const navigation = swiper.params
                   .navigation as NavigationOptions;
@@ -84,6 +83,16 @@ const Testimonials = () => {
                   swiper.navigation.init();
                   swiper.navigation.update();
                 }
+              }}
+              breakpoints={{
+                768: {
+                  slidesPerView: 2.5,
+                  // spaceBetween: -500,
+                },
+                320: {
+                  slidesPerView: 1,
+                  // spaceBetween: -50,
+                },
               }}
               className="test-swiper"
             >

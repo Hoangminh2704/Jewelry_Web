@@ -36,16 +36,18 @@ body {
   gap: 22px;
   @include m {
     // max-width: 786px;
+    width: 96.56%;
   }
   @include xs {
     // max-width: 382px;
+    width: 92.27%;
   }
   .Necklet,
   .Ring {
     flex: 1 1 0;
     @include m {
       flex: none;
-      width: 96.56%;
+      width: 100%;
       margin: 0 auto;
     }
     @include xs {

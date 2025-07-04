@@ -34,6 +34,7 @@ body {
   align-items: center;
   @include xs {
     margin-top: 64px;
+    width: 92.27%;
   }
 
   .Production__header {
@@ -71,12 +72,17 @@ body {
     .Production__top1 {
       position: relative;
       max-width: 628px;
+      width: 49%;
       @include m {
-        max-width: 786px;
+        // max-width: 786px;
+        max-width: none;
+        width: 100%;
       }
       @include xs {
-        max-width: 382px;
+        // max-width: 382px;
+        max-width: none;
         margin: 0 auto;
+        width: 100%;
       }
       width: 100%;
       .Production__top1-svg {
@@ -162,7 +168,7 @@ body {
       }
       @include xs {
         flex-direction: column;
-        max-width: 382px;
+        // max-width: 382px;
         width: 100%;
         align-items: center;
         margin: 0 auto;
@@ -288,7 +294,7 @@ body {
       max-width: 720px;
     }
     .Production__items {
-      max-width: 786px;
+      // max-width: 786px;
       margin: 0 auto;
       justify-content: center;
     }
