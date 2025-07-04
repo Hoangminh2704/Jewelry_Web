@@ -85,13 +85,28 @@ const Testimonials = () => {
                 }
               }}
               breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                  spaceBetween: 0,
+                  centeredSlides: true,
+                  pagination: {
+                    el: ".testimonials-pagination",
+                    clickable: true,
+                  },
+                },
+
                 768: {
                   slidesPerView: 2.5,
-                  // spaceBetween: -500,
+                  spaceBetween: -350,
+                  centeredSlides: false,
+                  pagination: false,
                 },
-                320: {
-                  slidesPerView: 1,
-                  // spaceBetween: -50,
+
+                1280: {
+                  slidesPerView: 2.5,
+                  spaceBetween: -350,
+                  centeredSlides: false,
+                  pagination: false,
                 },
               }}
               className="test-swiper"

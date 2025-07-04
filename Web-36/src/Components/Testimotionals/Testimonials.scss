@@ -153,15 +153,15 @@ body {
           .swiper-slide {
             display: flex;
 
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
             width: 436px !important;
             @include m {
-              transition: none;
+              // transition: none;
             }
             @include xs {
-              width: 100% !important; // ✅ Full width trên mobile
+              width: 100% !important;
               justify-content: center;
-              transition: all 0.3s ease;
+              transition: all 0.5s ease;
             }
           }
 

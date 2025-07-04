@@ -91,6 +91,7 @@ s body {
             border: 1px solid var(--neutral-border-200);
             border-radius: 4px;
             margin: 0;
+            outline: none;
           }
           @include m {
             flex: 1;
@@ -125,10 +126,12 @@ s body {
       justify-content: space-between;
       width: 100%;
       box-sizing: border-box;
+      outline: none;
       @include m {
         width: calc(50% - 8px);
       }
       input {
+        outline: none;
         padding: 13px;
         box-sizing: border-box;
         width: 47%;
@@ -194,17 +197,13 @@ s body {
 
     .Select__product-list {
       width: 100%;
-      // min-width: 786px;
       box-sizing: border-box;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      //   column-gap: 16px;
       row-gap: 16px;
       align-items: center;
       margin: 0 auto;
     }
-    // .Select__product-page {
-    // }
   }
 }
