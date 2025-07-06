@@ -1,0 +1,77 @@
+import "./Production.scss";
+import { createProductCardHtml } from '../ProductCard/ProductCard.ts';
+import { products } from '../../Data/ProductData';
+
+function ProductionTop(): string {
+  return `
+    <svg
+      className="Production__top1-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      width="64"
+      height="94"
+      viewBox="0 0 64 94"
+      fill="none"
+    >
+      <path d="M0 0H64V93.5756L32 60.6265L0 93.5756V0Z" fill="#2B88FB" />
+      <path
+        d="M22.082 24.7388V25.7748H19.422V34.4968H18.148V25.7748H15.474V24.7388H22.082ZM26.9963 34.6228C26.2776 34.6228 25.6243 34.4595 25.0363 34.1328C24.4576 33.8062 24.0003 33.3442 23.6643 32.7468C23.3376 32.1402 23.1743 31.4402 23.1743 30.6468C23.1743 29.8628 23.3423 29.1722 23.6783 28.5748C24.0236 27.9682 24.4903 27.5062 25.0783 27.1888C25.6663 26.8622 26.3243 26.6988 27.0523 26.6988C27.7803 26.6988 28.4383 26.8622 29.0263 27.1888C29.6143 27.5062 30.0763 27.9635 30.4123 28.5608C30.7576 29.1582 30.9303 29.8535 30.9303 30.6468C30.9303 31.4402 30.7529 32.1402 30.3983 32.7468C30.0529 33.3442 29.5816 33.8062 28.9843 34.1328C28.3869 34.4595 27.7243 34.6228 26.9963 34.6228ZM26.9963 33.5028C27.4536 33.5028 27.8829 33.3955 28.2843 33.1808C28.6856 32.9662 29.0076 32.6442 29.2503 32.2148C29.5023 31.7855 29.6283 31.2628 29.6283 30.6468C29.6283 30.0308 29.5069 29.5082 29.2643 29.0788C29.0216 28.6495 28.7043 28.3322 28.3123 28.1268C27.9203 27.9122 27.4956 27.8048 27.0383 27.8048C26.5716 27.8048 26.1423 27.9122 25.7503 28.1268C25.3676 28.3322 25.0596 28.6495 24.8263 29.0788C24.5929 29.5082 24.4763 30.0308 24.4763 30.6468C24.4763 31.2722 24.5883 31.7995 24.8123 32.2288C25.0456 32.6582 25.3536 32.9802 25.7363 33.1948C26.1189 33.4002 26.5389 33.5028 26.9963 33.5028ZM33.8793 28.2388C34.1313 27.8002 34.5047 27.4362 34.9993 27.1468C35.5033 26.8482 36.0867 26.6988 36.7493 26.6988C37.4307 26.6988 38.0467 26.8622 38.5973 27.1888C39.1573 27.5155 39.596 27.9775 39.9133 28.5748C40.2307 29.1628 40.3893 29.8488 40.3893 30.6328C40.3893 31.4075 40.2307 32.0982 39.9133 32.7048C39.596 33.3115 39.1573 33.7828 38.5973 34.1188C38.0467 34.4548 37.4307 34.6228 36.7493 34.6228C36.096 34.6228 35.5173 34.4782 35.0133 34.1888C34.5187 33.8902 34.1407 33.5215 33.8793 33.0828V38.1368H32.6053V26.8248H33.8793V28.2388ZM39.0873 30.6328C39.0873 30.0542 38.9707 29.5502 38.7373 29.1208C38.504 28.6915 38.1867 28.3648 37.7853 28.1408C37.3933 27.9168 36.9593 27.8048 36.4833 27.8048C36.0167 27.8048 35.5827 27.9215 35.1813 28.1548C34.7893 28.3788 34.472 28.7102 34.2293 29.1488C33.996 29.5782 33.8793 30.0775 33.8793 30.6468C33.8793 31.2255 33.996 31.7342 34.2293 32.1728C34.472 32.6022 34.7893 32.9335 35.1813 33.1668C35.5827 33.3908 36.0167 33.5028 36.4833 33.5028C36.9593 33.5028 37.3933 33.3908 37.7853 33.1668C38.1867 32.9335 38.504 32.6022 38.7373 32.1728C38.9707 31.7342 39.0873 31.2208 39.0873 30.6328ZM45.2527 25.5368V24.3748H47.8847V34.4968H46.5967V25.5368H45.2527Z"
+        fill="white"
+      />
+    </svg>
+  `;
+}
+
+export function initializeProduction(containerId: string): void {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
+  const topProduct = products.find(p => p.isTop) || products[0];
+
+  const productionHtml = `
+    <div class="Production">
+      <div class="Production__header">
+        <div class="Production__header-caption">
+          Sản phẩm nổi bật trong tháng
+        </div>
+        <div class="Production__header-detail">
+          Mua sắm ngay các sản phẩm bán chạy nhất của tháng, có thể bạn cũng sẽ
+          thích những mặt hàng này, hãy thêm chúng vào giỏ hàng của bạn ngay bây
+          giờ.
+        </div>
+      </div>
+      <div class="Production__items">
+        <div class="Production__top1">
+          <div class="Production__top1-svg">
+            ${ProductionTop()}
+          </div>
+          <div class="Production__top1-infomation">
+            <div class="Production-image"></div>
+            <div class="Production-price">
+              <div class="Name">
+                ${topProduct.name}
+              </div>
+              <div class="Price">${topProduct.price}</div>
+              <div class="Discount">
+                <span class="Discount-old">${topProduct.oldPrice} </span>
+                <span class="Discount-percent">${topProduct.discount}</span>
+              </div>
+            </div>
+          </div>
+          <button
+            class="Production__top1-button"
+            title="Production__top1-button"
+          >
+            XEM THÊM
+          </button>
+        </div>
+        <div class="Production__others">
+          ${products.slice(0, 4).map(product => createProductCardHtml(product)).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = productionHtml;
+}

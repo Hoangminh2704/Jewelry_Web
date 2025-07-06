@@ -6,7 +6,7 @@ function getEntriesFromDir(dirPath: string): Record<string, string> {
     fs
       .readdirSync(dirPath)
       .filter((name) => fs.statSync(path.join(dirPath, name)).isDirectory())
-      .map((name) => [name, path.join(dirPath, name, `${name}.tsx`)])
+      .map((name) => [name, path.join(dirPath, name, `${name}.ts`)])
   );
 }
 
