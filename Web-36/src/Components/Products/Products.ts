@@ -75,16 +75,22 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   if (productSwiperWrapper) {
-    const productsPerPage = 9;
-    const totalPages = Math.ceil(products.length / productsPerPage);
+    function productsPerPage(): number {
+      if (window.matchMedia("(min-width: 1280px)").matches) {
+        return 9;
+      } else {
+        return 6;
+      }
+    }
+    const totalPages = Math.ceil(products.length / productsPerPage());
 
     for (let i = 0; i < totalPages; i++) {
       const slide = document.createElement("div");
       slide.className = "swiper-slide";
 
       const productsOnPage = products.slice(
-        i * productsPerPage,
-        (i + 1) * productsPerPage
+        i * productsPerPage(),
+        (i + 1) * productsPerPage()
       );
 
       const pageHtml = productsOnPage
