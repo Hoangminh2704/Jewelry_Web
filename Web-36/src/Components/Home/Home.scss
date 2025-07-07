@@ -721,19 +721,21 @@ body {
 @mixin reponsive_Collection {
   // max-width: 786px;
   .Collection__category {
+    width: 80%;
     // width: 624px;
     height: 117px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     .Collection__category-links {
+      // width: 81%;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       position: static;
       .Collection__category-links-title {
         object-fit: contain;
-        // width: 124px;
+        width: 124px;
         height: 22px;
       }
       .Collection__category-links-indicators {
@@ -841,6 +843,9 @@ body {
   @include xs {
     // display: none;
     @include reponsive_Collection;
+    .Collection__category {
+      width: 100%;
+    }
     // max-width: 382px;
     width: 92.27%;
     .Collection__explore {
