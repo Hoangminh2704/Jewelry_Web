@@ -1,4 +1,3 @@
-
 import type { ProductItem } from "../../Data/ProductData";
 import "./ProductCard.scss";
 
@@ -6,6 +5,7 @@ export function createProductCardHtml(product: ProductItem): string {
   return `
     <div class="Production__card">
       <div class="Production__card-image"></div>
+      
 
       <div class="Production__card-information">
         <div class="Production__card-text">

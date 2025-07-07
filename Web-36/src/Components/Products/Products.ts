@@ -1,6 +1,10 @@
 import "./Products.scss";
 import { createProductCardHtml } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
+import Swiper from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 document.addEventListener("DOMContentLoaded", () => {
   const menuItems = [
     {
@@ -66,39 +70,84 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   document.addEventListener("click", handleClickOutside);
 
-  function getCardCount(): number {
-    if (window.matchMedia("(min-width: 1280px)").matches) {
-      return 9;
-    } else if (
-      window.matchMedia("(min-width: 768px) and (max-width: 1279px)").matches
-    ) {
-      return 6;
-    } else {
-      return 6;
+  // function getCardCount(): number {
+  //   if (window.matchMedia("(min-width: 1280px)").matches) {
+  //     return 9;
+  //   } else if (
+  //     window.matchMedia("(min-width: 768px) and (max-width: 1279px)").matches
+  //   ) {
+  //     return 6;
+  //   } else {
+  //     return 6;
+  //   }
+  // }
+
+  // function renderProductList(count: number): string {
+  //   return products
+  //     .slice(0, count)
+  //     .map((product) => createProductCardHtml(product))
+  //     .join("");
+  // }
+
+  // const productListElement = document.querySelector(".Select__product-list");
+  // if (productListElement) {
+  //   let currentCardCount = getCardCount();
+
+  //   productListElement.innerHTML = renderProductList(currentCardCount);
+
+  //   window.addEventListener("resize", () => {
+  //     const newCardCount = getCardCount();
+  //     if (newCardCount !== currentCardCount) {
+  //       currentCardCount = newCardCount;
+  //       productListElement.innerHTML = renderProductList(currentCardCount);
+  //     }
+  //   });
+  // }
+
+  const productSwiperWrapper = document.querySelector(
+    ".product-swiper .swiper-wrapper"
+  );
+
+  if (productSwiperWrapper) {
+    const productsPerPage = 9;
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    for (let i = 0; i < totalPages; i++) {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+
+      const productsOnPage = products.slice(
+        i * productsPerPage,
+        (i + 1) * productsPerPage
+      );
+
+      const pageHtml = productsOnPage
+        .map((product) => createProductCardHtml(product))
+        .join("");
+
+      slide.innerHTML = `<div class="Select__product-list">${pageHtml}</div>`;
+      productSwiperWrapper.appendChild(slide);
     }
-  }
 
-  function renderProductList(count: number): string {
-    return products
-      .slice(0, count)
-      .map((product) => createProductCardHtml(product))
-      .join("");
-  }
+    new Swiper(".product-swiper", {
+      modules: [Navigation, Pagination],
+      spaceBetween: 24,
 
-  const productListElement = document.querySelector(".Select__product-list");
-  if (productListElement) {
-    let currentCardCount = getCardCount();
+      pagination: {
+        el: ".product-swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+      },
 
-    productListElement.innerHTML = renderProductList(currentCardCount);
-
-    window.addEventListener("resize", () => {
-      const newCardCount = getCardCount();
-      if (newCardCount !== currentCardCount) {
-        currentCardCount = newCardCount;
-        productListElement.innerHTML = renderProductList(currentCardCount);
-      }
+      navigation: {
+        nextEl: ".product-swiper-next",
+        prevEl: ".product-swiper-prev",
+      },
     });
   }
+
   // change margin-bottom of banner style
   const bannerMargin = document.querySelector(".Banner");
   bannerMargin?.setAttribute("style", "margin-bottom: 80px;");

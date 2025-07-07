@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   if (topProductContainer && otherProductsContainer) {
-    const topProduct = products.find((p) => p.isTop) || products[0];
+    const topProduct = products.find((p) => p.isTop === true) || products[0];
 
     const topProductPriceHtml = `
       <div class="Name">
