@@ -128,6 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
       slide.innerHTML = `<div class="Select__product-list">${pageHtml}</div>`;
       productSwiperWrapper.appendChild(slide);
     }
+    const prevButton = document.querySelector(
+      ".product-swiper-prev"
+    ) as HTMLElement;
+    const nextButton = document.querySelector(
+      ".product-swiper-next"
+    ) as HTMLElement;
 
     new Swiper(".product-swiper", {
       modules: [Navigation, Pagination],
@@ -142,13 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
       },
 
       navigation: {
-        nextEl: ".product-swiper-next",
-        prevEl: ".product-swiper-prev",
+        nextEl: nextButton,
+        prevEl: prevButton,
       },
     });
   }
 
-  // change margin-bottom of banner style
   const bannerMargin = document.querySelector(".Banner");
   bannerMargin?.setAttribute("style", "margin-bottom: 80px;");
   bannerMargin?.setAttribute("style", "margin-top: 80px;");

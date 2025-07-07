@@ -1000,18 +1000,23 @@ body {
 .product-swiper-next {
   position: static !important;
   box-sizing: border-box;
-  width: 32px;
-  height: 32px;
+  width: 32px !important;
+  height: 32px !important;
   margin: 0 !important;
-  padding: 6px 8px;
+  padding: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s;
   background-color: var(--neutral-background-white);
   border-radius: 0%;
-
+  fill: var(--neutral-text-900);
+  &-icon {
+    width: 8px;
+    height: 8px;
+  }
   &::after {
     color: var(--neutral-text-900);
+    display: none !important;
   }
 }
