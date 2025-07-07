@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import { products } from "../../Data/ProductData";
 import { testimonialsData } from "../../Data/TestimonialsData";
 import { createProductCardHtml } from "../ProductCard/ProductCard.ts";
-// import avatarImage from "../../assets/Avatar.png";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 
@@ -75,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   document.addEventListener("click", handleClickOutside);
 
-  // slides
+  // slides-component
   new Swiper(".slides-swiper", {
     modules: [Pagination],
     spaceBetween: 30,
@@ -85,17 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-  // --- LOGIC CHO PHẦN PRODUCTION (SẢN PHẨM ĐỘNG) ---
+  // production-component
   const topProductContainer = document.getElementById("top-product-container");
   const otherProductsContainer = document.getElementById(
     "other-products-container"
   );
 
   if (topProductContainer && otherProductsContainer) {
-    // 1. Tìm sản phẩm nổi bật (top 1)
     const topProduct = products.find((p) => p.isTop) || products[0];
 
-    // 2. Tạo HTML cho sản phẩm top 1 và chèn vào DOM
     const topProductPriceHtml = `
       <div class="Name">
         ${topProduct.name}
@@ -106,14 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="Discount-percent">${topProduct.discount}</span>
       </div>
     `;
-    // Tìm đến div con .Production-price bên trong container của top product
     const topProductPriceContainer =
       topProductContainer.querySelector(".Production-price");
     if (topProductPriceContainer) {
       topProductPriceContainer.innerHTML = topProductPriceHtml;
     }
 
-    // 3. Tạo HTML cho 4 sản phẩm khác và chèn vào DOM
     const otherProductsHtml = products
       .slice(0, 4)
       .map((product) => createProductCardHtml(product))
@@ -131,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
   ) as HTMLElement;
 
   if (swiperWrapper && prevButton && nextButton) {
-    // 3. Tạo và chèn các slide vào wrapper
     testimonialsData.forEach((item) => {
       const slide = document.createElement("div");
       slide.className = "swiper-slide";
@@ -158,8 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       swiperWrapper.appendChild(slide);
     });
-
-    // 4. Khởi tạo Swiper
     new Swiper(".test-swiper", {
       modules: [Navigation],
       spaceBetween: -350,
