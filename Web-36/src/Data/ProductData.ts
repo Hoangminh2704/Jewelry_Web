@@ -16,7 +16,7 @@ export const products: ProductItem[] = [
     id: 1,
     name: "Nhẫn Kim Cương Đôi Vàng Trắng",
     image: "../../assets/Product1.png",
-    price: "15.000.000 đ",
+    price: "19.000.000 đ",
     oldPrice: "22.000.000 đ",
     discount: "(-15%)",
     isTop: true,

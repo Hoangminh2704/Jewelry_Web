@@ -1,6 +1,6 @@
 import "./Production.scss";
-import { createProductCardHtml } from '../ProductCard/ProductCard.ts';
-import { products } from '../../Data/ProductData';
+import { createProductCardHtml } from "../ProductCard/ProductCard.ts";
+import { products } from "../../Data/ProductData";
 
 function ProductionTop(): string {
   return `
@@ -27,7 +27,7 @@ export function initializeProduction(containerId: string): void {
     return;
   }
 
-  const topProduct = products.find(p => p.isTop) || products[0];
+  const topProduct = products.find((p) => p.isTop) || products[0];
 
   const productionHtml = `
     <div class="Production">
@@ -67,7 +67,10 @@ export function initializeProduction(containerId: string): void {
           </button>
         </div>
         <div class="Production__others">
-          ${products.slice(0, 4).map(product => createProductCardHtml(product)).join('')}
+          ${products
+            .slice(0, 4)
+            .map((product) => createProductCardHtml(product))
+            .join("")}
         </div>
       </div>
     </div>

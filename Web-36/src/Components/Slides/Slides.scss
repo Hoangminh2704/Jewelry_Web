@@ -111,7 +111,6 @@ body {
   }
 }
 
-// Body intro styles - có thể giữ nguyên vì đây là specific class
 .body__intro {
   align-items: center;
   display: flex;
@@ -265,16 +264,3 @@ body {
     }
   }
 }
-
-// XÓA HOẶC COMMENT OUT NHỮNG DÒNG NÀY để tránh conflict
-/*
-.swiper-android .swiper-slide,
-.swiper-ios .swiper-slide,
-.swiper-wrapper {
-  background-image: url(../Home_Image/Home.jpg);
-  object-fit: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-*/
