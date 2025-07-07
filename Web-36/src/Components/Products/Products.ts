@@ -70,40 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   document.addEventListener("click", handleClickOutside);
 
-  // function getCardCount(): number {
-  //   if (window.matchMedia("(min-width: 1280px)").matches) {
-  //     return 9;
-  //   } else if (
-  //     window.matchMedia("(min-width: 768px) and (max-width: 1279px)").matches
-  //   ) {
-  //     return 6;
-  //   } else {
-  //     return 6;
-  //   }
-  // }
-
-  // function renderProductList(count: number): string {
-  //   return products
-  //     .slice(0, count)
-  //     .map((product) => createProductCardHtml(product))
-  //     .join("");
-  // }
-
-  // const productListElement = document.querySelector(".Select__product-list");
-  // if (productListElement) {
-  //   let currentCardCount = getCardCount();
-
-  //   productListElement.innerHTML = renderProductList(currentCardCount);
-
-  //   window.addEventListener("resize", () => {
-  //     const newCardCount = getCardCount();
-  //     if (newCardCount !== currentCardCount) {
-  //       currentCardCount = newCardCount;
-  //       productListElement.innerHTML = renderProductList(currentCardCount);
-  //     }
-  //   });
-  // }
-
   const productSwiperWrapper = document.querySelector(
     ".product-swiper .swiper-wrapper"
   );
