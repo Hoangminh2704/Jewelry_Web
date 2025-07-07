@@ -719,9 +719,9 @@ body {
   }
 }
 @mixin reponsive_Collection {
-  max-width: 786px;
+  // max-width: 786px;
   .Collection__category {
-    width: 624px;
+    // width: 624px;
     height: 117px;
     display: flex;
     flex-direction: column;
@@ -733,7 +733,7 @@ body {
       position: static;
       .Collection__category-links-title {
         object-fit: contain;
-        width: 124px;
+        // width: 124px;
         height: 22px;
       }
       .Collection__category-links-indicators {
@@ -841,20 +841,20 @@ body {
   @include xs {
     // display: none;
     @include reponsive_Collection;
-    max-width: 382px;
-    width: 100%;
+    // max-width: 382px;
+    width: 92.27%;
     .Collection__explore {
       .Collection__explore-img {
         gap: 15px;
         flex-wrap: wrap-reverse;
         .first-img {
           width: 100%;
-          height: 220px;
+          // height: 220px;
           object-fit: cover;
         }
         .second-img {
           width: 100%;
-          max-height: 480px;
+          // max-height: 480px;
           object-fit: cover;
         }
       }
