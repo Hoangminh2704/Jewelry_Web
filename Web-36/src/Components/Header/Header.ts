@@ -49,10 +49,10 @@ export function initializeHeader(containerId: string = 'header-container') {
   `;
 
   const menuItems = [
-    { label: "Trang chủ", href: "Screen.html", active: true },
-    { label: "Sản phẩm", href: "products.html" },
-    { label: "Giới thiệu", href: "about.html" },
-    { label: "Liên hệ", href: "contact.html" },
+    { label: "Trang chủ", href: "/src/Components/Home/Home.html", active: true },
+    { label: "Sản phẩm", href: "/src/Components/Products/Products.html" },
+    { label: "Giới thiệu", href: "/src/Components/About/About.html" },
+    { label: "Liên hệ", href: "/src/Components/Contact/Contact.html" },
   ];
 
   const menuList = container.querySelector(".header--menu");
