@@ -70,6 +70,7 @@ export const products: ProductItem[] = [
     price: "3.500.000 đ",
     oldPrice: "4.500.000 đ",
     discount: "(-22%)",
+    isNew: true,
   },
   {
     id: 7,

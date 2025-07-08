@@ -1,4 +1,4 @@
-import "./Products.scss";
+import "./Card.scss";
 import { createProductCardHtml } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
 import Swiper from "swiper";
@@ -128,12 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const linkToCardPage = document.querySelector(
-    ".header--search-cart"
-  ) as HTMLElement;
-  linkToCardPage.addEventListener("click", (event) => {
-    event.preventDefault();
-    const cartPageUrl = "/src/Components/Card/Card.html";
-    window.location.href = cartPageUrl;
-  });
+  const bannerMargin = document.querySelector(".Banner");
+  bannerMargin?.setAttribute("style", "margin-bottom: 80px;");
+  bannerMargin?.setAttribute("style", "margin-top: 80px;");
 });

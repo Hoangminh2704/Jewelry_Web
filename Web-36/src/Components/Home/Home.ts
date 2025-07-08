@@ -108,9 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (topProductPriceContainer) {
       topProductPriceContainer.innerHTML = topProductPriceHtml;
     }
-
-    const otherProductsHtml = products
-      .slice(0, 4)
+    const saleProducts = products.filter((p) => p.isSale === true).slice(0, 2);
+    const newProducts = products.filter((p) => p.isNew === true).slice(0, 2);
+    const featuredProducts = [...saleProducts, ...newProducts];
+    const otherProductsHtml = featuredProducts
       .map((product) => createProductCardHtml(product))
       .join("");
 
@@ -182,4 +183,12 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   }
+  const linkToCardPage = document.querySelector(
+    ".header--search-cart"
+  ) as HTMLElement;
+  linkToCardPage.addEventListener("click", (event) => {
+    event.preventDefault();
+    const cartPageUrl = "/src/Components/Card/Card.html";
+    window.location.href = cartPageUrl;
+  });
 });

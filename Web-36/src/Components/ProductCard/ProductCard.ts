@@ -2,8 +2,15 @@ import type { ProductItem } from "../../Data/ProductData";
 import "./ProductCard.scss";
 
 export function createProductCardHtml(product: ProductItem): string {
+  let badgeHtml = "";
+  if (product.isSale) {
+    badgeHtml = '<div class="product-badge sale-badge">Sale</div>';
+  } else if (product.isNew) {
+    badgeHtml = '<div class="product-badge new-badge">New</div>';
+  }
   return `
     <div class="Production__card">
+      ${badgeHtml}
       <div class="Production__card-image"></div>
       
 
