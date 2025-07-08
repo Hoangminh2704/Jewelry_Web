@@ -768,6 +768,14 @@ body {
   margin-top: 80px;
   gap: 34px;
   justify-content: space-between;
+  @include m {
+    width: 96.56%;
+    margin-top: 40px;
+  }
+  @include xs {
+    width: 92.27%;
+    margin-top: 40px;
+  }
   .Card__title {
     @include header-1;
     color: var(--neutral-text-900);
@@ -779,8 +787,15 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    gap: 80px;
+    // gap: 80px;
     align-items: flex-start;
+    flex-wrap: wrap;
+    @include m {
+      gap: 40px;
+    }
+    @include xs {
+      gap: 40px;
+    }
 
     .Card__item {
       display: flex;
@@ -788,6 +803,12 @@ body {
       justify-content: space-between;
       width: 58.75%;
       gap: 24px;
+      @include m {
+        width: 100%;
+      }
+      @include xs {
+        width: 100%;
+      }
       .Card__item-header {
         display: flex;
         justify-content: space-between;
@@ -825,6 +846,14 @@ body {
             display: flex;
             gap: 16px;
             align-items: center;
+            .Card__item-img {
+              object-fit: cover;
+              object-position: center;
+              aspect-ratio: 160/198;
+              @include xs {
+                aspect-ratio: 100/100;
+              }
+            }
             .Card__item-content-detail {
               display: flex;
               flex-direction: column;
@@ -954,6 +983,12 @@ body {
       border: 1px solid var(--neutral-border-200);
       display: flex;
       flex-direction: column;
+      @include m {
+        width: 100%;
+      }
+      @include xs {
+        width: 100%;
+      }
       &-header {
         padding: 16px;
         background-color: var(--neutral-border-50);
@@ -970,7 +1005,8 @@ body {
         .Card__total,
         .Card__price,
         .Card__discount,
-        .Card__shipping {
+        .Card__shipping,
+        .Card__total-after-discount {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -985,6 +1021,9 @@ body {
         }
         .Card__line {
           width: 100%;
+          height: 1px;
+          background-color: var(--neutral-border-200);
+          border: none;
         }
         .Card__total-price {
           display: flex;
@@ -1009,6 +1048,8 @@ body {
           background-color: var(--theme-primary-1);
           @include body-2-regular;
           color: var(--neutral-background-white);
+          text-transform: uppercase;
+          border: 0;
         }
       }
     }
