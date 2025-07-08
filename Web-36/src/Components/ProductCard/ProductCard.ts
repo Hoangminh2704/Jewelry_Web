@@ -11,7 +11,8 @@ export function createProductCardHtml(product: ProductItem): string {
   return `
     <div class="Production__card">
       ${badgeHtml}
-      <div class="Production__card-image"></div>
+      
+      <img class="Production__card-image" src="../../assets/Product2.png" alt="">
       
 
       <div class="Production__card-information">

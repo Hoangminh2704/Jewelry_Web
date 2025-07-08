@@ -680,22 +680,24 @@ body {
 
     .categories__item-image {
       height: 84.09%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+      // background-position: center;
+      // background-repeat: no-repeat;
+      // background-size: cover;
+      object-fit: cover;
+      object-position: center;
     }
-    .first {
-      background-image: url("../Home_Image/Rectangle 153.png");
-    }
-    .second {
-      background-image: url("../Home_Image/Rectangle 153-2.png");
-    }
-    .third {
-      background-image: url("../Home_Image/Rectangle 153-3.png");
-    }
-    .four {
-      background-image: url("../Home_Image/Rectangle 153-4.png");
-    }
+    // .first {
+    //   background-image: url("../Home_Image/Rectangle 153.png");
+    // }
+    // .second {
+    //   background-image: url("../Home_Image/Rectangle 153-2.png");
+    // }
+    // .third {
+    //   background-image: url("../Home_Image/Rectangle 153-3.png");
+    // }
+    // .four {
+    //   background-image: url("../Home_Image/Rectangle 153-4.png");
+    // }
 
     .categories__item-text {
       box-sizing: border-box;
@@ -1185,11 +1187,13 @@ body {
         gap: 16px;
         align-items: center;
         .Production-image {
-          background-image: url("../../assets/Product1.png");
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
+          // background-image: url("../../assets/Product1.png");
+          // background-position: center;
+          // background-repeat: no-repeat;
+          // background-size: cover;
           box-sizing: border-box;
+          object-fit: cover;
+          object-position: center;
           width: 628px;
           height: 709px;
           @include m {
@@ -1344,10 +1348,12 @@ body {
     display: flex;
     justify-content: space-between;
     .Necklet-img {
-      background-image: url(../../assets/Banner-necklet.png);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+      // background-image: url(../../assets/Banner-necklet.png);
+      // background-position: center;
+      // background-repeat: no-repeat;
+      // background-size: cover;
+      object-fit: cover;
+      object-position: center;
       height: 100%;
       max-width: 196px;
       width: 100%;
@@ -1389,10 +1395,12 @@ body {
     flex-direction: row-reverse;
 
     .Ring-img {
-      background-image: url(../../assets/Banner-ring.png);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+      // background-image: url(../../assets/Banner-ring.png);
+      // background-position: center;
+      // background-repeat: no-repeat;
+      // background-size: cover;
+      object-fit: cover;
+      object-position: center;
       height: 100%;
       max-width: 196px;
       width: 100%;

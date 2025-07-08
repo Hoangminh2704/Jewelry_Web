@@ -130,15 +130,15 @@ document.addEventListener("DOMContentLoaded", () => {
   //   }
 
   const addProductNewCard = document.querySelector(".NewProduct__content");
-  console.log(addProductNewCard);
+  //   console.log(addProductNewCard);
 
   if (addProductNewCard) {
     const newProductCard = products.filter((p) => p.isNew === true).slice(0, 4);
     const createNewElement = newProductCard
       .map((product) => createProductCardHtml(product))
       .join("");
-    console.log(newProductCard);
-    console.log(createNewElement);
+    // console.log(newProductCard);
+    // console.log(createNewElement);
     addProductNewCard.innerHTML = createNewElement;
   }
 });
