@@ -495,6 +495,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 80px;
 
   .Overrall {
     max-width: 1280px;
@@ -852,6 +853,7 @@ body {
               aspect-ratio: 160/198;
               @include xs {
                 aspect-ratio: 100/100;
+                max-width: 100px;
               }
             }
             .Card__item-content-detail {
@@ -878,6 +880,11 @@ body {
                   @include body-2-semibold;
                   color: var(--theme-secondary-1);
                 }
+              }
+              .Card__item-content-others {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
               }
               .Card__item-content-size {
                 max-width: 186px;
@@ -1025,6 +1032,7 @@ body {
           background-color: var(--neutral-border-200);
           border: none;
         }
+
         .Card__total-price {
           display: flex;
           justify-content: space-between;
@@ -1061,4 +1069,38 @@ body {
   box-sizing: border-box;
   width: 18px;
   height: 18px;
+}
+.NewProduct {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  @include m {
+    width: 96.56%;
+  }
+  @include xs {
+    width: 92.27%;
+  }
+  .NewProduct__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-title {
+      @include heading-3;
+      color: var(--neutral-text-900);
+    }
+    &-direction {
+      display: flex;
+      gap: 16px;
+    }
+  }
+  .NewProduct__content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
