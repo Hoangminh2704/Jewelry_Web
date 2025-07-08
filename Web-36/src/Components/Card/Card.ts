@@ -141,4 +141,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(createNewElement);
     addProductNewCard.innerHTML = createNewElement;
   }
+  const linkToCardPage = document.querySelector(
+    ".header--search-cart"
+  ) as HTMLElement;
+  linkToCardPage.addEventListener("click", (event) => {
+    event.preventDefault();
+    const cartPageUrl = "/src/Components/Card/Card.html";
+    window.location.href = cartPageUrl;
+  });
 });
