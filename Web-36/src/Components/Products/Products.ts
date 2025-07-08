@@ -5,6 +5,8 @@ import Swiper from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
+
 document.addEventListener("DOMContentLoaded", () => {
   const menuItems = [
     {
@@ -136,4 +138,5 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartPageUrl = "/src/Components/Card/Card.html";
     window.location.href = cartPageUrl;
   });
+  linkToProductDetail();
 });

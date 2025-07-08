@@ -1,4 +1,4 @@
-import "./Card.scss";
+import "./ProductionDetail.scss";
 // import { createProductCardHtml } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
 // import Swiper from "swiper";
@@ -6,8 +6,6 @@ import { products } from "../../Data/ProductData";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { createProductCardHtml } from "../ProductCard/ProductCard";
-import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
-
 document.addEventListener("DOMContentLoaded", () => {
   const menuItems = [
     {
@@ -73,6 +71,64 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   document.addEventListener("click", handleClickOutside);
 
+  //   const productSwiperWrapper = document.querySelector(
+  //     ".product-swiper .swiper-wrapper"
+  //   );
+
+  //   if (productSwiperWrapper) {
+  //     function productsPerPage(): number {
+  //       if (window.matchMedia("(min-width: 1280px)").matches) {
+  //         return 9;
+  //       } else {
+  //         return 6;
+  //       }
+  //     }
+  //     const totalPages = Math.ceil(products.length / productsPerPage());
+
+  //     for (let i = 0; i < totalPages; i++) {
+  //       const slide = document.createElement("div");
+  //       slide.className = "swiper-slide";
+
+  //       const productsOnPage = products.slice(
+  //         i * productsPerPage(),
+  //         (i + 1) * productsPerPage()
+  //       );
+
+  //       const pageHtml = productsOnPage
+  //         .map((product) => createProductCardHtml(product))
+  //         .join("");
+
+  //       slide.innerHTML = `<div class="Select__product-list">${pageHtml}</div>`;
+  //       const badges = slide.querySelectorAll(".product-badge");
+  //       badges.forEach((badge) => badge.remove());
+  //       productSwiperWrapper.appendChild(slide);
+  //     }
+  //     const prevButton = document.querySelector(
+  //       ".product-swiper-prev"
+  //     ) as HTMLElement;
+  //     const nextButton = document.querySelector(
+  //       ".product-swiper-next"
+  //     ) as HTMLElement;
+
+  //     new Swiper(".product-swiper", {
+  //       modules: [Navigation, Pagination],
+  //       spaceBetween: 24,
+
+  //       pagination: {
+  //         el: ".product-swiper-pagination",
+  //         clickable: true,
+  //         renderBullet: function (index, className) {
+  //           return '<span class="' + className + '">' + (index + 1) + "</span>";
+  //         },
+  //       },
+
+  //       navigation: {
+  //         nextEl: nextButton,
+  //         prevEl: prevButton,
+  //       },
+  //     });
+  //   }
+
   const addProductNewCard = document.querySelector(".NewProduct__content");
   //   console.log(addProductNewCard);
 
@@ -93,5 +149,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartPageUrl = "/src/Components/Card/Card.html";
     window.location.href = cartPageUrl;
   });
-  linkToProductDetail();
 });

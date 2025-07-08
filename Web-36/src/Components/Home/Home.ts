@@ -4,11 +4,12 @@ import Swiper from "swiper";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { products } from "../../Data/ProductData";
-import { testimonialsData } from "../../Data/TestimonialsData";
+import { products } from "../../Data/ProductData.ts";
+import { testimonialsData } from "../../Data/TestimonialsData.ts";
 import { createProductCardHtml } from "../ProductCard/ProductCard.ts";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
+import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuItems = [
@@ -191,4 +192,5 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartPageUrl = "/src/Components/Card/Card.html";
     window.location.href = cartPageUrl;
   });
+  linkToProductDetail();
 });

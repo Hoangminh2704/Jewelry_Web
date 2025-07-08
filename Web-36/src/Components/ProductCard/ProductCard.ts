@@ -11,7 +11,7 @@ export function createProductCardHtml(product: ProductItem): string {
   return `
     <div class="Production__card">
       ${badgeHtml}
-      
+
       <img class="Production__card-image" src="../../assets/Product2.png" alt="">
       
 
@@ -45,6 +45,19 @@ export function createProductCardHtml(product: ProductItem): string {
       </div>
     </div>
   `;
+}
+export function linkToProductDetail() {
+  const linkToProductDetail = document.querySelectorAll(
+    ".Production__card-select-watch"
+  ) as NodeListOf<HTMLElement>;
+  linkToProductDetail.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const productDetailPageUrl =
+        "/src/Components/ProductionDetail/ProductionDetail.html";
+      window.location.href = productDetailPageUrl;
+    });
+  });
 }
 
 const CartLine = () => `
