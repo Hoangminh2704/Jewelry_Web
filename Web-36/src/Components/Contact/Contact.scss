@@ -595,6 +595,8 @@ body {
         width: 251px;
         margin: 0 auto;
         gap: 8px;
+        display: flex;
+        justify-content: center;
       }
       &-from {
         margin: 0;
@@ -729,8 +731,13 @@ body {
           padding: 12px 24px;
           @include body-2-regular;
           color: var(--neutral-text-600);
-          outline: var(--theme-primary-1);
+          outline: none;
           border: 1px solid var(--neutral-border-200);
+          border-radius: 2px;
+          &:focus {
+            border-color: var(--theme-primary-1);
+            outline: none;
+          }
         }
         .Contact__message-input {
           min-height: 86px;

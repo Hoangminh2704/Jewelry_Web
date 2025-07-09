@@ -595,6 +595,8 @@ body {
         width: 251px;
         margin: 0 auto;
         gap: 8px;
+        display: flex;
+        justify-content: center;
       }
       &-from {
         margin: 0;
