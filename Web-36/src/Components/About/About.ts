@@ -1,11 +1,7 @@
-import "./ProductionDetail.scss";
-import { products } from "../../Data/ProductData";
+import "./About.scss";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import {
-  createProductCardHtml,
-  linkToProductDetail,
-} from "../ProductCard/ProductCard.ts";
+import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
 
 export function setupHeader() {
   const menuItems = [
@@ -13,9 +9,12 @@ export function setupHeader() {
     {
       label: "Sản phẩm",
       href: "/src/Components/Products/Products.html",
+    },
+    {
+      label: "Giới thiệu",
+      href: "/src/Components/About/About.html",
       active: true,
     },
-    { label: "Giới thiệu", href: "/src/Components/About/About.html" },
     { label: "Liên hệ", href: "/src/Components/Contact/Contact.html" },
   ];
 
@@ -69,17 +68,6 @@ export function setupHeader() {
   document.addEventListener("click", handleClickOutside);
 }
 
-export function setupNewProductsSection() {
-  const addProductNewCard = document.querySelector(".NewProduct__content");
-  if (addProductNewCard) {
-    const newProductCard = products.filter((p) => p.isNew === true).slice(0, 4);
-    const createNewElement = newProductCard
-      .map((product) => createProductCardHtml(product))
-      .join("");
-    addProductNewCard.innerHTML = createNewElement;
-  }
-}
-
 export function setupLinkToCart() {
   const linkToCartPage = document.querySelector(
     ".header--search-cart"
@@ -96,6 +84,5 @@ export function setupLinkToCart() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
-  setupNewProductsSection();
   setupLinkToCart();
 });

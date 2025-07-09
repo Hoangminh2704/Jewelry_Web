@@ -327,164 +327,6 @@ body {
 }
 
 // banner
-.Banner {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  //   height: 200px;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 22px;
-  @include m {
-    // max-width: 786px;
-    width: 96.56%;
-    margin-bottom: 40px;
-  }
-  @include xs {
-    // max-width: 382px;
-    width: 92.27%;
-    margin: 64px auto;
-  }
-  .Necklet,
-  .Ring {
-    flex: 1 1 0;
-    @include m {
-      flex: none;
-      width: 100%;
-      margin: 0 auto;
-    }
-    @include xs {
-      flex: none;
-      width: 100%;
-    }
-  }
-  .Necklet {
-    background-color: var(--neutral-background-50);
-    display: flex;
-    justify-content: space-between;
-    .Necklet-img {
-      background-image: url(../../assets/Banner-necklet.png);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 100%;
-      max-width: 196px;
-      width: 100%;
-    }
-    .Necklet-features {
-      z-index: 100;
-      margin: 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 10px;
-      .name {
-        @include caption-2-regular;
-        color: var(--neutral-text-600);
-      }
-      .caption {
-        @include heading-3;
-        color: var(--neutral-text-900);
-        display: inline-block;
-      }
-      .link {
-        display: flex;
-        // flex-direction: row-reverse;
-        gap: 8px;
-        padding: 12px 0px 12px 16px;
-        width: fit-content;
-
-        @include body-2-regular;
-        color: var(--theme-primary-1);
-      }
-    }
-  }
-  .Ring {
-    background-color: var(--neutral-background-50);
-    background-color: var(--neutral-background-50);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row-reverse;
-
-    .Ring-img {
-      background-image: url(../../assets/Banner-ring.png);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 100%;
-      max-width: 196px;
-      width: 100%;
-    }
-    .Ring-features {
-      margin: 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 10px;
-      .name {
-        @include caption-2-regular;
-        color: var(--neutral-text-600);
-      }
-      .caption {
-        @include heading-3;
-        color: var(--neutral-text-900);
-      }
-      .link {
-        display: flex;
-        // flex-direction: row-reverse;
-        gap: 8px;
-        padding: 12px 16px 12px 0px;
-        width: fit-content;
-
-        @include body-2-regular;
-        color: var(--theme-primary-1);
-      }
-    }
-  }
-}
-@include xs {
-  .Banner {
-    flex-direction: column;
-    .Necklet,
-    .Ring {
-      position: relative;
-      min-height: 200px; // hoặc chiều cao bạn muốn
-      display: block;
-      width: 100%;
-    }
-    .Necklet-img {
-      position: absolute;
-      left: 0;
-      top: 0;
-
-      z-index: 1;
-    }
-    .Ring-img {
-      position: absolute;
-      right: 0;
-      top: 0;
-
-      z-index: 1;
-    }
-    .Necklet-features {
-      position: absolute;
-      right: 0;
-      top: 0;
-      z-index: 2;
-    }
-    .Ring-features {
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 2;
-    }
-  }
-}
 
 // footer
 .Footer {
@@ -768,214 +610,284 @@ body {
     }
   }
 }
-
-.NewProduct {
+.AboutMe {
+  display: flex;
+  justify-content: space-between;
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
   margin-top: 80px;
   @include m {
+    flex-direction: column;
+    align-items: center;
     width: 96.56%;
+    gap: 40px;
   }
   @include xs {
-    width: 92.27%;
-  }
-  .NewProduct__header {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    &-title {
-      @include heading-3;
-      color: var(--neutral-text-900);
-    }
-    &-direction {
-      display: flex;
-      gap: 16px;
-    }
-  }
-  .NewProduct__content {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    row-gap: 24px;
-  }
-}
-.Information {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-
-  display: flex;
-  justify-content: space-between;
-  gap: 32px;
-
-  margin-top: 80px;
-  @include m {
-    flex-wrap: wrap;
-    width: 96.56%;
-  }
-  @include xs {
-    flex-wrap: wrap;
     width: 92.27%;
-  }
-  &__img {
-    width: 52.3%;
-    // height: 460px;
-    aspect-ratio: 628/460;
-    object-fit: cover;
-    object-position: center;
-    @include m {
-      aspect-ratio: 786/460;
-      width: 100%;
-    }
-    @include xs {
-      aspect-ratio: 382/460;
-      width: 100%;
-    }
+    gap: 40px;
   }
   &__content {
-    width: 45%;
-    // max-width: 540px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     gap: 24px;
+    width: 32.1%;
+    flex-direction: column;
     @include m {
       width: 100%;
     }
     @include xs {
       width: 100%;
     }
-    &-name {
+
+    &-header {
       @include heading-3;
       color: var(--neutral-text-900);
     }
-    &-evalute {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      &-star {
-        display: flex;
-        gap: 8px;
-      }
-      &-count {
-        @include body-2-regular;
-        color: var(--neutral-text-900);
-      }
+    &-line {
+      height: 1px;
+      width: 100%;
+      background-color: var(--neutral-text-200);
     }
-    &-price {
-      @include heading-2;
-      color: var(--theme-secondary-1);
-    }
-    &-material {
-      display: flex;
-      align-items: center;
-      @include body-1;
-      white-space: normal;
+    &-description {
+      @include poppins-body-1;
       color: var(--neutral-text-600);
-      &-value {
-        color: var(--neutral-text-900);
-        &::before {
-          content: " ";
-          margin-right: 5px;
-        }
-      }
     }
-    &-size {
+  }
+  &__evalute {
+    display: grid;
+    // height: 300px;
+    width: 57.5%;
+    grid-template-columns: 1fr 1fr;
+    // grid-template-rows: 1fr 1fr;
+    gap: 40px;
+    @include m {
+      width: 100%;
+    }
+    @include xs {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    &-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 24px;
-      &-guide {
-        @include body-2-regular;
-        color: var(--theme-primary-1);
-        cursor: pointer;
-        text-decoration: none;
-      }
-      &-select {
+      justify-content: space-between;
+      gap: 8px;
+      box-sizing: border-box;
+      padding: 0 16px 16px 16px;
+      &-text {
         display: flex;
-        padding: 7px 16px;
-        border-radius: 2px;
-        border: 1px solid var(--theme-secondary-Gray);
-
+        flex-direction: column;
+        gap: 16px;
         align-items: center;
-        gap: 8px;
-
-        &::-ms-expand {
-          display: none;
+        text-align: center;
+        .AboutMe__evalute-item-title {
+          @include header-1;
+          color: var(--neutral-text-900);
+          &-number {
+            color: var(--functional-error-400);
+          }
         }
-        &-selected {
-          @include poppins-body-1;
-          border: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          outline: none;
+        .AboutMe__evalute-item-description {
+          @include body-2-regular;
           color: var(--neutral-text-600);
         }
       }
     }
-    &-description {
-      @include body-2-regular;
-      color: var(--neutral-text-900);
-    }
-    &-button {
-      padding: 13px 16px;
-      border: none;
-      background-color: var(--theme-primary-1);
-      color: var(--neutral-background-white);
-      @include body-2-regular;
-      text-transform: uppercase;
-    }
   }
 }
-.CardFeatures {
-  display: flex;
-  flex-direction: column;
-  max-width: 1280px;
+.Award {
   width: 100%;
-  margin: 0 auto;
-  gap: 16px;
-  margin-top: 40px;
-  @include m {
-    width: 96.56%;
-  }
-  @include xs {
-    width: 92.27%;
-  }
-
-  &__information,
-  &__detail,
-  &__question {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    flex-direction: column;
-    &-title {
+  display: grid;
+  background-color: var(--neutral-background-50);
+  //   height: 300px;
+  margin-top: 80px;
+  .Award__inside {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 1280px;
+    margin: 38px auto;
+    @include xs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .Award__item {
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      align-self: center;
+      text-align: center;
       gap: 16px;
-      &-text {
-        @include body-2-regular;
+      &-count {
+        @include heading-1;
+        color: var(--theme-primary-1);
+      }
+      &-name {
+        @include header-1;
         color: var(--neutral-text-900);
       }
     }
-    &-content {
-      padding: 0 40px;
-      @include body-2-regular;
-      color: var(--neutral-text-600);
-      @include xs {
-        padding-right: 16px;
+  }
+}
+
+.Banner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  //   height: 200px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 22px;
+  @include m {
+    // max-width: 786px;
+    width: 96.56%;
+    margin-bottom: 40px;
+  }
+  @include xs {
+    // max-width: 382px;
+    width: 92.27%;
+    margin: 64px auto;
+  }
+  .Necklet,
+  .Ring {
+    flex: 1 1 0;
+    @include m {
+      flex: none;
+      width: 100%;
+      margin: 0 auto;
+    }
+    @include xs {
+      flex: none;
+      width: 100%;
+    }
+  }
+  .Necklet {
+    background-color: var(--neutral-background-50);
+    display: flex;
+    justify-content: space-between;
+    .Necklet-img {
+      background-image: url(../../assets/Banner-necklet.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      max-width: 196px;
+      width: 100%;
+    }
+    .Necklet-features {
+      z-index: 100;
+      margin: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+      .name {
+        @include caption-2-regular;
+        color: var(--neutral-text-600);
+      }
+      .caption {
+        @include heading-3;
+        color: var(--neutral-text-900);
+        display: inline-block;
+      }
+      .link {
+        display: flex;
+        // flex-direction: row-reverse;
+        gap: 8px;
+        padding: 12px 0px 12px 16px;
+        width: fit-content;
+
+        @include body-2-regular;
+        color: var(--theme-primary-1);
       }
     }
-    .CardFeatures__detail-content,
-    .CardFeatures__question-content {
-      display: none;
+  }
+  .Ring {
+    background-color: var(--neutral-background-50);
+    background-color: var(--neutral-background-50);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+    .Ring-img {
+      background-image: url(../../assets/Banner-ring.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      max-width: 196px;
+      width: 100%;
+    }
+    .Ring-features {
+      margin: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      .name {
+        @include caption-2-regular;
+        color: var(--neutral-text-600);
+      }
+      .caption {
+        @include heading-3;
+        color: var(--neutral-text-900);
+      }
+      .link {
+        display: flex;
+        // flex-direction: row-reverse;
+        gap: 8px;
+        padding: 12px 16px 12px 0px;
+        width: fit-content;
+
+        @include body-2-regular;
+        color: var(--theme-primary-1);
+      }
+    }
+  }
+}
+@include xs {
+  .Banner {
+    flex-direction: column;
+    .Necklet,
+    .Ring {
+      position: relative;
+      min-height: 200px;
+      display: block;
+      width: 100%;
+    }
+    .Necklet-img {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      z-index: 1;
+    }
+    .Ring-img {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      z-index: 1;
+    }
+    .Necklet-features {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 2;
+    }
+    .Ring-features {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
     }
   }
 }
