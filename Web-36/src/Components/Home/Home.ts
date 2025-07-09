@@ -1,17 +1,18 @@
 import "./Home.scss";
-
 import Swiper from "swiper";
-import { Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 import { products } from "../../Data/ProductData.ts";
 import { testimonialsData } from "../../Data/TestimonialsData.ts";
-import { createProductCardHtml } from "../ProductCard/ProductCard.ts";
-import { Navigation } from "swiper/modules";
-import "swiper/css/navigation";
-import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
+import {
+  createProductCardHtml,
+  linkToProductDetail,
+} from "../ProductCard/ProductCard.ts";
 
-document.addEventListener("DOMContentLoaded", () => {
+function setupHeader() {
   const menuItems = [
     {
       label: "Trang chủ",
@@ -31,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ".header--sub-menu.open"
   ) as HTMLElement | null;
 
-  // Tạo menu item
   if (menuList) {
     menuItems.forEach((item) => {
       const listItem = document.createElement("li");
@@ -39,18 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
       link.href = item.href;
       link.textContent = item.label;
       link.className = `header--menu-link${item.active ? " active" : ""}`;
-
       link.addEventListener("click", () => {
         menu?.classList.remove("oppenned");
         hamburgerButtons.forEach((btn) => btn.classList.remove("is-active"));
       });
-
       listItem.appendChild(link);
       menuList.appendChild(listItem);
     });
   }
 
-  // Logic cho hamburger menu
   const handleToggle = (event: Event) => {
     event.preventDefault();
     const button = event.currentTarget as HTMLElement;
@@ -74,8 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", handleToggle)
   );
   document.addEventListener("click", handleClickOutside);
+}
 
-  // slides-component
+function setupMainSlider() {
   new Swiper(".slides-swiper", {
     modules: [Pagination],
     spaceBetween: 30,
@@ -84,8 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
       clickable: true,
     },
   });
+}
 
-  // production-component
+function setupFeaturedProducts() {
   const topProductContainer = document.getElementById("top-product-container");
   const otherProductsContainer = document.getElementById(
     "other-products-container"
@@ -93,32 +92,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (topProductContainer && otherProductsContainer) {
     const topProduct = products.find((p) => p.isTop === true) || products[0];
-
-    const topProductPriceHtml = `
-      <div class="Name">
-        ${topProduct.name}
-      </div>
-      <div class="Price">${topProduct.price}</div>
-      <div class="Discount">
-        <span class="Discount-old">${topProduct.oldPrice} </span>
-        <span class="Discount-percent">${topProduct.discount}</span>
-      </div>
-    `;
     const topProductPriceContainer =
       topProductContainer.querySelector(".Production-price");
     if (topProductPriceContainer) {
-      topProductPriceContainer.innerHTML = topProductPriceHtml;
+      topProductPriceContainer.innerHTML = `
+        <div class="Name">${topProduct.name}</div>
+        <div class="Price">${topProduct.price}</div>
+        <div class="Discount">
+          <span class="Discount-old">${topProduct.oldPrice} </span>
+          <span class="Discount-percent">${topProduct.discount}</span>
+        </div>
+      `;
     }
+
     const saleProducts = products.filter((p) => p.isSale === true).slice(0, 2);
     const newProducts = products.filter((p) => p.isNew === true).slice(0, 2);
     const featuredProducts = [...saleProducts, ...newProducts];
-    const otherProductsHtml = featuredProducts
+    otherProductsContainer.innerHTML = featuredProducts
       .map((product) => createProductCardHtml(product))
       .join("");
-
-    otherProductsContainer.innerHTML = otherProductsHtml;
   }
+}
 
+function setupTestimonials() {
   const swiperWrapper = document.querySelector(".test-swiper .swiper-wrapper");
   const prevButton = document.querySelector(
     ".swiper-button-prev-custom"
@@ -139,11 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <rect x="0.247559" width="371.927" height="1" fill="#E2E7ED" />
             </svg>
             <div class="Infomation__detail">
-              <img
-                class="Infomation__detail-avatar"
-                src="${item.avatar}"
-                alt="avatar"
-              />
+              <img class="Infomation__detail-avatar" src="${item.avatar}" alt="avatar" />
               <div class="Infomation__detail-info">
                 <div class="Name">${item.name}</div>
                 <div class="Address">${item.address}</div>
@@ -154,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       swiperWrapper.appendChild(slide);
     });
+
     new Swiper(".test-swiper", {
       modules: [Navigation],
       spaceBetween: -350,
@@ -166,31 +159,31 @@ document.addEventListener("DOMContentLoaded", () => {
         nextEl: nextButton,
       },
       breakpoints: {
-        0: {
-          slidesPerView: 1,
-          spaceBetween: 0,
-          centeredSlides: true,
-        },
-        768: {
-          slidesPerView: 2.5,
-          spaceBetween: -350,
-          centeredSlides: false,
-        },
-        1280: {
-          slidesPerView: 2.5,
-          spaceBetween: -350,
-          centeredSlides: false,
-        },
+        0: { slidesPerView: 1, spaceBetween: 0, centeredSlides: true },
+        768: { slidesPerView: 2.5, spaceBetween: -350, centeredSlides: false },
+        1280: { slidesPerView: 2.5, spaceBetween: -350, centeredSlides: false },
       },
     });
   }
-  const linkToCardPage = document.querySelector(
+}
+
+function setupEventListeners() {
+  const linkToCartPage = document.querySelector(
     ".header--search-cart"
   ) as HTMLElement;
-  linkToCardPage.addEventListener("click", (event) => {
-    event.preventDefault();
-    const cartPageUrl = "/src/Components/Card/Card.html";
-    window.location.href = cartPageUrl;
-  });
+  if (linkToCartPage) {
+    linkToCartPage.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.location.href = "/src/Components/Card/Card.html";
+    });
+  }
   linkToProductDetail();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupHeader();
+  setupMainSlider();
+  setupFeaturedProducts();
+  setupTestimonials();
+  setupEventListeners();
 });

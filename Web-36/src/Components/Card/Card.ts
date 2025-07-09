@@ -1,19 +1,15 @@
 import "./Card.scss";
-// import { createProductCardHtml } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
-// import Swiper from "swiper";
-// import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { createProductCardHtml } from "../ProductCard/ProductCard";
-import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
+import {
+  createProductCardHtml,
+  linkToProductDetail,
+} from "../ProductCard/ProductCard.ts";
 
-document.addEventListener("DOMContentLoaded", () => {
+function setupHeader() {
   const menuItems = [
-    {
-      label: "Trang chủ",
-      href: "/src/Components/Home/Home.html",
-    },
+    { label: "Trang chủ", href: "/src/Components/Home/Home.html" },
     {
       label: "Sản phẩm",
       href: "/src/Components/Products/Products.html",
@@ -43,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         menu?.classList.remove("oppenned");
         hamburgerButtons.forEach((btn) => btn.classList.remove("is-active"));
       });
-
       listItem.appendChild(link);
       menuList.appendChild(listItem);
     });
@@ -72,26 +67,35 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", handleToggle)
   );
   document.addEventListener("click", handleClickOutside);
+}
 
+function setupNewProductsSection() {
   const addProductNewCard = document.querySelector(".NewProduct__content");
-  //   console.log(addProductNewCard);
-
   if (addProductNewCard) {
     const newProductCard = products.filter((p) => p.isNew === true).slice(0, 4);
     const createNewElement = newProductCard
       .map((product) => createProductCardHtml(product))
       .join("");
-    // console.log(newProductCard);
-    // console.log(createNewElement);
     addProductNewCard.innerHTML = createNewElement;
   }
-  const linkToCardPage = document.querySelector(
+}
+
+function setupEventListeners() {
+  const linkToCartPage = document.querySelector(
     ".header--search-cart"
   ) as HTMLElement;
-  linkToCardPage.addEventListener("click", (event) => {
-    event.preventDefault();
-    const cartPageUrl = "/src/Components/Card/Card.html";
-    window.location.href = cartPageUrl;
-  });
+  if (linkToCartPage) {
+    linkToCartPage.addEventListener("click", (event) => {
+      event.preventDefault();
+      const cartPageUrl = "/src/Components/Card/Card.html";
+      window.location.href = cartPageUrl;
+    });
+  }
   linkToProductDetail();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupHeader();
+  setupNewProductsSection();
+  setupEventListeners();
 });

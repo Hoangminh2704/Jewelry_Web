@@ -1,18 +1,17 @@
 import "./Products.scss";
-import { createProductCardHtml } from "../ProductCard/ProductCard";
+import {
+  createProductCardHtml,
+  linkToProductDetail,
+} from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
 import Swiper from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
 
-document.addEventListener("DOMContentLoaded", () => {
+function setupHeader() {
   const menuItems = [
-    {
-      label: "Trang chủ",
-      href: "/src/Components/Home/Home.html",
-    },
+    { label: "Trang chủ", href: "/src/Components/Home/Home.html" },
     {
       label: "Sản phẩm",
       href: "/src/Components/Products/Products.html",
@@ -71,19 +70,17 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", handleToggle)
   );
   document.addEventListener("click", handleClickOutside);
+}
 
+function setupProductGrid() {
   const productSwiperWrapper = document.querySelector(
     ".product-swiper .swiper-wrapper"
   );
 
   if (productSwiperWrapper) {
-    function productsPerPage(): number {
-      if (window.matchMedia("(min-width: 1280px)").matches) {
-        return 9;
-      } else {
-        return 6;
-      }
-    }
+    const productsPerPage = (): number => {
+      return window.matchMedia("(min-width: 1280px)").matches ? 9 : 6;
+    };
     const totalPages = Math.ceil(products.length / productsPerPage());
 
     for (let i = 0; i < totalPages; i++) {
@@ -104,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       badges.forEach((badge) => badge.remove());
       productSwiperWrapper.appendChild(slide);
     }
+
     const prevButton = document.querySelector(
       ".product-swiper-prev"
     ) as HTMLElement;
@@ -114,29 +112,35 @@ document.addEventListener("DOMContentLoaded", () => {
     new Swiper(".product-swiper", {
       modules: [Navigation, Pagination],
       spaceBetween: 24,
-
       pagination: {
         el: ".product-swiper-pagination",
         clickable: true,
-        renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + (index + 1) + "</span>";
-        },
+        renderBullet: (index, className) =>
+          `<span class="${className}">${index + 1}</span>`,
       },
-
       navigation: {
         nextEl: nextButton,
         prevEl: prevButton,
       },
     });
   }
+}
 
-  const linkToCardPage = document.querySelector(
+function setupEventListeners() {
+  const linkToCartPage = document.querySelector(
     ".header--search-cart"
   ) as HTMLElement;
-  linkToCardPage.addEventListener("click", (event) => {
-    event.preventDefault();
-    const cartPageUrl = "/src/Components/Card/Card.html";
-    window.location.href = cartPageUrl;
-  });
+  if (linkToCartPage) {
+    linkToCartPage.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.location.href = "/src/Components/Card/Card.html";
+    });
+  }
   linkToProductDetail();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupHeader();
+  setupProductGrid();
+  setupEventListeners();
 });
