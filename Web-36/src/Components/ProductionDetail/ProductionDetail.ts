@@ -1,4 +1,4 @@
-import "./Card.scss";
+import "./ProductionDetail.scss";
 import { products } from "../../Data/ProductData";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
