@@ -94,7 +94,9 @@ function setupFeaturedProducts() {
     const topProduct = products.find((p) => p.isTop === true) || products[0];
     const topProductPriceContainer =
       topProductContainer.querySelector(".Production-price");
-    if (topProductPriceContainer) {
+    const topProductImage =
+      topProductContainer.querySelector(".Production-image");
+    if (topProductPriceContainer && topProductImage) {
       topProductPriceContainer.innerHTML = `
         <div class="Name">${topProduct.name}</div>
         <div class="Price">${topProduct.price}</div>
@@ -103,6 +105,8 @@ function setupFeaturedProducts() {
           <span class="Discount-percent">${topProduct.discount}</span>
         </div>
       `;
+      topProductImage.setAttribute("src", topProduct.image);
+      topProductImage.setAttribute("alt", topProduct.name);
     }
 
     const saleProducts = products.filter((p) => p.isSale === true).slice(0, 2);
@@ -148,8 +152,8 @@ function setupTestimonials() {
     // });
 
     new Swiper(".test-swiper", {
-      modules: [Navigation],
-      spaceBetween: -350,
+      modules: [Navigation, Pagination],
+      spaceBetween: 20,
       slidesPerView: 2.5,
       centeredSlides: false,
       loop: true,
@@ -157,6 +161,10 @@ function setupTestimonials() {
       navigation: {
         prevEl: prevButton,
         nextEl: nextButton,
+      },
+      pagination: {
+        el: ".test-swiper-pagination",
+        clickable: true,
       },
       breakpoints: {
         0: { slidesPerView: 1, spaceBetween: 0, centeredSlides: true },

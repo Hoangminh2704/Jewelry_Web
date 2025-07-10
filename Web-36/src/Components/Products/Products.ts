@@ -76,13 +76,19 @@ function setupProductGrid() {
   const productSwiperWrapper = document.querySelector(
     ".product-swiper .swiper-wrapper"
   );
+  // console.log(productSwiperWrapper);
 
   if (productSwiperWrapper) {
     const productsPerPage = (): number => {
-      return window.matchMedia("(min-width: 1280px)").matches ? 9 : 6;
+      if (window.innerWidth >= 1280) {
+        return 9;
+      } else {
+        return 6;
+      }
     };
+    // console.log(productsPerPage());
     const totalPages = Math.ceil(products.length / productsPerPage());
-
+    // console.log(totalPages);
     for (let i = 0; i < totalPages; i++) {
       const slide = document.createElement("div");
       slide.className = "swiper-slide";
@@ -101,6 +107,7 @@ function setupProductGrid() {
       badges.forEach((badge) => badge.remove());
       productSwiperWrapper.appendChild(slide);
     }
+    console.log(productSwiperWrapper);
 
     const prevButton = document.querySelector(
       ".product-swiper-prev"
@@ -110,13 +117,14 @@ function setupProductGrid() {
     ) as HTMLElement;
 
     new Swiper(".product-swiper", {
+      autoHeight: true,
       modules: [Navigation, Pagination],
       spaceBetween: 24,
       pagination: {
         el: ".product-swiper-pagination",
         clickable: true,
         renderBullet: (index, className) =>
-          `<span class="${className}">${index + 1}</span>`,
+          '<span class="' + className + '">' + (index + 1) + "</span>",
       },
       navigation: {
         nextEl: nextButton,

@@ -12,7 +12,7 @@ export function createProductCardHtml(product: ProductItem): string {
     <div class="Production__card">
       ${badgeHtml}
 
-      <img class="Production__card-image" src="../../assets/Product2.png" alt="">
+      <img class="Production__card-image" src=${product.image} alt="">
       
 
       <div class="Production__card-information">
