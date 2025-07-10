@@ -72,7 +72,7 @@ function setupHeader() {
   document.addEventListener("click", handleClickOutside);
 }
 
-function setupProductGrid() {
+function setupProduct() {
   const productSwiperWrapper = document.querySelector(
     ".product-swiper .swiper-wrapper"
   );
@@ -149,6 +149,6 @@ function setupEventListeners() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
-  setupProductGrid();
+  setupProduct();
   setupEventListeners();
 });
