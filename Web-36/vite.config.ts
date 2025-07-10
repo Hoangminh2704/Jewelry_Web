@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
-import fs from "fs";
-import path from "path";
+import * as fs from "fs";
+import * as path from "path";
 
 function getEntriesFromDir(dirPath: string): Record<string, string> {
   return Object.fromEntries(
