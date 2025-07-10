@@ -1,5 +1,5 @@
 @use "../Utils/Color.scss";
-@import "../Utils/Font_styles.scss";
+@use "../Utils/Font_styles.scss" as fonts;
 
 @mixin xs {
   @media (max-width: 767px) {
@@ -75,7 +75,7 @@ body {
       text-transform: uppercase;
       line-height: 30px;
       text-decoration: none;
-      @include header-2;
+      @include fonts.header-2;
       cursor: pointer;
       transition: font-weight 0.3s ease, color 0.3s ease;
 
@@ -230,7 +230,7 @@ body {
             padding: 16px 12px;
 
             color: var(--neutral-text-500);
-            @include header-2;
+            @include fonts.header-2;
           }
           .active {
             color: var(--theme-primary-1);
@@ -287,7 +287,7 @@ body {
             border: none;
             outline: none;
             display: flex;
-            @include body-1;
+            @include fonts.body-1;
             color: var(--neutral-text-600);
 
             width: 100%;
@@ -308,7 +308,7 @@ body {
           position: absolute;
           padding: 2px;
           background-color: var(--functional-error-400);
-          @include caption-2-regular;
+          @include fonts.caption-2-regular;
           box-sizing: border-box;
           width: 20px;
           height: 20px;
@@ -325,8 +325,6 @@ body {
     }
   }
 }
-
-// banner
 
 // footer
 .Footer {
@@ -371,13 +369,13 @@ body {
         gap: 32px;
         .About__script-header {
           color: var(--neutral-background-white);
-          @include poppins-header-H6;
+          @include fonts.poppins-header-H6;
           margin: 0;
           text-transform: uppercase;
         }
         .About__script-title {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
       }
@@ -388,7 +386,7 @@ body {
         justify-content: space-between;
         .About__payment-header {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
         .About__payment-icons {
@@ -417,7 +415,7 @@ body {
       gap: 32px;
       flex-direction: column;
       .Info__header {
-        @include poppins-header-H6;
+        @include fonts.poppins-header-H6;
         color: var(--neutral-background-white);
         text-transform: uppercase;
       }
@@ -430,7 +428,7 @@ body {
         .Info__Contact,
         .Info__Event {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
           text-decoration: none;
           cursor: pointer;
@@ -454,7 +452,7 @@ body {
       gap: 32px;
       flex-direction: column;
       .Polity__header {
-        @include poppins-header-H6;
+        @include fonts.poppins-header-H6;
         color: var(--neutral-background-white);
         text-transform: uppercase;
       }
@@ -467,7 +465,7 @@ body {
         .Change,
         .Pay {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
           text-decoration: none;
           cursor: pointer;
@@ -497,14 +495,14 @@ body {
         gap: 32px;
         justify-content: space-between;
         .Newest__script-header {
-          @include poppins-header-H6;
+          @include fonts.poppins-header-H6;
           color: var(--neutral-background-white);
           text-transform: uppercase;
           margin: 0;
         }
         .Newest__script-title {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
       }
@@ -582,7 +580,7 @@ body {
     width: fit-content;
     text-align: center;
     &-name {
-      @include heading-2;
+      @include fonts.heading-2;
       color: var(--neutral-background-white);
     }
     &-path {
@@ -600,13 +598,13 @@ body {
       }
       &-from {
         margin: 0;
-        @include body-1;
+        @include fonts.body-1;
         color: var(--neutral-background-white);
         opacity: 0.8;
       }
       &-to {
         margin: 0;
-        @include title-1;
+        @include fonts.title-1;
         color: var(--neutral-background-white);
       }
     }
@@ -644,7 +642,7 @@ body {
     }
 
     &-header {
-      @include heading-3;
+      @include fonts.heading-3;
       color: var(--neutral-text-900);
     }
     &-line {
@@ -653,7 +651,7 @@ body {
       background-color: var(--neutral-text-200);
     }
     &-description {
-      @include poppins-body-1;
+      @include fonts.poppins-body-1;
       color: var(--neutral-text-600);
     }
   }
@@ -687,19 +685,19 @@ body {
         align-items: center;
         text-align: center;
         .AboutMe__evalute-item-title {
-          @include poppins-subtitle-1;
+          @include fonts.poppins-subtitle-1;
           color: var(--neutral-text-900);
           &-number {
             color: var(--functional-error-400);
             &::after {
               content: "";
               display: inline-block;
-              @include poppins-heading-H6;
+              @include fonts.poppins-heading-H6;
             }
           }
         }
         .AboutMe__evalute-item-description {
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           color: var(--neutral-text-600);
         }
       }
@@ -729,11 +727,11 @@ body {
       text-align: center;
       gap: 16px;
       &-count {
-        @include heading-1;
+        @include fonts.heading-1;
         color: var(--theme-primary-1);
       }
       &-name {
-        @include header-1;
+        @include fonts.header-1;
         color: var(--neutral-text-900);
       }
     }
@@ -797,11 +795,11 @@ body {
       align-items: flex-end;
       gap: 10px;
       .name {
-        @include caption-2-regular;
+        @include fonts.caption-2-regular;
         color: var(--neutral-text-600);
       }
       .caption {
-        @include heading-3;
+        @include fonts.heading-3;
         color: var(--neutral-text-900);
         display: inline-block;
       }
@@ -812,7 +810,7 @@ body {
         padding: 12px 0px 12px 16px;
         width: fit-content;
 
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
       }
     }
@@ -840,11 +838,11 @@ body {
       justify-content: space-between;
       gap: 10px;
       .name {
-        @include caption-2-regular;
+        @include fonts.caption-2-regular;
         color: var(--neutral-text-600);
       }
       .caption {
-        @include heading-3;
+        @include fonts.heading-3;
         color: var(--neutral-text-900);
       }
       .link {
@@ -854,7 +852,7 @@ body {
         padding: 12px 16px 12px 0px;
         width: fit-content;
 
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
       }
     }

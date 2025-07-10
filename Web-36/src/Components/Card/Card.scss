@@ -1,5 +1,5 @@
-@use "../Utils/Color.scss";
-@import "../Utils/Font_styles.scss";
+@use "../Utils/Color.scss" as colors;
+@use "../Utils/Font_styles.scss" as fonts;
 
 @mixin xs {
   @media (max-width: 767px) {
@@ -80,7 +80,7 @@ body {
       text-transform: uppercase;
       line-height: 30px;
       text-decoration: none;
-      @include header-2;
+      @include fonts.header-2;
       cursor: pointer;
       transition: font-weight 0.3s ease, color 0.3s ease;
 
@@ -235,7 +235,7 @@ body {
             padding: 16px 12px;
 
             color: var(--neutral-text-500);
-            @include header-2;
+            @include fonts.header-2;
           }
           .active {
             color: var(--theme-primary-1);
@@ -292,7 +292,7 @@ body {
             border: none;
             outline: none;
             display: flex;
-            @include body-1;
+            @include fonts.body-1;
             color: var(--neutral-text-600);
 
             width: 100%;
@@ -313,7 +313,7 @@ body {
           position: absolute;
           padding: 2px;
           background-color: var(--functional-error-400);
-          @include caption-2-regular;
+          @include fonts.caption-2-regular;
           box-sizing: border-box;
           width: 20px;
           height: 20px;
@@ -389,11 +389,11 @@ body {
       align-items: flex-end;
       gap: 10px;
       .name {
-        @include caption-2-regular;
+        @include fonts.caption-2-regular;
         color: var(--neutral-text-600);
       }
       .caption {
-        @include heading-3;
+        @include fonts.heading-3;
         color: var(--neutral-text-900);
         display: inline-block;
       }
@@ -404,7 +404,7 @@ body {
         padding: 12px 0px 12px 16px;
         width: fit-content;
 
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
       }
     }
@@ -432,11 +432,11 @@ body {
       justify-content: space-between;
       gap: 10px;
       .name {
-        @include caption-2-regular;
+        @include fonts.caption-2-regular;
         color: var(--neutral-text-600);
       }
       .caption {
-        @include heading-3;
+        @include fonts.heading-3;
         color: var(--neutral-text-900);
       }
       .link {
@@ -446,7 +446,7 @@ body {
         padding: 12px 16px 12px 0px;
         width: fit-content;
 
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
       }
     }
@@ -534,13 +534,13 @@ body {
         gap: 32px;
         .About__script-header {
           color: var(--neutral-background-white);
-          @include poppins-header-H6;
+          @include fonts.poppins-header-H6;
           margin: 0;
           text-transform: uppercase;
         }
         .About__script-title {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
       }
@@ -551,7 +551,7 @@ body {
         justify-content: space-between;
         .About__payment-header {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
         .About__payment-icons {
@@ -580,7 +580,7 @@ body {
       gap: 32px;
       flex-direction: column;
       .Info__header {
-        @include poppins-header-H6;
+        @include fonts.poppins-header-H6;
         color: var(--neutral-background-white);
         text-transform: uppercase;
       }
@@ -593,7 +593,7 @@ body {
         .Info__Contact,
         .Info__Event {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
           text-decoration: none;
           cursor: pointer;
@@ -617,7 +617,7 @@ body {
       gap: 32px;
       flex-direction: column;
       .Polity__header {
-        @include poppins-header-H6;
+        @include fonts.poppins-header-H6;
         color: var(--neutral-background-white);
         text-transform: uppercase;
       }
@@ -630,7 +630,7 @@ body {
         .Change,
         .Pay {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
           text-decoration: none;
           cursor: pointer;
@@ -660,14 +660,14 @@ body {
         gap: 32px;
         justify-content: space-between;
         .Newest__script-header {
-          @include poppins-header-H6;
+          @include fonts.poppins-header-H6;
           color: var(--neutral-background-white);
           text-transform: uppercase;
           margin: 0;
         }
         .Newest__script-title {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
       }
@@ -745,7 +745,7 @@ body {
     width: fit-content;
     text-align: center;
     &-name {
-      @include heading-2;
+      @include fonts.heading-2;
       color: var(--neutral-background-white);
     }
     &-path {
@@ -754,13 +754,13 @@ body {
       align-items: center;
       &-from {
         margin: 0;
-        @include body-1;
+        @include fonts.body-1;
         color: var(--neutral-background-white);
         opacity: 0.8;
       }
       &-to {
         margin: 0;
-        @include title-1;
+        @include fonts.title-1;
         color: var(--neutral-background-white);
       }
     }
@@ -784,10 +784,10 @@ body {
     margin-top: 40px;
   }
   .Card__title {
-    @include header-1;
+    @include fonts.header-1;
     color: var(--neutral-text-900);
     .Card__title-count {
-      @include body-1;
+      @include fonts.body-1;
     }
   }
   .Card__list {
@@ -829,12 +829,12 @@ body {
           align-items: center;
           .Card__item-header-title {
             text-transform: uppercase;
-            @include body-1;
+            @include fonts.body-1;
             color: var(--neutral-text-900);
           }
         }
         .Card__item-header-delete {
-          @include body-1;
+          @include fonts.body-1;
           color: var(--theme-primary-1);
         }
       }
@@ -882,7 +882,7 @@ body {
             justify-content: space-between;
             height: 100%;
             .Card__item-content-name {
-              @include body-1;
+              @include fonts.body-1;
               color: var(--neutral-text-900);
             }
             .Card__item-content-price {
@@ -892,11 +892,11 @@ body {
               justify-content: space-between;
               gap: 40px;
               &-label {
-                @include body-2-regular;
+                @include fonts.body-2-regular;
                 color: var(--neutral-text-600);
               }
               &-value {
-                @include body-2-semibold;
+                @include fonts.body-2-semibold;
                 color: var(--theme-secondary-1);
               }
             }
@@ -921,7 +921,7 @@ body {
                 max-width: none;
               }
               &-label {
-                @include body-2-regular;
+                @include fonts.body-2-regular;
                 color: var(--neutral-text-600);
               }
               &-selected {
@@ -939,7 +939,7 @@ body {
                   border: none;
                   background: transparent;
                   cursor: pointer;
-                  @include body-1;
+                  @include fonts.body-1;
                   color: var(--neutral-text-600);
                   appearance: none;
                   width: 100%;
@@ -954,7 +954,7 @@ body {
                     display: none;
                   }
                   option {
-                    @include body-1;
+                    @include fonts.body-1;
                     color: var(--theme-secondary-DarkGray);
                   }
                 }
@@ -973,7 +973,7 @@ body {
               gap: 8px;
               cursor: pointer;
               span {
-                @include body-2-regular;
+                @include fonts.body-2-regular;
                 color: var(--neutral-text-600);
               }
             }
@@ -987,7 +987,7 @@ body {
                 width: 100%;
               }
               &-label {
-                @include body-2-regular;
+                @include fonts.body-2-regular;
                 color: var(--neutral-text-600);
                 min-width: 80px;
               }
@@ -999,7 +999,7 @@ body {
                   border: 1px solid var(--neutral-border-200);
                   border-radius: 2px;
                   padding: 0 10px;
-                  @include body-1;
+                  @include fonts.body-1;
                   color: var(--theme-secondary-DarkGray);
                   height: 26px;
                   box-sizing: border-box;
@@ -1032,7 +1032,7 @@ body {
         padding: 16px;
         background-color: var(--neutral-border-50);
         text-transform: uppercase;
-        @include body-1;
+        @include fonts.body-1;
         color: var(--neutral-text-900);
       }
       &-information {
@@ -1050,11 +1050,11 @@ body {
           justify-content: space-between;
           align-items: center;
           &-label {
-            @include body-1;
+            @include fonts.body-1;
             color: var(--theme-secondary-DarkGray);
           }
           &-value {
-            @include title-1;
+            @include fonts.title-1;
             color: var(--neutral-text-600);
           }
         }
@@ -1070,11 +1070,11 @@ body {
           justify-content: space-between;
           align-items: center;
           &-label {
-            @include header-2;
+            @include fonts.header-2;
             color: var(--theme-primary-1);
           }
           &-value {
-            @include heading-4;
+            @include fonts.heading-4;
             color: var(--theme-primary-1);
           }
         }
@@ -1086,7 +1086,7 @@ body {
           box-sizing: border-box;
           padding: 13px 16px;
           background-color: var(--theme-primary-1);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           color: var(--neutral-background-white);
           text-transform: uppercase;
           border: 0;
@@ -1122,7 +1122,7 @@ body {
     justify-content: space-between;
     align-items: center;
     &-title {
-      @include heading-3;
+      @include fonts.heading-3;
       color: var(--neutral-text-900);
     }
     &-direction {

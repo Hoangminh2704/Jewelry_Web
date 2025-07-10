@@ -1,5 +1,5 @@
-@use "../Utils/Color.scss";
-@import "../Utils/Font_styles.scss";
+@use "../Utils/Color.scss" as colors;
+@use "../Utils/Font_styles.scss" as fonts;
 
 @mixin xs {
   @media (max-width: 767px) {
@@ -52,7 +52,7 @@ body {
     box-sizing: border-box;
     padding: 4px 16px;
     color: var(--neutral-background-white);
-    @include poppins-caption;
+    @include fonts.poppins-caption;
     &.sale-badge {
       background-color: var(--functional-error-400);
     }
@@ -89,15 +89,15 @@ body {
       .Production__card-name {
         color: var(--theme-primary-1);
         text-align: center;
-        @include header-1;
+        @include fonts.header-1;
       }
       .Production__card-price {
         color: var(--theme-secondary-1);
-        @include header-1;
+        @include fonts.header-1;
       }
       .Production__card-discount {
         color: var(--neutral-text-600);
-        @include body-1;
+        @include fonts.body-1;
         font-style: italic;
         font-weight: 300;
         .Production__card-discount-old {
@@ -128,7 +128,7 @@ body {
         }
         .text {
           margin: 0;
-          @include poppins-caption;
+          @include fonts.poppins-caption;
           max-height: 19px;
           color: var(--theme-primary-1);
         }
@@ -146,7 +146,7 @@ body {
         }
         .text {
           margin: 0;
-          @include poppins-caption;
+          @include fonts.poppins-caption;
           max-height: 19px;
           color: var(--theme-primary-1);
         }

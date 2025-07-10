@@ -1,5 +1,5 @@
 @use "../Utils/Color.scss";
-@import "../Utils/Font_styles.scss";
+@use "../Utils/Font_styles.scss" as fonts;
 
 @mixin xs {
   @media (max-width: 767px) {
@@ -75,7 +75,7 @@ body {
       text-transform: uppercase;
       line-height: 30px;
       text-decoration: none;
-      @include header-2;
+      @include fonts.header-2;
       cursor: pointer;
       transition: font-weight 0.3s ease, color 0.3s ease;
 
@@ -230,7 +230,7 @@ body {
             padding: 16px 12px;
 
             color: var(--neutral-text-500);
-            @include header-2;
+            @include fonts.header-2;
           }
           .active {
             color: var(--theme-primary-1);
@@ -287,7 +287,7 @@ body {
             border: none;
             outline: none;
             display: flex;
-            @include body-1;
+            @include fonts.body-1;
             color: var(--neutral-text-600);
 
             width: 100%;
@@ -308,7 +308,7 @@ body {
           position: absolute;
           padding: 2px;
           background-color: var(--functional-error-400);
-          @include caption-2-regular;
+          @include fonts.caption-2-regular;
           box-sizing: border-box;
           width: 20px;
           height: 20px;
@@ -371,13 +371,13 @@ body {
         gap: 32px;
         .About__script-header {
           color: var(--neutral-background-white);
-          @include poppins-header-H6;
+          @include fonts.poppins-header-H6;
           margin: 0;
           text-transform: uppercase;
         }
         .About__script-title {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
       }
@@ -388,7 +388,7 @@ body {
         justify-content: space-between;
         .About__payment-header {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
         .About__payment-icons {
@@ -417,7 +417,7 @@ body {
       gap: 32px;
       flex-direction: column;
       .Info__header {
-        @include poppins-header-H6;
+        @include fonts.poppins-header-H6;
         color: var(--neutral-background-white);
         text-transform: uppercase;
       }
@@ -430,7 +430,7 @@ body {
         .Info__Contact,
         .Info__Event {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
           text-decoration: none;
           cursor: pointer;
@@ -454,7 +454,7 @@ body {
       gap: 32px;
       flex-direction: column;
       .Polity__header {
-        @include poppins-header-H6;
+        @include fonts.poppins-header-H6;
         color: var(--neutral-background-white);
         text-transform: uppercase;
       }
@@ -467,7 +467,7 @@ body {
         .Change,
         .Pay {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
           text-decoration: none;
           cursor: pointer;
@@ -497,14 +497,14 @@ body {
         gap: 32px;
         justify-content: space-between;
         .Newest__script-header {
-          @include poppins-header-H6;
+          @include fonts.poppins-header-H6;
           color: var(--neutral-background-white);
           text-transform: uppercase;
           margin: 0;
         }
         .Newest__script-title {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
       }
@@ -582,7 +582,7 @@ body {
     width: fit-content;
     text-align: center;
     &-name {
-      @include heading-2;
+      @include fonts.heading-2;
       color: var(--neutral-background-white);
     }
     &-path {
@@ -600,13 +600,13 @@ body {
       }
       &-from {
         margin: 0;
-        @include body-1;
+        @include fonts.body-1;
         color: var(--neutral-background-white);
         opacity: 0.8;
       }
       &-to {
         margin: 0;
-        @include title-1;
+        @include fonts.title-1;
         color: var(--neutral-background-white);
       }
     }
@@ -628,7 +628,7 @@ body {
     width: 92.27%;
   }
   &__header {
-    @include heading-2;
+    @include fonts.heading-2;
     color: var(--neutral-text-900);
   }
   &__form {
@@ -677,14 +677,14 @@ body {
             gap: 8px;
             align-items: center;
             &-title {
-              @include body-1;
+              @include fonts.body-1;
               color: var(--neutral-text-600);
             }
           }
           &-info {
             padding-left: 28px;
             max-width: 445px;
-            @include body-1;
+            @include fonts.body-1;
             color: var(--neutral-text-900);
           }
         }
@@ -724,12 +724,12 @@ body {
         flex-direction: column;
         gap: 12px;
         &-label {
-          @include body-2-semibold;
+          @include fonts.body-2-semibold;
           color: var(--neutral-text-900);
         }
         &-input {
           padding: 12px 24px;
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           color: var(--neutral-text-600);
           outline: none;
           border: 1px solid var(--neutral-border-200);
@@ -749,7 +749,7 @@ body {
         background-color: var(--theme-primary-1);
         color: var(--neutral-background-white);
         border: none;
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         cursor: pointer;
       }
     }

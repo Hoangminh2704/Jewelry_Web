@@ -1,5 +1,5 @@
 @use "../Utils/Color.scss";
-@import "../Utils/Font_styles.scss";
+@use "../Utils/Font_styles.scss" as fonts;
 
 @mixin xs {
   @media (max-width: 767px) {
@@ -75,7 +75,7 @@ body {
       text-transform: uppercase;
       line-height: 30px;
       text-decoration: none;
-      @include header-2;
+      @include fonts.header-2;
       cursor: pointer;
       transition: font-weight 0.3s ease, color 0.3s ease;
 
@@ -230,7 +230,7 @@ body {
             padding: 16px 12px;
 
             color: var(--neutral-text-500);
-            @include header-2;
+            @include fonts.header-2;
           }
           .active {
             color: var(--theme-primary-1);
@@ -287,7 +287,7 @@ body {
             border: none;
             outline: none;
             display: flex;
-            @include body-1;
+            @include fonts.body-1;
             color: var(--neutral-text-600);
 
             width: 100%;
@@ -308,7 +308,7 @@ body {
           position: absolute;
           padding: 2px;
           background-color: var(--functional-error-400);
-          @include caption-2-regular;
+          @include fonts.caption-2-regular;
           box-sizing: border-box;
           width: 20px;
           height: 20px;
@@ -525,7 +525,7 @@ body {
   }
   .body__intro-caption {
     color: var(--neutral-text-600);
-    @include body-2-regular;
+    @include fonts.body-2-regular;
     width: 100%;
     text-align: center;
     margin: 0 auto;
@@ -556,7 +556,7 @@ body {
     margin: 0 auto;
     display: inline-block;
     text-align: center;
-    @include body-2-regular;
+    @include fonts.body-2-regular;
     margin-top: 40px;
     @include xs {
       margin-top: 16px;
@@ -630,7 +630,7 @@ body {
   flex-direction: column;
   &-title {
     text-align: center;
-    @include header-1;
+    @include fonts.header-1;
     min-height: 60px;
     box-sizing: border-box;
     color: var(--neutral-text-900);
@@ -641,7 +641,7 @@ body {
   }
   &-description {
     text-align: center;
-    @include body-2-regular;
+    @include fonts.body-2-regular;
     color: var(--neutral-text-600);
     margin: 0;
     display: flex;
@@ -709,7 +709,7 @@ body {
       align-items: center;
 
       .categories__item-text-link {
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
         cursor: pointer;
       }
@@ -769,7 +769,7 @@ body {
     .Collection__category-title {
       display: inline-block;
       color: var(--neutral-text-900);
-      @include heading-3;
+      @include fonts.heading-3;
     }
     .Collection__category-links {
       position: absolute;
@@ -782,14 +782,14 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
       }
       .Collection__category-links-elements {
         display: flex;
         flex-direction: column;
         gap: 16px;
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--neutral-text-600);
         cursor: pointer;
       }
@@ -840,7 +840,7 @@ body {
       box-sizing: border-box;
       height: 48px;
       &-content {
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
       }
     }
@@ -928,7 +928,7 @@ body {
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    @include body-2-regular;
+    @include fonts.body-2-regular;
     color: var(--neutral-text-400);
     padding-top: 38px;
   }
@@ -945,7 +945,7 @@ body {
       box-sizing: border-box;
 
       padding: 13px 56px;
-      @include body-2-regular;
+      @include fonts.body-2-regular;
       color: var(--neutral-background-white);
       background-color: transparent;
       border: none;
@@ -954,7 +954,7 @@ body {
       box-sizing: border-box;
 
       padding: 13px 56px;
-      @include body-2-regular;
+      @include fonts.body-2-regular;
       color: var(--neutral-background-white);
       background-color: transparent;
       border: none;
@@ -990,12 +990,12 @@ body {
       height: 118px;
       padding-top: 104px;
       .Shipping__title-caption {
-        @include poppins-heading-5;
+        @include fonts.poppins-heading-5;
         display: block;
       }
 
       .shipping__title-top {
-        @include heading-3;
+        @include fonts.heading-3;
         display: block;
         height: 52px;
         padding-bottom: 12px;
@@ -1044,7 +1044,7 @@ body {
       height: 152px;
       padding-top: 40px;
       .Shipping__title-caption {
-        @include heading-3;
+        @include fonts.heading-3;
         display: block;
         line-height: 42px;
       }
@@ -1070,7 +1070,7 @@ body {
     }
     .Shipping__title-subtitle {
       display: block;
-      @include heading-2;
+      @include fonts.heading-2;
     }
     .star-top {
       position: absolute;
@@ -1137,14 +1137,14 @@ body {
     margin: 0 auto;
     .Production__header-caption {
       color: var(--neutral-text-900);
-      @include heading-3;
+      @include fonts.heading-3;
       text-align: center;
     }
     .Production__header-detail {
       display: flex;
       text-align: center;
       color: var(--neutral-text-600);
-      @include body-1;
+      @include fonts.body-1;
     }
     @include m {
       max-width: 720px;
@@ -1216,15 +1216,15 @@ body {
           padding: 16px;
           .Name {
             color: var(--theme-primary-1);
-            @include heading-4;
+            @include fonts.heading-4;
           }
           .Price {
             color: var(--theme-secondary-1);
-            @include heading-2;
+            @include fonts.heading-2;
           }
           .Discount {
             color: var(--neutral-text-600);
-            @include body-1;
+            @include fonts.body-1;
             font-style: italic;
             font-weight: 300;
             max-height: 19px;
@@ -1242,7 +1242,7 @@ body {
       .Production__top1-button {
         background-color: var(--theme-primary-1);
         width: 100%;
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--neutral-background-white);
         padding: 13px 16px;
         border: none;
@@ -1368,11 +1368,11 @@ body {
       align-items: flex-end;
       gap: 10px;
       .name {
-        @include caption-2-regular;
+        @include fonts.caption-2-regular;
         color: var(--neutral-text-600);
       }
       .caption {
-        @include heading-3;
+        @include fonts.heading-3;
         color: var(--neutral-text-900);
         display: inline-block;
       }
@@ -1383,7 +1383,7 @@ body {
         padding: 12px 0px 12px 16px;
         width: fit-content;
 
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
       }
     }
@@ -1413,11 +1413,11 @@ body {
       justify-content: space-between;
       gap: 10px;
       .name {
-        @include caption-2-regular;
+        @include fonts.caption-2-regular;
         color: var(--neutral-text-600);
       }
       .caption {
-        @include heading-3;
+        @include fonts.heading-3;
         color: var(--neutral-text-900);
       }
       .link {
@@ -1427,7 +1427,7 @@ body {
         padding: 12px 16px 12px 0px;
         width: fit-content;
 
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--theme-primary-1);
       }
     }
@@ -1525,11 +1525,11 @@ body {
       }
 
       .Header {
-        @include body-2-regular;
+        @include fonts.body-2-regular;
         color: var(--neutral-text-600);
       }
       .Body {
-        @include heading-3;
+        @include fonts.heading-3;
         color: var(--neutral-text-900);
       }
       .Arrow {
@@ -1672,7 +1672,7 @@ body {
             }
 
             .Comment {
-              @include header-1;
+              @include fonts.header-1;
               color: var(--neutral-text-900);
               min-height: 90px;
             }
@@ -1701,12 +1701,12 @@ body {
                   width: 100%;
 
                   .Name {
-                    @include header-1;
+                    @include fonts.header-1;
                     color: var(--theme-primary-1);
                   }
 
                   .Address {
-                    @include poppins-caption;
+                    @include fonts.poppins-caption;
                     color: var(--neutral-text-600);
                   }
                 }
@@ -1760,13 +1760,13 @@ body {
         gap: 32px;
         .About__script-header {
           color: var(--neutral-background-white);
-          @include poppins-header-H6;
+          @include fonts.poppins-header-H6;
           margin: 0;
           text-transform: uppercase;
         }
         .About__script-title {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
       }
@@ -1777,7 +1777,7 @@ body {
         justify-content: space-between;
         .About__payment-header {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
         .About__payment-icons {
@@ -1806,7 +1806,7 @@ body {
       gap: 32px;
       flex-direction: column;
       .Info__header {
-        @include poppins-header-H6;
+        @include fonts.poppins-header-H6;
         color: var(--neutral-background-white);
         text-transform: uppercase;
       }
@@ -1819,7 +1819,7 @@ body {
         .Info__Contact,
         .Info__Event {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
           text-decoration: none;
           cursor: pointer;
@@ -1843,7 +1843,7 @@ body {
       gap: 32px;
       flex-direction: column;
       .Polity__header {
-        @include poppins-header-H6;
+        @include fonts.poppins-header-H6;
         color: var(--neutral-background-white);
         text-transform: uppercase;
       }
@@ -1856,7 +1856,7 @@ body {
         .Change,
         .Pay {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
           text-decoration: none;
           cursor: pointer;
@@ -1886,14 +1886,14 @@ body {
         gap: 32px;
         justify-content: space-between;
         .Newest__script-header {
-          @include poppins-header-H6;
+          @include fonts.poppins-header-H6;
           color: var(--neutral-background-white);
           text-transform: uppercase;
           margin: 0;
         }
         .Newest__script-title {
           color: var(--neutral-text-400);
-          @include body-2-regular;
+          @include fonts.body-2-regular;
           margin: 0;
         }
       }
