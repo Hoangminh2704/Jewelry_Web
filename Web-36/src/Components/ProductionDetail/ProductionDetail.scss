@@ -815,6 +815,10 @@ body {
   gap: 32px;
 
   margin-top: 80px;
+  @include xl {
+    padding-right: 80px;
+  }
+
   @include m {
     flex-wrap: wrap;
     width: 96.56%;

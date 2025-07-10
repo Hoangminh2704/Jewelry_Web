@@ -151,48 +151,69 @@
   line-height: 114px;
 }
 @mixin poppins-regular {
-  font-family: "Poppins";
+  font-family: "Poppins", "Open Sans";
   font-weight: 500;
   font-size: 28px;
   line-height: 42px;
 }
 
 @mixin poppins-heading-5 {
-  font-family: "Poppins";
+  font-family: "Poppins", "Open Sans";
   font-weight: 500;
   font-size: 28px;
   line-height: 28px;
 }
 @mixin poppins-header-H6 {
-  font-family: "Open Sans";
+  font-family: "Poppins", "Open Sans";
   font-weight: 600;
   font-size: 18px;
   line-height: 23px;
 }
 
 @mixin poppins-semibold {
-  font-family: "Poppins";
+  font-family: "Poppins", "Open Sans";
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
 }
 
 @mixin poppins-bold {
-  font-family: "Poppins";
+  font-family: "Poppins", "Open Sans";
   font-weight: 700;
   font-size: 24px;
   line-height: 36px;
 }
 @mixin poppins-caption {
-  font-family: "Poppins";
+  font-family: "Poppins", "Open Sans";
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
 }
+
+// error
+@mixin poppins-header-H6 {
+  font-family: "Poppins", "Open Sans";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+}
 @mixin poppins-body-1 {
-  font-family: "Poppins";
+  font-family: "Poppins", "Open Sans";
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  letter-spacing: 0px;
+  font-style: normal;
+}
+@mixin poppins-subtitle-1 {
+  font-family: "Poppins", "Open Sans";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  font-style: normal;
+}
+@mixin poppins-heading-H6 {
+  font-family: "Poppins", "Open Sans";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
 }

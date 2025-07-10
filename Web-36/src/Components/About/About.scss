@@ -687,10 +687,15 @@ body {
         align-items: center;
         text-align: center;
         .AboutMe__evalute-item-title {
-          @include header-1;
+          @include poppins-subtitle-1;
           color: var(--neutral-text-900);
           &-number {
             color: var(--functional-error-400);
+            &::after {
+              content: "";
+              display: inline-block;
+              @include poppins-heading-H6;
+            }
           }
         }
         .AboutMe__evalute-item-description {
