@@ -1,1 +1,12 @@
-{"root":["./vite.config.ts","./src/vite-env.d.ts","./src/components/footer/footer.ts","./src/components/header/header.ts","./src/components/home/home.ts","./src/types/types.d.ts"],"errors":true,"version":"5.8.3"}
+{
+  "root": [
+    "./vite.config.ts",
+    "./src/vite-env.d.ts",
+    "./src/components/footer/footer.ts",
+    "./src/components/header/header.ts",
+    "./src/components/home/home.ts",
+    "./src/types/types.d.ts"
+  ],
+  "errors": true,
+  "version": "5.8.3"
+}
