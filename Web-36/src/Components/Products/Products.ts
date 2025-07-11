@@ -94,6 +94,7 @@ function getProductsPerPage(): number {
 function totalPages(): number {
   return Math.ceil(products.length / getProductsPerPage());
 }
+const startPage = 1;
 function renderProducts(page: number) {
   const productContainer = document.querySelector(
     ".products-grid"
@@ -123,7 +124,7 @@ function renderProducts(page: number) {
 }
 function setupPagination() {
   const paginationContainer = document.querySelector(
-    ".products-pagination"
+    ".products-pagination-current"
   ) as HTMLElement;
   if (!paginationContainer) return;
   const total = totalPages();
@@ -150,12 +151,55 @@ function setupPagination() {
     paginationLinks[0].classList.add("active");
   }
 }
+function setupPaginationArrow() {
+  const prevButton = document.querySelector(
+    ".products-pagination-prev"
+  ) as HTMLElement;
+  const nextButton = document.querySelector(
+    ".products-pagination-next"
+  ) as HTMLElement;
+  const paginationLinks = document.querySelectorAll(
+    ".products-pagination-link"
+  ) as NodeListOf<HTMLElement>;
+  prevButton.addEventListener("click", (event) => {
+    console.log(event);
+    const activeLink = document.querySelector(
+      ".products-pagination-link.active"
+    ) as HTMLElement;
+    if (activeLink) {
+      const currentPage = parseInt(activeLink.dataset.pageProducts || "1", 10);
+      if (currentPage > 1) {
+        const newPage = currentPage - 1;
+        renderProducts(newPage);
+        paginationLinks.forEach((link) => link.classList.remove("active"));
+        activeLink.classList.remove("active");
+        paginationLinks[newPage - 1].classList.add("active");
+      }
+    }
+  });
+  nextButton.addEventListener("click", (event) => {
+    console.log(event);
 
-const startPage = 1;
+    const activeLink = document.querySelector(
+      ".products-pagination-link.active"
+    ) as HTMLElement;
+    if (activeLink) {
+      const currentPage = parseInt(activeLink.dataset.pageProducts || "1", 10);
+      if (currentPage < 10) {
+        const newPage = currentPage + 1;
+        renderProducts(newPage);
+        paginationLinks.forEach((link) => link.classList.remove("active"));
+        activeLink.classList.remove("active");
+        paginationLinks[newPage - 1].classList.add("active");
+      }
+    }
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
   setupPagination();
   setupEventListeners();
   renderProducts(startPage);
+  setupPaginationArrow();
 });

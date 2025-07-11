@@ -961,26 +961,34 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 4px;
+        gap: 12px;
         width: object-fit;
         margin: 0 auto;
-        .products-pagination-link {
-          @include fonts.segoe_UI-body-2-regular;
-          color: var(--neutral-text-600);
-
-          cursor: pointer;
-          box-sizing: border-box;
-          width: 32px;
-          height: 32px;
-          padding: 6px 8px;
+        .products-pagination-current {
           display: flex;
           justify-content: center;
           align-items: center;
+          gap: 4px;
+          width: object-fit;
+          margin: 0 auto;
+          .products-pagination-link {
+            @include fonts.segoe_UI-body-2-regular;
+            color: var(--neutral-text-600);
 
-          &.active {
             cursor: pointer;
-            background-color: var(--theme-primary-1);
-            color: var(--neutral-background-white);
+            box-sizing: border-box;
+            width: 32px;
+            height: 32px;
+            padding: 6px 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.active {
+              cursor: pointer;
+              background-color: var(--theme-primary-1);
+              color: var(--neutral-background-white);
+            }
           }
         }
       }
