@@ -935,15 +935,55 @@ body {
       }
     }
 
-    .Select__product-list {
+    .Select__product-list-container {
       width: 100%;
       box-sizing: border-box;
       display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
       row-gap: 16px;
       align-items: center;
       margin: 0 auto;
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 16px;
+        width: 100%;
+        @include m {
+          grid-template-columns: repeat(2, 1fr);
+          .Production__card {
+            width: 100%;
+          }
+        }
+      }
+      .products-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        width: object-fit;
+        margin: 0 auto;
+        .products-pagination-link {
+          @include fonts.segoe_UI-body-2-regular;
+          color: var(--neutral-text-600);
+
+          cursor: pointer;
+          box-sizing: border-box;
+          width: 32px;
+          height: 32px;
+          padding: 6px 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &.active {
+            cursor: pointer;
+            background-color: var(--theme-primary-1);
+            color: var(--neutral-background-white);
+          }
+        }
+      }
     }
   }
 }

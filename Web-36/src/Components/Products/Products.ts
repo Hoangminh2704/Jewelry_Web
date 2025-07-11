@@ -4,8 +4,8 @@ import {
   linkToProductDetail,
 } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
-import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+// import Swiper from "swiper";
+// import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
@@ -70,68 +70,7 @@ function setupHeader() {
     btn.addEventListener("click", handleToggle)
   );
   document.addEventListener("click", handleClickOutside);
-}
-
-function setupProduct() {
-  const productSwiperWrapper = document.querySelector(
-    ".product-swiper .swiper-wrapper"
-  );
-  // console.log(productSwiperWrapper);
-
-  if (productSwiperWrapper) {
-    const productsPerPage = (): number => {
-      if (window.innerWidth >= 1280) {
-        return 9;
-      } else {
-        return 6;
-      }
-    };
-    // console.log(productsPerPage());
-    const totalPages = Math.ceil(products.length / productsPerPage());
-    // console.log(totalPages);
-    for (let i = 0; i < totalPages; i++) {
-      const slide = document.createElement("div");
-      slide.className = "swiper-slide";
-
-      const productsOnPage = products.slice(
-        i * productsPerPage(),
-        (i + 1) * productsPerPage()
-      );
-
-      const pageHtml = productsOnPage
-        .map((product) => createProductCardHtml(product))
-        .join("");
-
-      slide.innerHTML = `<div class="Select__product-list">${pageHtml}</div>`;
-      const badges = slide.querySelectorAll(".product-badge");
-      badges.forEach((badge) => badge.remove());
-      productSwiperWrapper.appendChild(slide);
-    }
-    console.log(productSwiperWrapper);
-
-    const prevButton = document.querySelector(
-      ".product-swiper-prev"
-    ) as HTMLElement;
-    const nextButton = document.querySelector(
-      ".product-swiper-next"
-    ) as HTMLElement;
-
-    new Swiper(".product-swiper", {
-      autoHeight: true,
-      modules: [Navigation, Pagination],
-      spaceBetween: 24,
-      pagination: {
-        el: ".product-swiper-pagination",
-        clickable: true,
-        renderBullet: (index, className) =>
-          '<span class="' + className + '">' + (index + 1) + "</span>",
-      },
-      navigation: {
-        nextEl: nextButton,
-        prevEl: prevButton,
-      },
-    });
-  }
+  // console.log("header");
 }
 
 function setupEventListeners() {
@@ -146,9 +85,77 @@ function setupEventListeners() {
   }
   linkToProductDetail();
 }
+function getProductsPerPage(): number {
+  if (window.innerWidth >= 1280) {
+    return 9;
+  }
+  return 6;
+}
+function totalPages(): number {
+  return Math.ceil(products.length / getProductsPerPage());
+}
+function renderProducts(page: number) {
+  const productContainer = document.querySelector(
+    ".products-grid"
+  ) as HTMLElement;
+  if (!productContainer) return;
+  const countProducts = getProductsPerPage();
+  const startIndex = (page - 1) * countProducts;
+  const endIndex = startIndex + countProducts;
+  const pageProducts = products.slice(startIndex, endIndex);
+  setTimeout(() => {
+    productContainer.innerHTML = pageProducts
+      .map((product) => {
+        return createProductCardHtml(product);
+        // console.log(product);
+      })
+      .join("");
+  }, 1000);
+  productContainer.innerHTML = pageProducts
+    .map((product) => {
+      return createProductCardHtml(product);
+      // console.log(product);
+    })
+    .join("");
+  linkToProductDetail();
+  // console.log(productContainer);
+  // console.log("hahaha");
+}
+function setupPagination() {
+  const paginationContainer = document.querySelector(
+    ".products-pagination"
+  ) as HTMLElement;
+  if (!paginationContainer) return;
+  const total = totalPages();
+  for (let i = 1; i <= total; i++) {
+    paginationContainer.innerHTML += `
+  <div class="products-pagination-link" data-page-products="${i}">${i}</div>`;
+  }
+  const paginationLinks = document.querySelectorAll(
+    ".products-pagination-link"
+  ) as NodeListOf<HTMLElement>;
+  paginationLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      console.log(event);
+      const target = event.currentTarget as HTMLElement;
+      console.log(target);
+      console.log(typeof target.dataset.pageProducts);
+      const page = parseInt(target.dataset.pageProducts || "1", 10);
+      renderProducts(page);
+      paginationLinks.forEach((l) => l.classList.remove("active"));
+      target.classList.add("active");
+    });
+  });
+  if (paginationLinks.length > 0) {
+    paginationLinks[0].classList.add("active");
+  }
+}
+
+const startPage = 1;
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
-  setupProduct();
+  setupPagination();
   setupEventListeners();
+  renderProducts(startPage);
 });
