@@ -915,6 +915,7 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
       .Select__product-name {
         max-width: 120px;
         @include fonts.header-2;
@@ -931,6 +932,31 @@ body {
         .Select__product-arrow {
           width: 24px;
           height: 24px;
+        }
+      }
+      .Select__product-sort-overall {
+        display: none;
+      }
+
+      .Select__product-sort-overall.active {
+        display: flex;
+        flex-direction: column;
+        // gap: 6px;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        z-index: 100;
+
+        max-width: 235px;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: var(--neutral-background-50);
+        @include fonts.body-1;
+        color: var(--neutral-text-900);
+        opacity: 0.8;
+
+        .Select__product-sort-options {
+          padding: 12px 16px;
         }
       }
     }

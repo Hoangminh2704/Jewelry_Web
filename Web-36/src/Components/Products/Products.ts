@@ -345,6 +345,53 @@ function updatePaginationArrow() {
     }
   });
 }
+function setupSort() {
+  const sortSelect = document.querySelector(
+    ".Select__product-arrow"
+  ) as HTMLSelectElement;
+  const sortOptions = document.querySelector(
+    ".Select__product-sort-overall"
+  ) as HTMLElement;
+  const sortText = document.querySelector(
+    ".Select_product-text"
+  ) as HTMLElement;
+
+  const sortNewest = document.querySelector(
+    ".Select__product-sort-options.newest"
+  ) as HTMLElement;
+  const sortPriceLTH = document.querySelector(
+    ".Select__product-sort-options.lowToHigh"
+  ) as HTMLElement;
+  const sortPriceHTL = document.querySelector(
+    ".Select__product-sort-options.highToLow"
+  ) as HTMLElement;
+  if (
+    !sortSelect ||
+    !sortOptions ||
+    !sortText ||
+    !sortNewest ||
+    !sortPriceLTH ||
+    !sortPriceHTL
+  )
+    return;
+  sortSelect.addEventListener("click", () => {
+    // console.log("Sort click");
+    sortOptions.classList.toggle("active");
+  });
+  sortNewest.addEventListener("click", () => {
+    sortOptions.classList.remove("active");
+    sortText.textContent = "Mới nhất";
+    applyFilters();
+  });
+  sortPriceLTH.addEventListener("click", () => {
+    sortOptions.classList.remove("active");
+    sortText.textContent = "Giá thấp đến cao";
+  });
+  sortPriceHTL.addEventListener("click", () => {
+    sortOptions.classList.remove("active");
+    sortText.textContent = "Giá cao đến thấp";
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
@@ -356,4 +403,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProduct();
   updatePaginationArrow();
   renderProductsByFilter(1, { type: "", minPrice: null, maxPrice: null });
+  setupSort();
 });
