@@ -4,8 +4,7 @@ import {
   linkToProductDetail,
 } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
-// import Swiper from "swiper";
-// import { Navigation, Pagination } from "swiper/modules";
+
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
@@ -85,112 +84,261 @@ function setupEventListeners() {
   }
   linkToProductDetail();
 }
+
+interface FilterOptions {
+  type: string;
+  minPrice: number | null;
+  maxPrice: number | null;
+}
+let DefaultFilter: FilterOptions = {
+  type: "",
+  minPrice: null,
+  maxPrice: null,
+};
 function getProductsPerPage(): number {
   if (window.innerWidth >= 1280) {
     return 9;
   }
   return 6;
 }
-function totalPages(): number {
-  return Math.ceil(products.length / getProductsPerPage());
+function getCurrentFilter(): FilterOptions {
+  const Necklet = document.querySelector(
+    ".Select__filter-Necklet"
+  ) as HTMLInputElement;
+  const Earring = document.querySelector(
+    ".Select__filter-Earring"
+  ) as HTMLInputElement;
+  const Chain = document.querySelector(
+    ".Select__filter-Chain"
+  ) as HTMLInputElement;
+  const PriceFrom = document.querySelector(
+    ".Select__filter-price-from"
+  ) as HTMLInputElement;
+  const PriceTo = document.querySelector(
+    ".Select__filter-price-to"
+  ) as HTMLInputElement;
+  let type = "";
+  if (Necklet?.checked) {
+    type = "Necklet";
+  } else if (Earring?.checked) {
+    type = "Earring";
+  } else if (Chain?.checked) {
+    type = "Chain";
+  }
+  const minPrice = PriceFrom?.value ? parseInt(PriceFrom.value) : null;
+  const maxPrice = PriceTo?.value ? parseInt(PriceTo.value) : null;
+  console.log("haha", { type, minPrice, maxPrice });
+  return { type, minPrice, maxPrice };
 }
-const startPage = 1;
-function renderProducts(page: number) {
+function getProductsByFilter(options: FilterOptions) {
+  const result = [];
+  for (let i = 0; i < products.length; i++) {
+    const currentProducts = products[i];
+    let typeMatch = true;
+    let PriceMatch = true;
+    if (options.type != "") {
+      if (currentProducts.type != options.type) typeMatch = false;
+    }
+    if (options.minPrice != null) {
+      if (currentProducts.price < options.minPrice) PriceMatch = false;
+    }
+    if (options.maxPrice != null) {
+      if (currentProducts.price > options.maxPrice) PriceMatch = false;
+    }
+    if (typeMatch && PriceMatch) {
+      result.push(currentProducts);
+    }
+  }
+  return result;
+}
+const testType = getProductsByFilter({
+  type: "Earring",
+  minPrice: null,
+  maxPrice: null,
+});
+console.log("checkType", testType);
+function totalPagesbyFilter(options: FilterOptions) {
+  const filteredProducts = getProductsByFilter(options);
+  return Math.ceil(filteredProducts.length / getProductsPerPage());
+}
+const checkTotal = totalPagesbyFilter({
+  type: "Earring",
+  minPrice: 8000000,
+  maxPrice: null,
+});
+console.log(checkTotal);
+
+function renderProductsByFilter(page: number, options?: FilterOptions) {
   const productContainer = document.querySelector(
     ".products-grid"
   ) as HTMLElement;
   if (!productContainer) return;
+  const filterOptions = options || DefaultFilter;
+  const filteredProducts = getProductsByFilter(filterOptions);
+  console.log(filteredProducts);
   const countProducts = getProductsPerPage();
   const startIndex = (page - 1) * countProducts;
   const endIndex = startIndex + countProducts;
-  const pageProducts = products.slice(startIndex, endIndex);
+  const pageProducts = filteredProducts.slice(startIndex, endIndex);
+  console.log(pageProducts);
   setTimeout(() => {
     productContainer.innerHTML = pageProducts
-      .map((product) => {
-        return createProductCardHtml(product);
-        // console.log(product);
-      })
+      .map((product) => createProductCardHtml(product))
       .join("");
-  }, 1000);
-  productContainer.innerHTML = pageProducts
-    .map((product) => {
-      return createProductCardHtml(product);
-      // console.log(product);
-    })
-    .join("");
-  linkToProductDetail();
-  // console.log(productContainer);
-  // console.log("hahaha");
+    linkToProductDetail();
+  }, 100);
+  console.log(productContainer);
 }
-function setupPagination() {
+function updatePagination(options: FilterOptions) {
   const paginationContainer = document.querySelector(
     ".products-pagination-current"
   ) as HTMLElement;
   if (!paginationContainer) return;
-  const total = totalPages();
-  for (let i = 1; i <= total; i++) {
+  DefaultFilter = { ...options };
+  let totalPage = totalPagesbyFilter(options);
+  if (totalPage < 1) {
+    totalPage = 1;
+  }
+  paginationContainer.innerHTML = "";
+  for (let i = 1; i <= totalPage; i++) {
     paginationContainer.innerHTML += `
-  <div class="products-pagination-link" data-page-products="${i}">${i}</div>`;
+    <div class="products-pagination-link" data-page-products="${i}">${i}</div>
+    `;
   }
   const paginationLinks = document.querySelectorAll(
     ".products-pagination-link"
   ) as NodeListOf<HTMLElement>;
   paginationLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      console.log(event);
       const target = event.currentTarget as HTMLElement;
-      console.log(target);
-      console.log(typeof target.dataset.pageProducts);
-      const page = parseInt(target.dataset.pageProducts || "1", 10);
-      renderProducts(page);
-      paginationLinks.forEach((l) => l.classList.remove("active"));
+      const page = parseInt(target.dataset.pageProducts || "1");
+      renderProductsByFilter(page, DefaultFilter);
+      paginationLinks.forEach((l) => {
+        l.classList.remove("active");
+      });
       target.classList.add("active");
     });
   });
   if (paginationLinks.length > 0) {
     paginationLinks[0].classList.add("active");
   }
+  renderProductsByFilter(1, options);
 }
-function setupPaginationArrow() {
-  const prevButton = document.querySelector(
+function applyFilters() {
+  const options = getCurrentFilter();
+  updatePagination(options);
+}
+function renderProduct() {
+  const Necklet = document.querySelector(
+    ".Select__filter-Necklet"
+  ) as HTMLInputElement;
+  const Earring = document.querySelector(
+    ".Select__filter-Earring"
+  ) as HTMLInputElement;
+  const Chain = document.querySelector(
+    ".Select__filter-Chain"
+  ) as HTMLInputElement;
+  updatePagination({ type: "", minPrice: null, maxPrice: null });
+  Necklet.addEventListener("click", () => {
+    if (Necklet.checked) {
+      Earring.checked = false;
+      Chain.checked = false;
+    }
+    applyFilters();
+  });
+  Earring.addEventListener("click", () => {
+    if (Earring.checked) {
+      Necklet.checked = false;
+      Chain.checked = false;
+    }
+    console.log("Current", getCurrentFilter());
+    applyFilters();
+  });
+
+  Chain.addEventListener("click", () => {
+    if (Chain.checked) {
+      Necklet.checked = false;
+      Earring.checked = false;
+    }
+    applyFilters();
+  });
+}
+function updatePriceFilter() {
+  const PriceFrom = document.querySelector(
+    ".Select__filter-price-from"
+  ) as HTMLInputElement;
+  const PriceTo = document.querySelector(
+    ".Select__filter-price-to"
+  ) as HTMLInputElement;
+  const buttonActive = document.querySelector(".Select__filter-search");
+  if (!buttonActive) return;
+  buttonActive.addEventListener("click", (event) => {
+    console.log("click button search");
+    event.preventDefault();
+    const fromValue = PriceFrom?.value;
+    const toValue = PriceTo?.value;
+    if (fromValue && toValue) {
+      const from = parseInt(fromValue);
+      const to = parseInt(toValue);
+      if (from > to) {
+        alert("Error");
+        return;
+      }
+    }
+    console.log("Filter after price: ", getCurrentFilter());
+    applyFilters();
+  });
+}
+function updatePaginationArrow() {
+  const prev = document.querySelector(
     ".products-pagination-prev"
   ) as HTMLElement;
-  const nextButton = document.querySelector(
+  const next = document.querySelector(
     ".products-pagination-next"
   ) as HTMLElement;
-  const paginationLinks = document.querySelectorAll(
-    ".products-pagination-link"
-  ) as NodeListOf<HTMLElement>;
-  prevButton.addEventListener("click", (event) => {
-    console.log(event);
+  if (!prev && !next) return;
+  prev.addEventListener("click", () => {
     const activeLink = document.querySelector(
       ".products-pagination-link.active"
     ) as HTMLElement;
     if (activeLink) {
-      const currentPage = parseInt(activeLink.dataset.pageProducts || "1", 10);
+      const currentPage = parseInt(activeLink.dataset.pageProducts || "1");
       if (currentPage > 1) {
-        const newPage = currentPage - 1;
-        renderProducts(newPage);
-        paginationLinks.forEach((link) => link.classList.remove("active"));
-        activeLink.classList.remove("active");
-        paginationLinks[newPage - 1].classList.add("active");
+        const prevPage = currentPage - 1;
+        renderProductsByFilter(prevPage, DefaultFilter);
+        const paginationLinks = document.querySelectorAll(
+          ".products-pagination-link"
+        ) as NodeListOf<HTMLElement>;
+        paginationLinks.forEach((link) => {
+          link.classList.remove("active");
+        });
+        const newActive = document.querySelector(`
+          .products-pagination-link[data-page-products="${prevPage}"]
+          `);
+        newActive?.classList.add("active");
       }
     }
   });
-  nextButton.addEventListener("click", (event) => {
-    console.log(event);
-
+  next.addEventListener("click", () => {
     const activeLink = document.querySelector(
       ".products-pagination-link.active"
     ) as HTMLElement;
     if (activeLink) {
-      const currentPage = parseInt(activeLink.dataset.pageProducts || "1", 10);
-      if (currentPage < 10) {
-        const newPage = currentPage + 1;
-        renderProducts(newPage);
-        paginationLinks.forEach((link) => link.classList.remove("active"));
-        activeLink.classList.remove("active");
-        paginationLinks[newPage - 1].classList.add("active");
+      const currentPage = parseInt(activeLink.dataset.pageProducts || "1");
+      const total = totalPagesbyFilter(DefaultFilter);
+      if (currentPage < total) {
+        const nextPage = currentPage + 1;
+        renderProductsByFilter(nextPage, DefaultFilter);
+        const paginationLinks = document.querySelectorAll(
+          ".products-pagination-link"
+        ) as NodeListOf<HTMLElement>;
+        paginationLinks.forEach((link) => {
+          link.classList.remove("active");
+        });
+        const newActive = document.querySelector(`
+          .products-pagination-link[data-page-products="${nextPage}"]
+          `);
+        newActive?.classList.add("active");
       }
     }
   });
@@ -198,8 +346,12 @@ function setupPaginationArrow() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
-  setupPagination();
   setupEventListeners();
-  renderProducts(startPage);
-  setupPaginationArrow();
+  // getCurrentFilter();
+
+  updatePriceFilter();
+  // applyFilters();
+  renderProduct();
+  updatePaginationArrow();
+  renderProductsByFilter(1, { type: "", minPrice: null, maxPrice: null });
 });

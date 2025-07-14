@@ -18,13 +18,13 @@ export function createProductCardHtml(product: ProductItem): string {
       <div class="Production__card-information">
         <div class="Production__card-text">
           <div class="Production__card-name">${product.name}</div>
-          <div class="Production__card-price">${product.price}</div>
+          <div class="Production__card-price">${product.price} đ</div>
           <div class="Production__card-discount">
             <span class="Production__card-discount-old">
-              ${product.oldPrice}
+              ${product.oldPrice} đ
             </span>
             <span class="Production__card-discount-percent">
-              ${product.discount}
+              (${product.discount}%)
             </span>
           </div>
         </div>
