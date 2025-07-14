@@ -2,6 +2,8 @@ import "./Products.scss";
 import {
   createProductCardHtml,
   linkToProductDetail,
+  deleteBadge,
+  convertPriceToString,
 } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
 
@@ -185,6 +187,7 @@ function renderProductsByFilter(page: number, options?: FilterOptions) {
     productContainer.innerHTML = pageProducts
       .map((product) => createProductCardHtml(product))
       .join("");
+    deleteBadge();
     linkToProductDetail();
   }, 100);
   console.log(productContainer);

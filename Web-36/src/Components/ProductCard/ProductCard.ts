@@ -18,10 +18,12 @@ export function createProductCardHtml(product: ProductItem): string {
       <div class="Production__card-information">
         <div class="Production__card-text">
           <div class="Production__card-name">${product.name}</div>
-          <div class="Production__card-price">${product.price} đ</div>
+          <div class="Production__card-price">${convertPriceToString(
+            product.price
+          )} </div>
           <div class="Production__card-discount">
             <span class="Production__card-discount-old">
-              ${product.oldPrice} đ
+              ${convertPriceToString(product.oldPrice)}
             </span>
             <span class="Production__card-discount-percent">
               (${product.discount}%)
@@ -58,6 +60,15 @@ export function linkToProductDetail() {
       window.location.href = productDetailPageUrl;
     });
   });
+}
+export function deleteBadge() {
+  const badges = document.querySelectorAll(".product-badge");
+  badges.forEach((badge) => {
+    badge.remove();
+  });
+}
+export function convertPriceToString(price: number): string {
+  return price.toLocaleString("vi-VN") + " đ";
 }
 
 const CartLine = () => `
