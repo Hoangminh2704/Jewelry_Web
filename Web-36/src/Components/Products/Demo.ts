@@ -489,13 +489,10 @@ function setupPaginationArrow() {
       if (currentPage > 1) {
         const newPage = currentPage - 1;
 
-        // Lấy filter hiện tại từ checkbox
         const currentFilter = getCurrentFilter();
 
-        // Render với filter hiện tại
         renderProductsByFilter(newPage, currentFilter);
 
-        // Cập nhật active state cho pagination
         const paginationLinks = document.querySelectorAll(
           ".products-pagination-link"
         ) as NodeListOf<HTMLElement>;
@@ -525,10 +522,8 @@ function setupPaginationArrow() {
       if (currentPage < total) {
         const newPage = currentPage + 1;
 
-        // Render với filter hiện tại
         renderProductsByFilter(newPage, currentFilter);
 
-        // Cập nhật active state cho pagination
         const paginationLinks = document.querySelectorAll(
           ".products-pagination-link"
         ) as NodeListOf<HTMLElement>;

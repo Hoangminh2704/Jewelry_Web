@@ -3,7 +3,6 @@ import {
   createProductCardHtml,
   linkToProductDetail,
   deleteBadge,
-  convertPriceToString,
 } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
 
@@ -129,7 +128,7 @@ function getCurrentFilter(): FilterOptions {
   }
   const minPrice = PriceFrom?.value ? parseInt(PriceFrom.value) : null;
   const maxPrice = PriceTo?.value ? parseInt(PriceTo.value) : null;
-  console.log("haha", { type, minPrice, maxPrice });
+  console.log("DoubleCheck", { type, minPrice, maxPrice });
   return { type, minPrice, maxPrice };
 }
 function getProductsByFilter(options: FilterOptions) {
