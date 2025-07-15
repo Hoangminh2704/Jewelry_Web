@@ -82,7 +82,6 @@ function setupNewProductsSection() {
     addProductNewCard.innerHTML = createNewElement;
     addToCartFromProductCard();
     linkToProductDetail();
-    renderCartItems();
   }
 }
 
@@ -100,7 +99,11 @@ function setupEventListeners() {
   linkToProductDetail();
 }
 
-export let cart: Array<{ productId: number; quantity: number }> = [];
+export let cart: Array<{
+  productId: number;
+  quantity: number;
+  isCheck: boolean;
+}> = [];
 const CART_STORAGE_KEY = "cart";
 
 function loadFromStorage() {
@@ -138,6 +141,7 @@ export function addToCart(productId: number) {
     cart.push({
       productId: productId,
       quantity: 1,
+      isCheck: true,
     });
   }
   saveToStorage();
@@ -288,6 +292,30 @@ function cartAction() {
   const removeButtons = document.querySelectorAll(
     ".Card__item-content-remove"
   ) as NodeListOf<HTMLElement>;
+  const removeAll = document.querySelector(
+    ".Card__item-header-delete"
+  ) as HTMLElement;
+  const checkboxes = document.querySelectorAll(
+    ".Card__item-checkbox"
+  ) as NodeListOf<HTMLInputElement>;
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", (event) => {
+      const target = event.target as HTMLInputElement;
+      const productId = parseInt(target.dataset.productId || "0");
+
+      if (productId) {
+        updateCheckboxStatus(productId, target.checked);
+      }
+    });
+  });
+  removeAll.addEventListener("click", (event) => {
+    event.preventDefault();
+    clearCart();
+    renderCartItems();
+    updateCartOverall(0, 0);
+    cartAction();
+  });
   minusButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
@@ -325,6 +353,14 @@ function cartAction() {
     });
   });
 }
+function updateCheckboxStatus(productId: number, isChecked: boolean): void {
+  const item = cart.find((item) => item.productId === productId);
+  if (item) {
+    item.isCheck = isChecked;
+    saveToStorage();
+    updateCartOverall(0, 0);
+  }
+}
 function updateCartOverall(discount: number, shipping: number) {
   initCart();
   const totalItem = document.querySelector(".Card__total-value") as HTMLElement;
@@ -343,9 +379,24 @@ function updateCartOverall(discount: number, shipping: number) {
   const totalOverall = document.querySelector(
     ".Card__total-price-value"
   ) as HTMLElement;
+  const totalItemHeader = document.querySelector(
+    ".Card__title-count-number"
+  ) as HTMLElement;
+  const isCheck = document.querySelectorAll(
+    ".Card__item-checkbox"
+  ) as NodeListOf<HTMLInputElement>;
+
+  isCheck.forEach((checkbox) => {
+    const productId = parseInt(checkbox.dataset.productId || "0");
+    const item = cart.find((item) => item.productId === productId);
+    if (item) {
+      checkbox.checked = item.isCheck;
+    }
+  });
+
   const total = cart.reduce((acc, item) => {
     const product = products.find((p) => p.id === item.productId);
-    if (product) {
+    if (product && item.isCheck) {
       return acc + product.price * item.quantity;
     }
     return acc;
@@ -362,6 +413,7 @@ function updateCartOverall(discount: number, shipping: number) {
     return;
   }
   totalItem.innerHTML = getCartCount().toString();
+  totalItemHeader.innerHTML = getCartCount().toString();
   totalPrice.innerHTML = `${total.toLocaleString("vi-VN")} đ`;
   totaldiscount.innerHTML = `${discount} %`;
   totalAfterDiscount.innerHTML = `${(
