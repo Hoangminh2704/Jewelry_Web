@@ -4,9 +4,10 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { initCart } from "../Card/Card";
+import { addToCart } from "../ProductCard/ProductCard";
 
 import { products } from "../../Data/ProductData.ts";
-// import { testimonialsData } from "../../Data/TestimonialsData.ts";
 import {
   createProductCardHtml,
   linkToProductDetail,
@@ -23,6 +24,7 @@ function setupHeader() {
     { label: "Giới thiệu", href: "/src/Components/About/About.html" },
     { label: "Liên hệ", href: "/src/Components/Contact/Contact.html" },
   ];
+  // const linkToProductPages = document.querySelector(".")
 
   const menuList = document.querySelector(".header--menu");
   const hamburgerButtons = document.querySelectorAll(
@@ -33,6 +35,7 @@ function setupHeader() {
   ) as HTMLElement | null;
 
   if (menuList) {
+    menuList.innerHTML = "";
     menuItems.forEach((item) => {
       const listItem = document.createElement("li");
       const link = document.createElement("a");
@@ -45,6 +48,7 @@ function setupHeader() {
       });
       listItem.appendChild(link);
       menuList.appendChild(listItem);
+      console.log(link);
     });
   }
 
@@ -115,6 +119,8 @@ function setupFeaturedProducts() {
     otherProductsContainer.innerHTML = featuredProducts
       .map((product) => createProductCardHtml(product))
       .join("");
+    linkToProductDetail();
+    addToCart();
   }
 }
 
@@ -128,29 +134,6 @@ function setupTestimonials() {
   ) as HTMLElement;
 
   if (swiperWrapper && prevButton && nextButton) {
-    // testimonialsData.forEach((item) => {
-    //   const slide = document.createElement("div");
-    //   slide.className = "swiper-slide";
-    //   slide.innerHTML = `
-    //     <div class="Slides-content">
-    //       <div class="Comment">${item.comment}</div>
-    //       <div class="Infomation">
-    //         <svg xmlns="http://www.w3.org/2000/svg" width="373" height="1" viewBox="0 0 373 1" fill="none">
-    //           <rect x="0.247559" width="371.927" height="1" fill="#E2E7ED" />
-    //         </svg>
-    //         <div class="Infomation__detail">
-    //           <img class="Infomation__detail-avatar" src="${item.avatar}" alt="avatar" />
-    //           <div class="Infomation__detail-info">
-    //             <div class="Name">${item.name}</div>
-    //             <div class="Address">${item.address}</div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   `;
-    //   swiperWrapper.appendChild(slide);
-    // });
-
     new Swiper(".test-swiper", {
       modules: [Navigation, Pagination],
       spaceBetween: 20,
@@ -194,4 +177,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFeaturedProducts();
   setupTestimonials();
   setupEventListeners();
+  initCart();
 });

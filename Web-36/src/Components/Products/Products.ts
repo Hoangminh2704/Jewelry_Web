@@ -2,9 +2,11 @@ import "./Products.scss";
 import {
   createProductCardHtml,
   linkToProductDetail,
+  addToCart,
   deleteBadge,
 } from "../ProductCard/ProductCard";
 import { products } from "../../Data/ProductData";
+import { initCart } from "../Card/Card";
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -30,6 +32,7 @@ function setupHeader() {
   ) as HTMLElement | null;
 
   if (menuList) {
+    menuList.innerHTML = "";
     menuItems.forEach((item) => {
       const listItem = document.createElement("li");
       const link = document.createElement("a");
@@ -90,11 +93,13 @@ interface FilterOptions {
   type: string;
   minPrice: number | null;
   maxPrice: number | null;
+  sortBy?: string;
 }
 let DefaultFilter: FilterOptions = {
   type: "",
   minPrice: null,
   maxPrice: null,
+  sortBy: "",
 };
 function getProductsPerPage(): number {
   if (window.innerWidth >= 1280) {
@@ -118,6 +123,20 @@ function getCurrentFilter(): FilterOptions {
   const PriceTo = document.querySelector(
     ".Select__filter-price-to"
   ) as HTMLInputElement;
+  const sortText = document.querySelector(
+    ".Select_product-text"
+  ) as HTMLElement;
+  let sortBy = "";
+  if (sortText) {
+    const currentChoice = sortText.textContent || "";
+    if (currentChoice === "Mới nhất") {
+      sortBy = "newest";
+    } else if (currentChoice === "Giá thấp đến cao") {
+      sortBy = "lowToHigh";
+    } else if (currentChoice === "Giá cao đến thấp") {
+      sortBy = "highToLow";
+    }
+  }
   let type = "";
   if (Necklet?.checked) {
     type = "Necklet";
@@ -129,7 +148,7 @@ function getCurrentFilter(): FilterOptions {
   const minPrice = PriceFrom?.value ? parseInt(PriceFrom.value) : null;
   const maxPrice = PriceTo?.value ? parseInt(PriceTo.value) : null;
   console.log("DoubleCheck", { type, minPrice, maxPrice });
-  return { type, minPrice, maxPrice };
+  return { type, minPrice, maxPrice, sortBy };
 }
 function getProductsByFilter(options: FilterOptions) {
   const result = [];
@@ -148,6 +167,19 @@ function getProductsByFilter(options: FilterOptions) {
     }
     if (typeMatch && PriceMatch) {
       result.push(currentProducts);
+    }
+    if (options.sortBy) {
+      if (options.sortBy === "newest") {
+        result.sort((a, b) => {
+          const dataA = new Date(a.datePublished);
+          const dataB = new Date(b.datePublished);
+          return dataB.getTime() - dataA.getTime();
+        });
+      } else if (options.sortBy === "lowToHigh") {
+        result.sort((a, b) => a.price - b.price);
+      } else if (options.sortBy === "highToLow") {
+        result.sort((a, b) => b.price - a.price);
+      }
     }
   }
   return result;
@@ -188,6 +220,7 @@ function renderProductsByFilter(page: number, options?: FilterOptions) {
       .join("");
     deleteBadge();
     linkToProductDetail();
+    addToCart();
   }, 100);
   console.log(productContainer);
 }
@@ -344,6 +377,25 @@ function updatePaginationArrow() {
       }
     }
   });
+  const Links = document.querySelectorAll(
+    ".products-pagination-link"
+  ) as NodeListOf<HTMLElement>;
+  if (Links) {
+    Links.forEach((link) => {
+      if (
+        link.classList.contains("active") &&
+        link.dataset.pageProducts === "1"
+      ) {
+        console.log("Disable prev");
+      } else if (
+        link.classList.contains("active") &&
+        link.dataset.pageProducts === `${totalPagesbyFilter(DefaultFilter)}`
+      ) {
+        console.log("Disable next");
+      }
+    });
+  }
+  console.log("Update pagination arrow");
 }
 function setupSort() {
   const sortSelect = document.querySelector(
@@ -386,10 +438,12 @@ function setupSort() {
   sortPriceLTH.addEventListener("click", () => {
     sortOptions.classList.remove("active");
     sortText.textContent = "Giá thấp đến cao";
+    applyFilters();
   });
   sortPriceHTL.addEventListener("click", () => {
     sortOptions.classList.remove("active");
     sortText.textContent = "Giá cao đến thấp";
+    applyFilters();
   });
 }
 
@@ -404,4 +458,5 @@ document.addEventListener("DOMContentLoaded", () => {
   updatePaginationArrow();
   renderProductsByFilter(1, { type: "", minPrice: null, maxPrice: null });
   setupSort();
+  initCart();
 });

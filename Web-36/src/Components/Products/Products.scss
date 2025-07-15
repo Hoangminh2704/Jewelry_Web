@@ -926,7 +926,11 @@ body {
         padding: 12px 16px;
         display: flex;
         align-items: center;
-        gap: 80px;
+        // gap: 80px;
+        max-width: 235px;
+        width: 100%;
+        justify-content: space-between;
+        box-sizing: border-box;
         @include fonts.body-1;
         color: var(--neutral-text-900);
         .Select__product-arrow {
@@ -990,6 +994,12 @@ body {
         gap: 12px;
         width: object-fit;
         margin: 0 auto;
+        cursor: pointer;
+        .products-pagination-prev,
+        .products-pagination-next {
+          width: 16px;
+          height: 16px;
+        }
         .products-pagination-current {
           display: flex;
           justify-content: center;

@@ -867,6 +867,10 @@ body {
           .Card__item-img {
             grid-column: 3/4;
             grid-row: 1/4;
+            max-width: 160px;
+            max-height: 198px;
+
+            // background-color: var(--neutral-background-50);
             @include Card-layout {
               aspect-ratio: 1;
               width: 100px;
@@ -1002,7 +1006,7 @@ body {
                   @include fonts.body-1;
                   color: var(--theme-secondary-DarkGray);
                   height: 26px;
-                  box-sizing: border-box;
+                  // box-sizing: border-box;
                   max-width: 30px;
                 }
                 .Card__item-content-count-minus,

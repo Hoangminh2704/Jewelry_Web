@@ -30,6 +30,7 @@ export function setupHeader() {
   ) as HTMLElement | null;
 
   if (menuList) {
+    menuList.innerHTML = "";
     menuItems.forEach((item) => {
       const listItem = document.createElement("li");
       const link = document.createElement("a");

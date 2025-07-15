@@ -1,5 +1,6 @@
 import type { ProductItem } from "../../Data/ProductData";
 import "./ProductCard.scss";
+import { addToCart as addToCartCount } from "../Card/Card";
 
 export function createProductCardHtml(product: ProductItem): string {
   let badgeHtml = "";
@@ -37,7 +38,9 @@ export function createProductCardHtml(product: ProductItem): string {
             </div>
             <p class="text">Xem</p>
           </div>
-          <div class="Production__card-select-more">
+          <div class="Production__card-select-more" data-product-id="${
+            product.id
+          }">
             <div class="icon">
               ${CartLine()}
             </div>
@@ -70,6 +73,36 @@ export function deleteBadge() {
 export function convertPriceToString(price: number): string {
   return price.toLocaleString("vi-VN") + " đ";
 }
+
+export function addToCart() {
+  const addToCartButtons = document.querySelectorAll(
+    ".Production__card-select-more"
+  ) as NodeListOf<HTMLElement>;
+
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const button = event.currentTarget as HTMLElement;
+      const productId = button.dataset.productId;
+
+      if (productId) {
+        const id = parseInt(productId);
+        addToCartCount(id);
+      }
+    });
+  });
+}
+
+// function handleAddToCart(event: Event) {
+//   event.preventDefault();
+//   const button = event.currentTarget as HTMLElement;
+//   const productId = button.dataset.productId;
+
+//   if (productId) {
+//     const id = parseInt(productId);
+//     addToCartCount(id);
+//   }
+// }
 
 const CartLine = () => `
   <svg
