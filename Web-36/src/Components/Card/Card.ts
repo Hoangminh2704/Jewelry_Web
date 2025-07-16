@@ -1,5 +1,5 @@
 import "./Card.scss";
-import { products } from "../../Data/ProductData";
+import type { ProductItem } from "../../Data/ProductDataType.ts";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import {
@@ -7,7 +7,21 @@ import {
   linkToProductDetail,
   addToCart as addToCartFromProductCard,
 } from "../ProductCard/ProductCard.ts";
+let products: ProductItem[] = [];
 
+async function loadProducts(): Promise<ProductItem[]> {
+  try {
+    const response = await fetch("../../Data/ProductData.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const productsData = await response.json();
+    return productsData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 function setupHeader() {
   const menuItems = [
     { label: "Trang chủ", href: "/src/Components/Home/Home.html" },
@@ -71,7 +85,10 @@ function setupHeader() {
   document.addEventListener("click", handleClickOutside);
 }
 
-function setupNewProductsSection() {
+async function setupNewProductsSection() {
+  if (products.length === 0) {
+    products = await loadProducts();
+  }
   const addProductNewCard = document.querySelector(".NewProduct__content");
   if (addProductNewCard) {
     const newProductCard = products.filter((p) => p.isNew === true).slice(0, 4);
@@ -194,7 +211,10 @@ function initCart(): void {
   updateCartDisplay();
   console.log(cart);
 }
-function renderCartItems(): void {
+async function renderCartItems(): Promise<void> {
+  if (products.length === 0) {
+    products = await loadProducts();
+  }
   const cartContainer = document.querySelector(
     ".Card__item-body"
   ) as HTMLElement;
@@ -309,44 +329,47 @@ function cartAction() {
       }
     });
   });
-  removeAll.addEventListener("click", (event) => {
-    event.preventDefault();
-    clearCart();
-    renderCartItems();
-    updateCartOverall(0, 0);
-    cartAction();
-  });
+  if (removeAll) {
+    removeAll.addEventListener("click", async (event) => {
+      event.preventDefault();
+      clearCart();
+      await renderCartItems();
+      updateCartOverall(0, 0);
+      cartAction();
+    });
+  }
+
   minusButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
+    button.addEventListener("click", async (event) => {
       event.preventDefault();
       const productId = parseInt(button.dataset.productId || "0");
       if (productId) {
         removeFromCart(productId);
-        renderCartItems();
+        await renderCartItems();
         updateCartOverall(0, 0);
         cartAction();
       }
     });
   });
   plusButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
+    button.addEventListener("click", async (event) => {
       event.preventDefault();
       const productId = parseInt(button.dataset.productId || "0");
       if (productId) {
         addFromCart(productId);
-        renderCartItems();
+        await renderCartItems();
         updateCartOverall(0, 0);
         cartAction();
       }
     });
   });
   removeButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
+    button.addEventListener("click", async (event) => {
       event.preventDefault();
       const productId = parseInt(button.dataset.productId || "0");
       if (productId) {
         removeItemFromCart(productId);
-        renderCartItems();
+        await renderCartItems();
         updateCartOverall(0, 0);
         cartAction();
       }
@@ -362,29 +385,52 @@ function updateCheckboxStatus(productId: number, isChecked: boolean): void {
   }
 }
 function updateCartOverall(discount: number, shipping: number) {
-  initCart();
-  const totalItem = document.querySelector(".Card__total-value") as HTMLElement;
-  const totalPrice = document.querySelector(
-    ".Card__price-value"
-  ) as HTMLElement;
-  const totaldiscount = document.querySelector(
-    ".Card__discount-value"
-  ) as HTMLElement;
+  // initCart();
+  if (!window.location.pathname.includes("Card.html")) {
+    return;
+  }
+
+  const totalItem = document.querySelector(".Card__total-value");
+  const totalPrice = document.querySelector(".Card__price-value");
+  const totaldiscount = document.querySelector(".Card__discount-value");
   const totalAfterDiscount = document.querySelector(
     ".Card__total-after-discount-value"
-  ) as HTMLElement;
-  const totalShip = document.querySelector(
-    ".Card__shipping-value"
-  ) as HTMLElement;
-  const totalOverall = document.querySelector(
-    ".Card__total-price-value"
-  ) as HTMLElement;
-  const totalItemHeader = document.querySelector(
-    ".Card__title-count-number"
-  ) as HTMLElement;
+  );
+  const totalShip = document.querySelector(".Card__shipping-value");
+  const totalOverall = document.querySelector(".Card__total-price-value");
+  const totalItemHeader = document.querySelector(".Card__title-count-number");
   const isCheck = document.querySelectorAll(
     ".Card__item-checkbox"
   ) as NodeListOf<HTMLInputElement>;
+
+  if (!totalItem) {
+    console.error("Card__total-value");
+    return;
+  }
+  if (!totalPrice) {
+    console.error("Card__price-value");
+    return;
+  }
+  if (!totaldiscount) {
+    console.error("Card__discount-value");
+    return;
+  }
+  if (!totalAfterDiscount) {
+    console.error("Card__total-after-discount-value");
+    return;
+  }
+  if (!totalShip) {
+    console.error("Card__shipping-value");
+    return;
+  }
+  if (!totalOverall) {
+    console.error("Card__total-price-value");
+    return;
+  }
+  if (!totalItemHeader) {
+    console.error("Card__title-count-number");
+    return;
+  }
 
   isCheck.forEach((checkbox) => {
     const productId = parseInt(checkbox.dataset.productId || "0");
@@ -401,17 +447,7 @@ function updateCartOverall(discount: number, shipping: number) {
     }
     return acc;
   }, 0);
-  if (
-    !totalItem ||
-    !totalPrice ||
-    !totaldiscount ||
-    !totalAfterDiscount ||
-    !totalShip ||
-    !totalOverall
-  ) {
-    console.error("error");
-    return;
-  }
+
   totalItem.innerHTML = getCartCount().toString();
   totalItemHeader.innerHTML = getCartCount().toString();
   totalPrice.innerHTML = `${total.toLocaleString("vi-VN")} đ`;
@@ -421,11 +457,11 @@ function updateCartOverall(discount: number, shipping: number) {
     (total * discount) / 100
   ).toLocaleString("vi-VN")} đ`;
   totalShip.innerHTML = `${shipping.toLocaleString("vi-VN")} đ`;
-  totalOverall.innerHTML = (
+  totalOverall.innerHTML = `${(
     total -
     (total * discount) / 100 +
     shipping
-  ).toLocaleString("vi-VN");
+  ).toLocaleString("vi-VN")} đ`;
 }
 
 export {
@@ -437,12 +473,15 @@ export {
   initCart,
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  products = await loadProducts();
+  console.log("Products loaded:", products.length);
+
   setupHeader();
-  setupNewProductsSection();
+  await setupNewProductsSection();
   setupEventListeners();
-  initCart();
-  renderCartItems();
+  // initCart();
+  await renderCartItems();
   updateCartOverall(0, 0);
   cartAction();
 });

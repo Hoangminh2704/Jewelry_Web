@@ -6,8 +6,22 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { initCart } from "../Card/Card";
 import { addToCart } from "../ProductCard/ProductCard";
+import type { ProductItem } from "../../Data/ProductDataType.ts";
 
-import { products } from "../../Data/ProductData.ts";
+let products: ProductItem[] = [];
+async function loadProducts(): Promise<ProductItem[]> {
+  try {
+    const response = await fetch("../../Data/ProductData.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const productsData = await response.json();
+    return productsData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 import {
   createProductCardHtml,
   linkToProductDetail,
@@ -88,7 +102,8 @@ function setupMainSlider() {
   });
 }
 
-function setupFeaturedProducts() {
+async function setupFeaturedProducts() {
+  products = await loadProducts();
   const topProductContainer = document.getElementById("top-product-container");
   const otherProductsContainer = document.getElementById(
     "other-products-container"
@@ -171,10 +186,12 @@ function setupEventListeners() {
   linkToProductDetail();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  products = await loadProducts();
+  console.log("Products loaded:", products.length);
   setupHeader();
   setupMainSlider();
-  setupFeaturedProducts();
+  await setupFeaturedProducts();
   setupTestimonials();
   setupEventListeners();
   initCart();

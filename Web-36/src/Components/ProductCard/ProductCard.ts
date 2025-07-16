@@ -1,4 +1,4 @@
-import type { ProductItem } from "../../Data/ProductData";
+import type { ProductItem } from "../../Data/ProductDataType";
 import "./ProductCard.scss";
 import { addToCart as addToCartCount } from "../Card/Card";
 

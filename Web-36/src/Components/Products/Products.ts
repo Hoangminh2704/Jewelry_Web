@@ -5,12 +5,26 @@ import {
   addToCart,
   deleteBadge,
 } from "../ProductCard/ProductCard";
-import { products } from "../../Data/ProductData";
+import type { ProductItem } from "../../Data/ProductDataType.ts";
 import { initCart } from "../Card/Card";
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+let products: ProductItem[] = [];
 
+async function loadProducts(): Promise<ProductItem[]> {
+  try {
+    const response = await fetch("../../Data/ProductData.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const productsData = await response.json();
+    return productsData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 function setupHeader() {
   const menuItems = [
     { label: "Trang chủ", href: "/src/Components/Home/Home.html" },
@@ -150,7 +164,10 @@ function getCurrentFilter(): FilterOptions {
   console.log("DoubleCheck", { type, minPrice, maxPrice });
   return { type, minPrice, maxPrice, sortBy };
 }
-function getProductsByFilter(options: FilterOptions) {
+async function getProductsByFilter(options: FilterOptions) {
+  if (products.length === 0) {
+    products = await loadProducts();
+  }
   const result = [];
   for (let i = 0; i < products.length; i++) {
     const currentProducts = products[i];
@@ -184,30 +201,19 @@ function getProductsByFilter(options: FilterOptions) {
   }
   return result;
 }
-const testType = getProductsByFilter({
-  type: "Earring",
-  minPrice: null,
-  maxPrice: null,
-});
-console.log("checkType", testType);
-function totalPagesbyFilter(options: FilterOptions) {
-  const filteredProducts = getProductsByFilter(options);
+
+async function totalPagesbyFilter(options: FilterOptions) {
+  const filteredProducts = await getProductsByFilter(options);
   return Math.ceil(filteredProducts.length / getProductsPerPage());
 }
-const checkTotal = totalPagesbyFilter({
-  type: "Earring",
-  minPrice: 8000000,
-  maxPrice: null,
-});
-console.log(checkTotal);
 
-function renderProductsByFilter(page: number, options?: FilterOptions) {
+async function renderProductsByFilter(page: number, options?: FilterOptions) {
   const productContainer = document.querySelector(
     ".products-grid"
   ) as HTMLElement;
   if (!productContainer) return;
   const filterOptions = options || DefaultFilter;
-  const filteredProducts = getProductsByFilter(filterOptions);
+  const filteredProducts = await getProductsByFilter(filterOptions);
   console.log(filteredProducts);
   const countProducts = getProductsPerPage();
   const startIndex = (page - 1) * countProducts;
@@ -224,13 +230,13 @@ function renderProductsByFilter(page: number, options?: FilterOptions) {
   }, 100);
   console.log(productContainer);
 }
-function updatePagination(options: FilterOptions) {
+async function updatePagination(options: FilterOptions) {
   const paginationContainer = document.querySelector(
     ".products-pagination-current"
   ) as HTMLElement;
   if (!paginationContainer) return;
   DefaultFilter = { ...options };
-  let totalPage = totalPagesbyFilter(options);
+  let totalPage = await totalPagesbyFilter(options);
   if (totalPage < 1) {
     totalPage = 1;
   }
@@ -244,10 +250,11 @@ function updatePagination(options: FilterOptions) {
     ".products-pagination-link"
   ) as NodeListOf<HTMLElement>;
   paginationLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
+    link.addEventListener("click", async (event) => {
+      // Thêm async
       const target = event.currentTarget as HTMLElement;
       const page = parseInt(target.dataset.pageProducts || "1");
-      renderProductsByFilter(page, DefaultFilter);
+      await renderProductsByFilter(page, DefaultFilter); // Thêm await
       paginationLinks.forEach((l) => {
         l.classList.remove("active");
       });
@@ -257,13 +264,13 @@ function updatePagination(options: FilterOptions) {
   if (paginationLinks.length > 0) {
     paginationLinks[0].classList.add("active");
   }
-  renderProductsByFilter(1, options);
+  await renderProductsByFilter(1, options); // Thêm await
 }
-function applyFilters() {
+async function applyFilters() {
   const options = getCurrentFilter();
-  updatePagination(options);
+  await updatePagination(options);
 }
-function renderProduct() {
+async function renderProduct() {
   const Necklet = document.querySelector(
     ".Select__filter-Necklet"
   ) as HTMLInputElement;
@@ -273,29 +280,29 @@ function renderProduct() {
   const Chain = document.querySelector(
     ".Select__filter-Chain"
   ) as HTMLInputElement;
-  updatePagination({ type: "", minPrice: null, maxPrice: null });
-  Necklet.addEventListener("click", () => {
+  await updatePagination({ type: "", minPrice: null, maxPrice: null });
+  Necklet.addEventListener("click", async () => {
     if (Necklet.checked) {
       Earring.checked = false;
       Chain.checked = false;
     }
-    applyFilters();
+    await applyFilters();
   });
-  Earring.addEventListener("click", () => {
+  Earring.addEventListener("click", async () => {
     if (Earring.checked) {
       Necklet.checked = false;
       Chain.checked = false;
     }
     console.log("Current", getCurrentFilter());
-    applyFilters();
+    await applyFilters();
   });
 
-  Chain.addEventListener("click", () => {
+  Chain.addEventListener("click", async () => {
     if (Chain.checked) {
       Necklet.checked = false;
       Earring.checked = false;
     }
-    applyFilters();
+    await applyFilters();
   });
 }
 function updatePriceFilter() {
@@ -307,7 +314,7 @@ function updatePriceFilter() {
   ) as HTMLInputElement;
   const buttonActive = document.querySelector(".Select__filter-search");
   if (!buttonActive) return;
-  buttonActive.addEventListener("click", (event) => {
+  buttonActive.addEventListener("click", async (event) => {
     console.log("click button search");
     event.preventDefault();
     const fromValue = PriceFrom?.value;
@@ -321,10 +328,11 @@ function updatePriceFilter() {
       }
     }
     console.log("Filter after price: ", getCurrentFilter());
-    applyFilters();
+    await applyFilters();
   });
 }
-function updatePaginationArrow() {
+async function updatePaginationArrow() {
+  // Thêm async
   const prev = document.querySelector(
     ".products-pagination-prev"
   ) as HTMLElement;
@@ -332,7 +340,9 @@ function updatePaginationArrow() {
     ".products-pagination-next"
   ) as HTMLElement;
   if (!prev && !next) return;
-  prev.addEventListener("click", () => {
+
+  prev.addEventListener("click", async () => {
+    // Thêm async
     const activeLink = document.querySelector(
       ".products-pagination-link.active"
     ) as HTMLElement;
@@ -340,7 +350,7 @@ function updatePaginationArrow() {
       const currentPage = parseInt(activeLink.dataset.pageProducts || "1");
       if (currentPage > 1) {
         const prevPage = currentPage - 1;
-        renderProductsByFilter(prevPage, DefaultFilter);
+        await renderProductsByFilter(prevPage, DefaultFilter); // Thêm await
         const paginationLinks = document.querySelectorAll(
           ".products-pagination-link"
         ) as NodeListOf<HTMLElement>;
@@ -354,16 +364,17 @@ function updatePaginationArrow() {
       }
     }
   });
-  next.addEventListener("click", () => {
+
+  next.addEventListener("click", async () => {
     const activeLink = document.querySelector(
       ".products-pagination-link.active"
     ) as HTMLElement;
     if (activeLink) {
       const currentPage = parseInt(activeLink.dataset.pageProducts || "1");
-      const total = totalPagesbyFilter(DefaultFilter);
+      const total = await totalPagesbyFilter(DefaultFilter); // Thêm await
       if (currentPage < total) {
         const nextPage = currentPage + 1;
-        renderProductsByFilter(nextPage, DefaultFilter);
+        await renderProductsByFilter(nextPage, DefaultFilter);
         const paginationLinks = document.querySelectorAll(
           ".products-pagination-link"
         ) as NodeListOf<HTMLElement>;
@@ -377,10 +388,12 @@ function updatePaginationArrow() {
       }
     }
   });
+
   const Links = document.querySelectorAll(
     ".products-pagination-link"
   ) as NodeListOf<HTMLElement>;
   if (Links) {
+    const totalPages = await totalPagesbyFilter(DefaultFilter); // Thêm await
     Links.forEach((link) => {
       if (
         link.classList.contains("active") &&
@@ -389,7 +402,7 @@ function updatePaginationArrow() {
         console.log("Disable prev");
       } else if (
         link.classList.contains("active") &&
-        link.dataset.pageProducts === `${totalPagesbyFilter(DefaultFilter)}`
+        link.dataset.pageProducts === `${totalPages}` // Sửa dòng này
       ) {
         console.log("Disable next");
       }
@@ -447,16 +460,16 @@ function setupSort() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  products = await loadProducts();
+  console.log("Products loaded:", products.length);
+
   setupHeader();
   setupEventListeners();
-  // getCurrentFilter();
-
   updatePriceFilter();
-  // applyFilters();
-  renderProduct();
-  updatePaginationArrow();
-  renderProductsByFilter(1, { type: "", minPrice: null, maxPrice: null });
+  await renderProduct(); // Thêm await
+  await updatePaginationArrow();
+  await renderProductsByFilter(1, { type: "", minPrice: null, maxPrice: null }); // Thêm await
   setupSort();
   initCart();
 });

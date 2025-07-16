@@ -1,12 +1,26 @@
 import "./ProductionDetail.scss";
-import { products } from "../../Data/ProductData";
+import type { ProductItem } from "../../Data/ProductDataType.ts";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import {
   createProductCardHtml,
   linkToProductDetail,
 } from "../ProductCard/ProductCard.ts";
+let products: ProductItem[] = [];
 
+async function loadProducts(): Promise<ProductItem[]> {
+  try {
+    const response = await fetch("../../Data/ProductData.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const productsData = await response.json();
+    return productsData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 export function setupHeader() {
   const menuItems = [
     { label: "Trang chủ", href: "/src/Components/Home/Home.html" },
@@ -95,7 +109,8 @@ export function setupLinkToCart() {
   linkToProductDetail();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  products = await loadProducts();
   setupHeader();
   setupNewProductsSection();
   setupLinkToCart();

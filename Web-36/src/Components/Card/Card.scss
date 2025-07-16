@@ -836,6 +836,7 @@ body {
         .Card__item-header-delete {
           @include fonts.body-1;
           color: var(--theme-primary-1);
+          cursor: pointer;
         }
       }
       .Card__item-body {
