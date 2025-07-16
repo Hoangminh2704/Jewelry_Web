@@ -92,6 +92,9 @@ body {
 
 .header {
   width: 100%;
+  // position: fixed;
+  // z-index: 1000;
+  // background-color: var(--neutral-background-white);
 
   @include xl {
     max-width: 1280px;
@@ -817,6 +820,9 @@ body {
           gap: 12px;
           flex-wrap: wrap;
         }
+        .Select__filter-more {
+          display: none;
+        }
         .Select__filter-item {
           box-sizing: border-box;
           padding: 12px;
@@ -825,6 +831,27 @@ body {
           align-items: center;
           @include fonts.body-1;
           color: var(--neutral-text-900);
+          .Select__filter-arrow {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+            .Select__filter-arrow-icon {
+              cursor: pointer;
+              &.active {
+                transform: rotate(180deg);
+                transition: transform 0.3s ease;
+              }
+              // &:active {
+              //   transform: rotate(180deg);
+              //   transition: transform 0.3s ease;
+              // }
+            }
+          }
           input {
             height: 18px;
             width: 18px;
@@ -933,9 +960,14 @@ body {
         box-sizing: border-box;
         @include fonts.body-1;
         color: var(--neutral-text-900);
+        cursor: pointer;
         .Select__product-arrow {
           width: 24px;
           height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
         }
       }
       .Select__product-sort-overall {
@@ -966,6 +998,9 @@ body {
     }
 
     .Select__product-list-container {
+      .Select__product-list-empty {
+        display: none;
+      }
       width: 100%;
       box-sizing: border-box;
       display: flex;
@@ -975,6 +1010,9 @@ body {
       row-gap: 16px;
       align-items: center;
       margin: 0 auto;
+      &.non-active {
+        display: none;
+      }
       .products-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

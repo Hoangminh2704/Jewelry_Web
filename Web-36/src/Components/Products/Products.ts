@@ -168,6 +168,13 @@ async function getProductsByFilter(options: FilterOptions) {
   if (products.length === 0) {
     products = await loadProducts();
   }
+  const hiddenProductList = document.querySelector(
+    ".Select__product-list-container"
+  ) as HTMLElement;
+  const hiddenDiv = document.querySelector(
+    ".Select__product-list-empty"
+  ) as HTMLElement;
+  if (!hiddenProductList && !hiddenDiv) return [];
   const result = [];
   for (let i = 0; i < products.length; i++) {
     const currentProducts = products[i];
@@ -198,6 +205,14 @@ async function getProductsByFilter(options: FilterOptions) {
         result.sort((a, b) => b.price - a.price);
       }
     }
+  }
+  console.log("result", result);
+  if (result.length === 0) {
+    hiddenProductList.classList.add("non-active");
+    hiddenDiv.style.display = "inline-block";
+  } else {
+    hiddenProductList.classList.remove("non-active");
+    hiddenDiv.style.display = "none";
   }
   return result;
 }
@@ -412,7 +427,7 @@ async function updatePaginationArrow() {
 }
 function setupSort() {
   const sortSelect = document.querySelector(
-    ".Select__product-arrow"
+    ".Select__product-action"
   ) as HTMLSelectElement;
   const sortOptions = document.querySelector(
     ".Select__product-sort-overall"
@@ -459,6 +474,23 @@ function setupSort() {
     applyFilters();
   });
 }
+function moreOptions() {
+  const moreOptionsArrow = document.querySelector(
+    ".Select__filter-arrow-icon"
+  ) as HTMLElement;
+  const moreOptions = document.querySelector(
+    ".Select__filter-more"
+  ) as HTMLElement;
+  if (!moreOptionsArrow || !moreOptions) return;
+  moreOptionsArrow.addEventListener("click", () => {
+    moreOptionsArrow.classList.toggle("active");
+    if (moreOptionsArrow.classList.contains("active")) {
+      moreOptions.style.display = "block";
+    } else {
+      moreOptions.style.display = "none";
+    }
+  });
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   products = await loadProducts();
@@ -467,9 +499,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupHeader();
   setupEventListeners();
   updatePriceFilter();
-  await renderProduct(); // Thêm await
+  await renderProduct();
   await updatePaginationArrow();
-  await renderProductsByFilter(1, { type: "", minPrice: null, maxPrice: null }); // Thêm await
+  await renderProductsByFilter(1, { type: "", minPrice: null, maxPrice: null });
   setupSort();
   initCart();
+  moreOptions();
 });
