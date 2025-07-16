@@ -120,6 +120,8 @@ export let cart: Array<{
   productId: number;
   quantity: number;
   isCheck: boolean;
+  price: number;
+  size: string[];
 }> = [];
 const CART_STORAGE_KEY = "cart";
 
@@ -159,6 +161,8 @@ export function addToCart(productId: number) {
       productId: productId,
       quantity: 1,
       isCheck: true,
+      price: products.find((p) => p.id === productId)?.price || 0,
+      size: products.find((p) => p.id === productId)?.Size || [],
     });
   }
   saveToStorage();
@@ -260,13 +264,7 @@ async function renderCartItems(): Promise<void> {
                         class="Card__item-content-size-select"
                       >
                         <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="3">4</option>
-                        <option value="3">5</option>
-                        <option value="3">6</option>
-                        <option value="3">7</option>
-                        <option value="3">8</option>
+                        
                       </select>
                       ${arrowSVG()}
                     </div>
@@ -334,7 +332,7 @@ function cartAction() {
       event.preventDefault();
       clearCart();
       await renderCartItems();
-      updateCartOverall(0, 0);
+      updateCartOverall();
       cartAction();
     });
   }
@@ -346,7 +344,7 @@ function cartAction() {
       if (productId) {
         removeFromCart(productId);
         await renderCartItems();
-        updateCartOverall(0, 0);
+        updateCartOverall();
         cartAction();
       }
     });
@@ -358,7 +356,7 @@ function cartAction() {
       if (productId) {
         addFromCart(productId);
         await renderCartItems();
-        updateCartOverall(0, 0);
+        updateCartOverall();
         cartAction();
       }
     });
@@ -370,7 +368,7 @@ function cartAction() {
       if (productId) {
         removeItemFromCart(productId);
         await renderCartItems();
-        updateCartOverall(0, 0);
+        updateCartOverall();
         cartAction();
       }
     });
@@ -381,13 +379,21 @@ function updateCheckboxStatus(productId: number, isChecked: boolean): void {
   if (item) {
     item.isCheck = isChecked;
     saveToStorage();
-    updateCartOverall(0, 0);
+    updateCartOverall();
   }
 }
-function updateCartOverall(discount: number, shipping: number) {
-  // initCart();
+function updateCartOverall() {
   if (!window.location.pathname.includes("Card.html")) {
     return;
+  }
+
+  const cartCount = getCartCount();
+  let discount = 0;
+  let shipping = 0;
+
+  if (cartCount > 0) {
+    discount = 10;
+    shipping = 25000;
   }
 
   const totalItem = document.querySelector(".Card__total-value");
@@ -403,32 +409,16 @@ function updateCartOverall(discount: number, shipping: number) {
     ".Card__item-checkbox"
   ) as NodeListOf<HTMLInputElement>;
 
-  if (!totalItem) {
-    console.error("Card__total-value");
-    return;
-  }
-  if (!totalPrice) {
-    console.error("Card__price-value");
-    return;
-  }
-  if (!totaldiscount) {
-    console.error("Card__discount-value");
-    return;
-  }
-  if (!totalAfterDiscount) {
-    console.error("Card__total-after-discount-value");
-    return;
-  }
-  if (!totalShip) {
-    console.error("Card__shipping-value");
-    return;
-  }
-  if (!totalOverall) {
-    console.error("Card__total-price-value");
-    return;
-  }
-  if (!totalItemHeader) {
-    console.error("Card__title-count-number");
+  if (
+    !totalItem ||
+    !totalPrice ||
+    !totaldiscount ||
+    !totalAfterDiscount ||
+    !totalShip ||
+    !totalOverall ||
+    !totalItemHeader
+  ) {
+    console.log("Cart elements not found");
     return;
   }
 
@@ -448,10 +438,10 @@ function updateCartOverall(discount: number, shipping: number) {
     return acc;
   }, 0);
 
-  totalItem.innerHTML = getCartCount().toString();
-  totalItemHeader.innerHTML = getCartCount().toString();
+  totalItem.innerHTML = cartCount.toString();
+  totalItemHeader.innerHTML = cartCount.toString();
   totalPrice.innerHTML = `${total.toLocaleString("vi-VN")} đ`;
-  totaldiscount.innerHTML = `${discount} %`;
+  totaldiscount.innerHTML = `${discount}%`;
   totalAfterDiscount.innerHTML = `${(
     total -
     (total * discount) / 100
@@ -482,7 +472,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupEventListeners();
   // initCart();
   await renderCartItems();
-  updateCartOverall(0, 0);
+  updateCartOverall();
   cartAction();
 });
 
