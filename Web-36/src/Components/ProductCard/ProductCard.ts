@@ -1,7 +1,21 @@
 import type { ProductItem } from "../../Data/ProductDataType";
 import "./ProductCard.scss";
 import { addToCart as addToCartCount } from "../Card/Card";
+let products: ProductItem[] = [];
 
+async function loadProducts(): Promise<ProductItem[]> {
+  try {
+    const response = await fetch("../../Data/ProductData.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const productsData = await response.json();
+    return productsData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 export function createProductCardHtml(product: ProductItem): string {
   let badgeHtml = "";
   if (product.isSale) {
@@ -74,7 +88,11 @@ export function convertPriceToString(price: number): string {
   return price.toLocaleString("vi-VN") + " đ";
 }
 
-export function addToCart() {
+export async function addToCart() {
+  if (products.length === 0) {
+    products = await loadProducts();
+  }
+
   const addToCartButtons = document.querySelectorAll(
     ".Production__card-select-more"
   ) as NodeListOf<HTMLElement>;
@@ -88,22 +106,89 @@ export function addToCart() {
       if (productId) {
         const id = parseInt(productId);
         addToCartCount(id);
+        showAddToCartNotification(id);
       }
     });
   });
 }
 
-// function handleAddToCart(event: Event) {
-//   event.preventDefault();
-//   const button = event.currentTarget as HTMLElement;
-//   const productId = button.dataset.productId;
+function createNotificationHtml(
+  product: ProductItem,
+  quantity: number = 1
+): string {
+  return `
+    <div class="add-to-cart-notification" id="cartNotification" data-product-id="${
+      product.id
+    }">
+      <div class="notification-content">
+        <div class="notification-header">
+          <h3 class="notification-title">Đã thêm vào giỏ hàng!</h3>
+        </div>
+        <div class="notification-line"></div>
+        
+        <div class="notification-body">
+          <div class="product-info">
+            <img src="${product.image}" alt="${
+    product.name
+  }" class="product-image">
+            <div class="product-details">
+              <h1 class="product-name">${product.name}</h1>
+              <div class="product-price">${convertPriceToString(
+                product.price
+              )}</div>
+              <div class="product-quantity">Số lượng: ${quantity}</div>
+            </div>
+          </div>
+        </div>
+        <div class="notification-actions">
+          <button class="btn-view-cart">Xem giỏ hàng</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
-//   if (productId) {
-//     const id = parseInt(productId);
-//     addToCartCount(id);
-//   }
-// }
+function showAddToCartNotification(productId: number) {
+  const product = products.find((p) => p.id === productId);
+  if (!product) return;
+  const notificationHtml = createNotificationHtml(product);
+  const existingNotification = document.getElementById("cartNotification");
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+  document.body.insertAdjacentHTML("beforeend", notificationHtml);
 
+  setTimeout(() => {
+    const notification = document.getElementById("cartNotification");
+    if (notification) {
+      notification.classList.add("show");
+
+      const viewCartBtn = notification.querySelector(".btn-view-cart");
+      if (viewCartBtn) {
+        viewCartBtn.addEventListener("click", viewCart);
+      }
+    }
+  }, 10);
+
+  setTimeout(() => {
+    const notification = document.getElementById("cartNotification");
+    if (notification) {
+      notification.classList.add("hide");
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
+    }
+  }, 5000);
+}
+
+function viewCart() {
+  window.location.href = "/src/Components/Card/Card.html";
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  products = await loadProducts();
+  await addToCart();
+});
 const CartLine = () => `
   <svg
     xmlns="http://www.w3.org/2000/svg"

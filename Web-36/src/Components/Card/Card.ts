@@ -332,6 +332,7 @@ function cartAction() {
       event.preventDefault();
       clearCart();
       await renderCartItems();
+      CartEmpty();
       updateCartOverall();
       cartAction();
     });
@@ -344,6 +345,7 @@ function cartAction() {
       if (productId) {
         removeFromCart(productId);
         await renderCartItems();
+        CartEmpty();
         updateCartOverall();
         cartAction();
       }
@@ -356,6 +358,7 @@ function cartAction() {
       if (productId) {
         addFromCart(productId);
         await renderCartItems();
+        CartEmpty();
         updateCartOverall();
         cartAction();
       }
@@ -368,6 +371,7 @@ function cartAction() {
       if (productId) {
         removeItemFromCart(productId);
         await renderCartItems();
+        CartEmpty();
         updateCartOverall();
         cartAction();
       }
@@ -453,6 +457,21 @@ function updateCartOverall() {
     shipping
   ).toLocaleString("vi-VN")} đ`;
 }
+function checkCartEmpty(): boolean {
+  return cart.length === 0;
+}
+function CartEmpty() {
+  const cartContainer = document.querySelector(".Card") as HTMLElement;
+  const cartEmpty = document.querySelector(".Card__empty") as HTMLElement;
+  if (!cartContainer || !cartEmpty) return;
+  if (checkCartEmpty()) {
+    cartContainer.style.display = "none";
+    cartEmpty.style.display = "flex";
+  } else {
+    cartContainer.style.display = "flex";
+    cartEmpty.style.display = "none";
+  }
+}
 
 export {
   removeFromCart,
@@ -474,6 +493,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await renderCartItems();
   updateCartOverall();
   cartAction();
+  CartEmpty();
 });
 
 const arrowSVG = () => {

@@ -149,3 +149,119 @@ body {
     }
   }
 }
+// Thêm vào cuối file
+.add-to-cart-notification {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 10000;
+  max-width: 450px;
+  // width: 100%;
+  background: var(--neutral-background-white);
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &.hide {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .notification-content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .notification-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .notification-title {
+      flex: 1;
+      margin: 0;
+      @include fonts.body-2-semibold;
+    }
+  }
+  .notification-line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--neutral-border-200);
+  }
+
+  .notification-body {
+    .product-info {
+      display: flex;
+      gap: 12px;
+
+      .product-image {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border-radius: 3px;
+        background-color: var(--neutral-background-50);
+      }
+
+      .product-details {
+        // flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        .product-name {
+          @include fonts.caption-2-regular;
+          color: var(--neutral-text-900);
+          padding: 0;
+          margin: 0;
+        }
+
+        .product-price {
+          @include fonts.caption-1-regular;
+          color: var(--theme-secondary-1);
+        }
+
+        .product-quantity {
+          @include fonts.caption-2-regular;
+          color: var(--neutral-text-900);
+        }
+      }
+    }
+  }
+
+  .notification-actions {
+    display: flex;
+
+    .btn-view-cart {
+      flex: 1;
+      padding: 8px 16px;
+      border-radius: 8px;
+      @include fonts.body-2-regular;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid var(--neutral-border-200);
+      background: var(--neutral-background-white);
+      color: var(--neutral-text-900);
+
+      &:hover {
+        background-color: var(--neutral-background-100);
+      }
+    }
+  }
+}
+
+@include xs {
+  .add-to-cart-notification {
+    top: 80px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}

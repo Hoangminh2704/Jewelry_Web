@@ -118,10 +118,12 @@ async function setupFeaturedProducts() {
     if (topProductPriceContainer && topProductImage) {
       topProductPriceContainer.innerHTML = `
         <div class="Name">${topProduct.name}</div>
-        <div class="Price">${topProduct.price}</div>
+        <div class="Price">${topProduct.price.toLocaleString("vi-VN")} đ</div>
         <div class="Discount">
-          <span class="Discount-old">${topProduct.oldPrice} </span>
-          <span class="Discount-percent">${topProduct.discount}</span>
+          <span class="Discount-old">${topProduct.oldPrice.toLocaleString(
+            "vi-VN"
+          )} đ</span>
+          <span class="Discount-percent">(${topProduct.discount}%)</span>
         </div>
       `;
       topProductImage.setAttribute("src", topProduct.image);
