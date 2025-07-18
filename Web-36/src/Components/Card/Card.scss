@@ -998,7 +998,7 @@ body {
                   @include fonts.body-1;
                   color: var(--neutral-text-600);
                   appearance: none;
-                  width: 100%;
+                  width: fit-content;
                   padding: 0;
                   margin: 0;
 

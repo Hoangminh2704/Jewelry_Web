@@ -434,7 +434,7 @@
     "Description": "",
     "Material": "Gold",
     "Rating": { "star": 5, "count": 250 },
-    "Size": ["8", "9", "10", "11", "12"]
+    "Size": ["8"]
   },
   {
     "id": 84328327658224,

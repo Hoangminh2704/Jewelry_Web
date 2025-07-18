@@ -122,6 +122,7 @@ export let cart: Array<{
   isCheck: boolean;
   price: number;
   size: string[];
+  sizeSelected: string;
 }> = [];
 const CART_STORAGE_KEY = "cart";
 
@@ -151,8 +152,10 @@ export function getCartCount(): number {
   return totalQuantity;
 }
 
-export function addToCart(productId: number) {
-  const matchingItem = cart.find((item) => item.productId === productId);
+export function addToCart(productId: number, size: string = "0"): void {
+  const matchingItem = cart.find(
+    (item) => item.productId === productId && item.sizeSelected === size
+  );
 
   if (matchingItem) {
     matchingItem.quantity += 1;
@@ -163,6 +166,7 @@ export function addToCart(productId: number) {
       isCheck: true,
       price: products.find((p) => p.id === productId)?.price || 0,
       size: products.find((p) => p.id === productId)?.Size || [],
+      sizeSelected: size,
     });
   }
   saveToStorage();
@@ -205,6 +209,19 @@ function updateCartDisplay(): void {
 function clearCart(): void {
   cart = [];
   saveToStorage();
+}
+function setSizeSelected() {
+  const sizeSelectElements = document.querySelectorAll(
+    ".Card__item-content-size-select"
+  ) as NodeListOf<HTMLSelectElement>;
+
+  sizeSelectElements.forEach((select) => {
+    const productId = parseInt(select.dataset.productId || "0");
+    const matchingItem = cart.find((item) => item.productId === productId);
+    if (matchingItem) {
+      select.value = matchingItem.sizeSelected;
+    }
+  });
 }
 function getCartData(): Array<{ productId: number; quantity: number }> {
   return [...cart];
@@ -262,8 +279,13 @@ async function renderCartItems(): Promise<void> {
                       <select
                         title="Size"
                         class="Card__item-content-size-select"
+                        data-product-id="${item.productId}"
                       >
-                        <option value="1">1</option>
+                        ${item.size
+                          .map(
+                            (size) => `<option value="${size}">${size}</option>`
+                          )
+                          .join("")}
                         
                       </select>
                       ${arrowSVG()}
@@ -300,6 +322,8 @@ async function renderCartItems(): Promise<void> {
     });
   }
 }
+// function setDefaultCartSize() {}
+
 function cartAction() {
   const minusButtons = document.querySelectorAll(
     ".Card__item-content-count-minus"
@@ -316,6 +340,27 @@ function cartAction() {
   const checkboxes = document.querySelectorAll(
     ".Card__item-checkbox"
   ) as NodeListOf<HTMLInputElement>;
+  // const cartSize = document.querySelectorAll(
+  //   ".Card__item-content-size-select"
+  // ) as NodeListOf<HTMLSelectElement>;
+  // console.log(cartSize);
+  // cartSize.forEach((select) => {
+  //   select.addEventListener("change", async () => {
+  //     const productId = parseInt(select.dataset.productId || "0");
+  //     const size = select.value;
+  //     const item = cart.find(
+  //       (item) => item.productId === productId && item.sizeSelected === size
+  //     );
+  //     if (item) {
+  //       item.sizeSelected = size;
+  //       addFromCart(productId);
+  //       await renderCartItems();
+  //       CartEmpty();
+  //       updateCartOverall();
+  //       cartAction();
+  //     }
+  //   });
+  // });
 
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", (event) => {
@@ -494,6 +539,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateCartOverall();
   cartAction();
   CartEmpty();
+  // cartSize();
+  setSizeSelected();
 });
 
 const arrowSVG = () => {

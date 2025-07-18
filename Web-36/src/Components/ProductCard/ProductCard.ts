@@ -105,8 +105,9 @@ export async function addToCart() {
 
       if (productId) {
         const id = parseInt(productId);
-        addToCartCount(id);
-        showAddToCartNotification(id);
+        // addToCartCount(id);
+        // showAddToCartNotification(id);
+        showProductSelector(id);
       }
     });
   });
@@ -114,7 +115,8 @@ export async function addToCart() {
 
 function createNotificationHtml(
   product: ProductItem,
-  quantity: number = 1
+  quantity: number = 1,
+  size: string
 ): string {
   return `
     <div class="add-to-cart-notification" id="cartNotification" data-product-id="${
@@ -136,7 +138,11 @@ function createNotificationHtml(
               <div class="product-price">${convertPriceToString(
                 product.price
               )}</div>
-              <div class="product-quantity">Số lượng: ${quantity}</div>
+              <div class="product-option">
+                <div class="product-size">Size: ${size}</div>
+                <div class="product-quantity">X${quantity}</div>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -148,10 +154,15 @@ function createNotificationHtml(
   `;
 }
 
-function showAddToCartNotification(productId: number) {
+function showAddToCartNotification(
+  productId: number,
+  quantity: number = 1,
+  size: string
+) {
   const product = products.find((p) => p.id === productId);
   if (!product) return;
-  const notificationHtml = createNotificationHtml(product);
+
+  const notificationHtml = createNotificationHtml(product, quantity, size);
   const existingNotification = document.getElementById("cartNotification");
   if (existingNotification) {
     existingNotification.remove();
@@ -184,7 +195,187 @@ function showAddToCartNotification(productId: number) {
 function viewCart() {
   window.location.href = "/src/Components/Card/Card.html";
 }
+function createSelectorHtml(product: ProductItem): string {
+  return `
+        <div class="Product__option">
+        <div class="Product__option-header">Thêm vào giỏ hàng</div>
+        <div class="Product__option-line"></div>
+        <div class="Product__option-item">
+          <img
+            class="Product__option-img"
+            src="${product.image}"
+            alt=""
+          />
 
+          <div class="Product__option-info">
+            <div class="Product__option-name">
+              ${product.name}
+            </div>
+            <div class="Product__option-oldPrice">${convertPriceToString(
+              product.oldPrice
+            )}</div>
+            <div class="Product__option-Price">${convertPriceToString(
+              product.price
+            )}</div>
+          </div>
+          <div class="Product__option-quantity">
+            <div class="Product__option-count">
+              <div class="Product__option-count-label">Số lượng:</div>
+              <div class="Product__option-count-value">
+                <div
+                  class="Product__option-count-value-minus"
+                  data-product-id="${product.id}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                  >
+                    <rect width="26" height="26" fill="white" />
+                    <path
+                      d="M23.4722 13.3611C23.4722 14.1589 22.8255 14.8056 22.0278 14.8056H4.69444C3.8967 14.8056 3.25 14.1589 3.25 13.3611C3.25 12.5634 3.8967 11.9167 4.69444 11.9167H22.0278C22.8255 11.9167 23.4722 12.5634 23.4722 13.3611Z"
+                      fill="#003468"
+                    />
+                  </svg>
+                </div>
+                <div class="Product__option-count-value-number">0</div>
+                <div
+                  class="Product__option-count-value-plus"
+                  data-product-id="${product.id}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                  >
+                    <rect width="26" height="26" fill="white" />
+                    <path
+                      d="M22.0275 14.8056H14.8053V22.0278C14.8053 22.4109 14.6531 22.7783 14.3822 23.0492C14.1114 23.3201 13.744 23.4723 13.3609 23.4723C12.9778 23.4723 12.6104 23.3201 12.3395 23.0492C12.0686 22.7783 11.9164 22.4109 11.9164 22.0278V14.8056H4.6942C4.31111 14.8056 3.94371 14.6534 3.67282 14.3825C3.40194 14.1117 3.24976 13.7443 3.24976 13.3612C3.24976 12.9781 3.40194 12.6107 3.67282 12.3398C3.94371 12.0689 4.31111 11.9167 4.6942 11.9167H11.9164V4.69451C11.9164 4.31142 12.0686 3.94401 12.3395 3.67313C12.6104 3.40224 12.9778 3.25006 13.3609 3.25006C13.744 3.25006 14.1114 3.40224 14.3822 3.67313C14.6531 3.94401 14.8053 4.31142 14.8053 4.69451V11.9167H22.0275C22.4106 11.9167 22.778 12.0689 23.0489 12.3398C23.3198 12.6107 23.472 12.9781 23.472 13.3612C23.472 13.7443 23.3198 14.1117 23.0489 14.3825C22.778 14.6534 22.4106 14.8056 22.0275 14.8056Z"
+                      fill="#003468"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="Product__option-size">
+              <div class="Product__option-size-label">Kích thước:</div>
+              <div class="Product__option-size-value" data-product-id="${
+                product.id
+              }">
+                
+                ${product.Size.map((item) => {
+                  return `<div class="Product__option-size-item">${item}</div>`;
+                }).join("")}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="Product__option-button">
+          <button class="Product__option-button-cancel">Hủy</button>
+          <button class="Product__option-button-add">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+  `;
+}
+function showProductSelector(productId: number) {
+  const product = products.find((p) => p.id === productId);
+  if (!product) return;
+  const existingSelector = document.querySelector(".Product__option");
+  if (existingSelector) {
+    existingSelector.remove();
+  }
+  const selectorHtml = createSelectorHtml(product);
+  document.body.insertAdjacentHTML("beforeend", selectorHtml);
+  setupSelectorEvent(productId);
+}
+
+function setupSelectorEvent(productId: number) {
+  const selector = document.querySelector(".Product__option") as HTMLElement;
+  if (!selector) return;
+  const cancelButton = selector.querySelector(
+    ".Product__option-button-cancel"
+  ) as HTMLButtonElement;
+  if (cancelButton) {
+    cancelButton.addEventListener("click", () => {
+      selector.remove();
+    });
+  }
+  const addButton = selector.querySelector(
+    ".Product__option-button-add"
+  ) as HTMLButtonElement;
+  if (addButton) {
+    addButton.addEventListener("click", () => {
+      const quantity = getSelectedQuantity();
+      const size = getSelectedSize();
+      for (let i = 0; i < quantity; i++) {
+        addToCartCount(productId, size);
+      }
+      showAddToCartNotification(productId, quantity, size);
+      selector.remove();
+    });
+  }
+
+  const minusButton = selector.querySelector(
+    ".Product__option-count-value-minus"
+  ) as HTMLElement;
+  const plusButton = selector.querySelector(
+    ".Product__option-count-value-plus"
+  ) as HTMLElement;
+  const quantityDisplay = selector.querySelector(
+    ".Product__option-count-value-number"
+  ) as HTMLElement;
+
+  let currentQuantity = 1;
+  quantityDisplay.textContent = currentQuantity.toString();
+
+  if (minusButton) {
+    minusButton.addEventListener("click", () => {
+      if (currentQuantity > 1) {
+        currentQuantity--;
+        quantityDisplay.textContent = currentQuantity.toString();
+      }
+    });
+  }
+
+  if (plusButton) {
+    plusButton.addEventListener("click", () => {
+      currentQuantity++;
+      quantityDisplay.textContent = currentQuantity.toString();
+    });
+  }
+
+  const sizeItems = selector.querySelectorAll(
+    ".Product__option-size-item"
+  ) as NodeListOf<HTMLElement>;
+  sizeItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      sizeItems.forEach((i) => i.classList.remove("active"));
+      item.classList.add("active");
+    });
+  });
+
+  if (sizeItems.length > 0) {
+    sizeItems[0].classList.add("active");
+  }
+}
+
+function getSelectedQuantity(): number {
+  const quantityDisplay = document.querySelector(
+    ".Product__option-count-value-number"
+  ) as HTMLElement;
+  return parseInt(quantityDisplay?.textContent || "1");
+}
+
+function getSelectedSize(): string {
+  const activeSize = document.querySelector(
+    ".Product__option-size-item.active"
+  ) as HTMLElement;
+  return activeSize?.textContent || "0";
+}
 document.addEventListener("DOMContentLoaded", async () => {
   products = await loadProducts();
   await addToCart();
