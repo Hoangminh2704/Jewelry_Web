@@ -3,17 +3,14 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
 
-export function setupHeader() {
+function setupHeader() {
   const menuItems = [
     { label: "Trang chủ", href: "/src/Components/Home/Home.html" },
     {
       label: "Sản phẩm",
       href: "/src/Components/Products/Products.html",
     },
-    {
-      label: "Giới thiệu",
-      href: "/src/Components/About/About.html",
-    },
+    { label: "Giới thiệu", href: "/src/Components/About/About.html" },
     {
       label: "Liên hệ",
       href: "/src/Components/Contact/Contact.html",
@@ -25,8 +22,9 @@ export function setupHeader() {
   const hamburgerButtons = document.querySelectorAll(
     ".header-hamberger-mobile"
   ) as NodeListOf<HTMLElement>;
+
   const menu = document.querySelector(
-    ".header--sub-menu.open"
+    ".header--sub-menu"
   ) as HTMLElement | null;
 
   if (menuList) {
@@ -39,7 +37,7 @@ export function setupHeader() {
       link.className = `header--menu-link${item.active ? " active" : ""}`;
 
       link.addEventListener("click", () => {
-        menu?.classList.remove("oppenned");
+        menu?.classList.remove("opened");
         hamburgerButtons.forEach((btn) => btn.classList.remove("is-active"));
       });
       listItem.appendChild(link);
@@ -51,7 +49,7 @@ export function setupHeader() {
     event.preventDefault();
     const button = event.currentTarget as HTMLElement;
     button.classList.toggle("is-active");
-    menu?.classList.toggle("oppenned");
+    menu?.classList.toggle("opened");
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -60,8 +58,9 @@ export function setupHeader() {
     const isClickOnHamburger = Array.from(hamburgerButtons).some((button) =>
       button.contains(target)
     );
+
     if (!isClickInsideMenu && !isClickOnHamburger) {
-      menu?.classList.remove("oppenned");
+      menu?.classList.remove("opened");
       hamburgerButtons.forEach((btn) => btn.classList.remove("is-active"));
     }
   };
@@ -71,7 +70,6 @@ export function setupHeader() {
   );
   document.addEventListener("click", handleClickOutside);
 }
-
 export function setupLinkToCart() {
   const linkToCartPage = document.querySelector(
     ".header--search-cart"

@@ -288,6 +288,8 @@ function showProductSelector(productId: number) {
   if (existingSelector) {
     existingSelector.remove();
   }
+  const backdropHtml = `<div class="product-selector-backdrop"></div>`;
+  document.body.insertAdjacentHTML("beforeend", backdropHtml);
   const selectorHtml = createSelectorHtml(product);
   document.body.insertAdjacentHTML("beforeend", selectorHtml);
   setupSelectorEvent(productId);
@@ -295,13 +297,22 @@ function showProductSelector(productId: number) {
 
 function setupSelectorEvent(productId: number) {
   const selector = document.querySelector(".Product__option") as HTMLElement;
-  if (!selector) return;
+  const body = document.querySelector("body") as HTMLElement;
+  const backdrop = document.querySelector(
+    ".product-selector-backdrop"
+  ) as HTMLElement;
+  if (!selector || !body || !backdrop) return;
+  backdrop.addEventListener("click", () => {
+    selector.remove();
+    backdrop.remove();
+  });
   const cancelButton = selector.querySelector(
     ".Product__option-button-cancel"
   ) as HTMLButtonElement;
   if (cancelButton) {
     cancelButton.addEventListener("click", () => {
       selector.remove();
+      backdrop.remove();
     });
   }
   const addButton = selector.querySelector(
@@ -316,6 +327,7 @@ function setupSelectorEvent(productId: number) {
       }
       showAddToCartNotification(productId, quantity, size);
       selector.remove();
+      backdrop.remove();
     });
   }
 
@@ -376,9 +388,18 @@ function getSelectedSize(): string {
   ) as HTMLElement;
   return activeSize?.textContent || "0";
 }
+function animationClickAddToCart() {
+  const Selector = document.querySelector(".Product__option") as HTMLElement;
+  if (Selector) {
+    console.log("Selector");
+  } else {
+    console.log("Selector not found");
+  }
+}
 document.addEventListener("DOMContentLoaded", async () => {
   products = await loadProducts();
   await addToCart();
+  animationClickAddToCart();
 });
 const CartLine = () => `
   <svg

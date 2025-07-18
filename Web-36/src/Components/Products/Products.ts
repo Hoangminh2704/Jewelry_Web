@@ -41,8 +41,9 @@ function setupHeader() {
   const hamburgerButtons = document.querySelectorAll(
     ".header-hamberger-mobile"
   ) as NodeListOf<HTMLElement>;
+
   const menu = document.querySelector(
-    ".header--sub-menu.open"
+    ".header--sub-menu"
   ) as HTMLElement | null;
 
   if (menuList) {
@@ -55,10 +56,9 @@ function setupHeader() {
       link.className = `header--menu-link${item.active ? " active" : ""}`;
 
       link.addEventListener("click", () => {
-        menu?.classList.remove("oppenned");
+        menu?.classList.remove("opened");
         hamburgerButtons.forEach((btn) => btn.classList.remove("is-active"));
       });
-
       listItem.appendChild(link);
       menuList.appendChild(listItem);
     });
@@ -68,7 +68,7 @@ function setupHeader() {
     event.preventDefault();
     const button = event.currentTarget as HTMLElement;
     button.classList.toggle("is-active");
-    menu?.classList.toggle("oppenned");
+    menu?.classList.toggle("opened");
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -77,8 +77,9 @@ function setupHeader() {
     const isClickOnHamburger = Array.from(hamburgerButtons).some((button) =>
       button.contains(target)
     );
+
     if (!isClickInsideMenu && !isClickOnHamburger) {
-      menu?.classList.remove("oppenned");
+      menu?.classList.remove("opened");
       hamburgerButtons.forEach((btn) => btn.classList.remove("is-active"));
     }
   };
@@ -87,7 +88,6 @@ function setupHeader() {
     btn.addEventListener("click", handleToggle)
   );
   document.addEventListener("click", handleClickOutside);
-  // console.log("header");
 }
 
 function setupEventListeners() {
