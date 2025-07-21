@@ -209,7 +209,7 @@ async function getProductsByFilter(options: FilterOptions) {
   console.log("result", result);
   if (result.length === 0) {
     hiddenProductList.classList.add("non-active");
-    hiddenDiv.style.display = "inline-block";
+    hiddenDiv.style.display = "flex";
   } else {
     hiddenProductList.classList.remove("non-active");
     hiddenDiv.style.display = "none";

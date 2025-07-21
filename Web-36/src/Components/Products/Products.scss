@@ -1013,11 +1013,23 @@ body {
         }
       }
     }
-
-    .Select__product-list-container {
-      .Select__product-list-empty {
-        display: none;
+    .Select__product-list-empty {
+      // display: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 40px;
+      img {
+        width: 200px;
       }
+      p {
+        @include fonts.body-1;
+        color: var(--neutral-text-600);
+        margin: 0;
+      }
+    }
+    .Select__product-list-container {
       width: 100%;
       box-sizing: border-box;
       display: flex;
