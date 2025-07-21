@@ -624,10 +624,13 @@ function updateCartOverall() {
   }
 
   const cartCount = getCartCount();
+  const cartCountCheck = cart.reduce((count, item) => {
+    return item.isCheck ? count + item.quantity : count;
+  }, 0);
   let discount = 0;
   let shipping = 0;
 
-  if (cartCount > 0) {
+  if (cartCountCheck > 0) {
     discount = 10;
     shipping = 25000;
   }
@@ -678,7 +681,7 @@ function updateCartOverall() {
     return acc;
   }, 0);
 
-  totalItem.innerHTML = cartCount.toString();
+  totalItem.innerHTML = cartCountCheck.toString();
   totalItemHeader.innerHTML = cartCount.toString();
   totalPrice.innerHTML = `${total.toLocaleString("vi-VN")} đ`;
   totaldiscount.innerHTML = `${discount}%`;

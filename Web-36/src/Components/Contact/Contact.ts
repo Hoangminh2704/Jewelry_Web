@@ -9,6 +9,7 @@ function setupHeader() {
     {
       label: "Sản phẩm",
       href: "/src/Components/Products/Products.html",
+      active: false,
     },
     { label: "Giới thiệu", href: "/src/Components/About/About.html" },
     {
