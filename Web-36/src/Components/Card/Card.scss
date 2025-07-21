@@ -944,11 +944,15 @@ body {
         @include fonts.body-1;
         color: var(--neutral-background-white);
         opacity: 0.8;
+        text-decoration: none;
+        cursor: pointer;
       }
       &-to {
         margin: 0;
         @include fonts.title-1;
         color: var(--neutral-background-white);
+        cursor: pointer;
+        text-decoration: none;
       }
     }
   }

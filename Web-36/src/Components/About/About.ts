@@ -2,20 +2,43 @@ import "./About.scss";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { linkToProductDetail } from "../ProductCard/ProductCard.ts";
-
+import type { ProductItem } from "../../Data/ProductDataType.ts";
+let products: ProductItem[] = [];
+async function loadProducts(): Promise<ProductItem[]> {
+  try {
+    const response = await fetch("../../Data/ProductData.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const productsData = await response.json();
+    return productsData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 function setupHeader() {
   const menuItems = [
-    { label: "Trang chủ", href: "/src/Components/Home/Home.html" },
+    {
+      label: "Trang chủ",
+      href: "/src/Components/Home/Home.html",
+      active: false,
+    },
     {
       label: "Sản phẩm",
       href: "/src/Components/Products/Products.html",
+      active: false,
     },
     {
       label: "Giới thiệu",
       href: "/src/Components/About/About.html",
       active: true,
     },
-    { label: "Liên hệ", href: "/src/Components/Contact/Contact.html" },
+    {
+      label: "Liên hệ",
+      href: "/src/Components/Contact/Contact.html",
+      active: false,
+    },
   ];
 
   const menuList = document.querySelector(".header--menu");
@@ -85,7 +108,10 @@ export function setupLinkToCart() {
   linkToProductDetail();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  products = await loadProducts();
+  console.log("Products loaded:", products.length);
+
   setupHeader();
   setupLinkToCart();
 });
