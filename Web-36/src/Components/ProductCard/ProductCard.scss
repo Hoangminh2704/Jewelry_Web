@@ -461,15 +461,16 @@ body {
       }
     }
     .Product__option-button-add {
-      background-color: var(--theme-primary-1);
+      background-color: var(--functional-info-400);
       border: none;
       border-radius: 4px;
       padding: 10px 16px;
       @include fonts.body-2-regular;
       color: var(--neutral-background-white);
+      border: none;
       cursor: pointer;
       &:hover {
-        background-color: var(--theme-primary-2);
+        background-color: var(--functional-info-500);
       }
     }
   }

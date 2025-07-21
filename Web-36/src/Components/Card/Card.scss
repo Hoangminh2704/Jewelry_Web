@@ -124,6 +124,7 @@ body {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    position: relative;
 
     .header-hamberger-mobile {
       // display: block;
@@ -343,6 +344,174 @@ body {
           left: 14px;
           bottom: 2px;
           margin: none;
+        }
+      }
+      .header--search-hover {
+        position: absolute;
+        top: 60px;
+        right: 24px;
+        max-width: 500px;
+        width: 100%;
+        // height: 300px;
+        background-color: var(--neutral-background-white);
+        z-index: 1000;
+        border: 1px solid var(--neutral-border-100);
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 16px;
+        box-sizing: border-box;
+        gap: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -10px;
+          left: 0;
+          right: 0;
+          height: 10px;
+          background: transparent;
+        }
+        &.active {
+          display: flex;
+        }
+        .header--search-hover-header {
+          @include fonts.title-1;
+          color: var(--neutral-text-900);
+          margin: 0;
+        }
+        .header--search-hover-body {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          max-height: 300px;
+          overflow-y: auto;
+          overflow-x: hidden;
+          padding: 8px;
+
+          &::-webkit-scrollbar {
+            width: 6px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background: var(--neutral-background-50);
+            border-radius: 3px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: var(--neutral-border-200);
+            border-radius: 3px;
+
+            &:hover {
+              background: var(--neutral-text-400);
+            }
+          }
+
+          .header--search-hover-item {
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+            .header--search-hover-item-content {
+              display: flex;
+              gap: 12px;
+              flex-direction: row;
+              .header--search-hover-item-image {
+                width: 70px;
+                height: 70px;
+                object-fit: contain;
+                border-radius: 3px;
+                background-color: var(--neutral-background-50);
+                flex-shrink: 0;
+              }
+
+              .header--search-hover-item-info {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+                justify-content: center;
+                width: 100%;
+                .header--search-hover-item-overall {
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                  align-items: center;
+                  .header--search-hover-item-title {
+                    @include fonts.caption-2-regular;
+                    color: var(--neutral-text-900);
+                    padding: 0;
+                    margin: 0;
+                  }
+
+                  .header--search-hover-item-price {
+                    @include fonts.caption-1-regular;
+                    color: var(--theme-secondary-1);
+                  }
+                }
+
+                .header--search-hover-item-option {
+                  display: flex;
+                  justify-content: space-between;
+                  text-align: center;
+                  align-items: center;
+                  .header--search-hover-item-size {
+                    @include fonts.caption-2-regular;
+                    color: var(--neutral-text-900);
+                    align-items: center;
+                  }
+                  .header--search-hover-item-quantity {
+                    @include fonts.caption-2-regular;
+                    color: var(--neutral-text-900);
+                    text-align: center;
+                    padding: 3px 6px;
+                    border-radius: 4px;
+                    background-color: var(--neutral-background-100);
+                  }
+                }
+              }
+              .header--search-hover-item-remove {
+                width: 30px;
+                height: 30px;
+                // padding: 8px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                border: 1px solid var(--neutral-border-200);
+                border-radius: 4px;
+                background-color: var(--neutral-background-white);
+                border: none;
+                &:hover {
+                  background-color: var(--neutral-background-100);
+                }
+              }
+            }
+            .header--search-hover-item-divider {
+              height: 1px;
+              background-color: var(--neutral-border-200);
+              width: 100%;
+            }
+          }
+        }
+        .header--search-hover-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 40px;
+          background-color: var(--functional-info-400);
+          color: var(--neutral-background-white);
+          border-radius: 4px;
+          border: none;
+          @include fonts.body-2-regular;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: var(--functional-info-500);
+          }
         }
       }
     }
@@ -799,7 +968,7 @@ body {
     height: 300px;
   }
   .Card__empty-link {
-    background-color: var(--theme-primary-1);
+    background-color: var(--functional-info-400);
     color: var(--neutral-background-white);
     border: none;
     padding: 12px 24px;
@@ -807,7 +976,7 @@ body {
     @include fonts.body-2-semibold;
     cursor: pointer;
     &:hover {
-      background-color: var(--theme-primary-2);
+      background-color: var(--functional-info-500);
     }
   }
   .Card__empty-message {

@@ -2,7 +2,7 @@ import type { ProductItem } from "../../Data/ProductDataType";
 import "./ProductCard.scss";
 import { addToCart as addToCartCount } from "../Card/Card";
 let products: ProductItem[] = [];
-
+// load products
 async function loadProducts(): Promise<ProductItem[]> {
   try {
     const response = await fetch("../../Data/ProductData.json");
@@ -16,6 +16,7 @@ async function loadProducts(): Promise<ProductItem[]> {
     return [];
   }
 }
+// html create product card
 export function createProductCardHtml(product: ProductItem): string {
   let badgeHtml = "";
   if (product.isSale) {
@@ -65,6 +66,7 @@ export function createProductCardHtml(product: ProductItem): string {
     </div>
   `;
 }
+// link info page
 export function linkToProductDetail() {
   const linkToProductDetail = document.querySelectorAll(
     ".Production__card-select-watch"
@@ -105,8 +107,6 @@ export async function addToCart() {
 
       if (productId) {
         const id = parseInt(productId);
-        // addToCartCount(id);
-        // showAddToCartNotification(id);
         showProductSelector(id);
       }
     });
