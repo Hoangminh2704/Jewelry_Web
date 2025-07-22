@@ -69,7 +69,7 @@ export function createProductCardHtml(product: ProductItem): string {
     </div>
   `;
 }
-// link info page
+export const SELECT_STORAGE_KEY = "selectedProduct";
 export function linkToProductDetail() {
   const linkToProductDetail = document.querySelectorAll(
     ".Production__card-select-watch"
@@ -81,11 +81,8 @@ export function linkToProductDetail() {
       const button = event.currentTarget as HTMLElement;
       const productId = button.dataset.productId;
       const product = products.find((p) => p.id === parseInt(productId || "0"));
-      if (!product) {
-        console.error("Product not found");
-        return;
-      }
-      localStorage.setItem("selectedProduct", JSON.stringify(product));
+      if (!product) return;
+      localStorage.setItem(SELECT_STORAGE_KEY, JSON.stringify(product));
 
       const productDetailPageUrl =
         "/src/Components/ProductionDetail/ProductionDetail.html?productId=" +

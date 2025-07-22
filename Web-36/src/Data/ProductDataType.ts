@@ -13,6 +13,9 @@ export interface ProductItem {
   datePublished: string;
   ShortDescription: string;
   Description: string;
+  ProductionDetail_1: string;
+  ProductionDetail_2: string;
+
   Material: string;
   Rating: {
     star: number;

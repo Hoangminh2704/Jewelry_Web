@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { initCart } from "../Card/Card";
-import { addToCart } from "../ProductCard/ProductCard";
+import { addToCart, SELECT_STORAGE_KEY } from "../ProductCard/ProductCard";
 import type { ProductItem } from "../../Data/ProductDataType.ts";
 
 let products: ProductItem[] = [];
@@ -126,7 +126,7 @@ async function setupFeaturedProducts() {
       buttonTop1.setAttribute("data-product-id", topProduct.id.toString());
       buttonTop1.addEventListener("click", (event) => {
         event.preventDefault();
-        localStorage.setItem("selectedProduct", JSON.stringify(topProduct));
+        localStorage.setItem(SELECT_STORAGE_KEY, JSON.stringify(topProduct));
         const productDetailPageUrl =
           "/src/Components/ProductionDetail/ProductionDetail.html?productId=" +
           topProduct.id;
