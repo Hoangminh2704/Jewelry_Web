@@ -2,12 +2,14 @@ import "./ProductionDetail.scss";
 import type { ProductItem } from "../../Data/ProductDataType.ts";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Swiper from "swiper";
 import {
   createProductCardHtml,
   linkToProductDetail,
   SELECT_STORAGE_KEY,
   convertPriceToString,
 } from "../ProductCard/ProductCard.ts";
+import { Navigation } from "swiper/modules";
 
 let products: ProductItem[] = [];
 let currentProduct: ProductItem | null = null;
@@ -281,12 +283,42 @@ export function setupHeader() {
 
 export function setupNewProductsSection() {
   const addProductNewCard = document.querySelector(".NewProduct__content");
-  if (addProductNewCard) {
-    const newProductCard = products.filter((p) => p.isNew === true).slice(0, 4);
-    const createNewElement = newProductCard
-      .map((product) => createProductCardHtml(product))
-      .join("");
-    addProductNewCard.innerHTML = createNewElement;
+
+  const swiperContainer = document.querySelector(
+    ".NewProduct__swiper"
+  ) as HTMLElement;
+  const swiperWrapper = document.querySelector(
+    ".NewProduct__wrapper"
+  ) as HTMLElement;
+  const NewProduct_next = document.querySelector(
+    ".NewProduct__header-arrow-next"
+  ) as HTMLElement;
+  const NewProduct_prev = document.querySelector(
+    ".NewProduct__header-arrow-back"
+  ) as HTMLElement;
+  if (swiperContainer && addProductNewCard) {
+    addProductNewCard.innerHTML = `
+        ${products
+          .filter((p) => p.isNew === true)
+          .slice(0)
+          .map((product) => createProductCardHtml(product))
+          .join("")}
+    `;
+    linkToProductDetail();
+  }
+  if (swiperContainer && swiperWrapper && NewProduct_next && NewProduct_prev) {
+    new Swiper(".NewProduct__swiper", {
+      modules: [Navigation],
+      spaceBetween: 30,
+      slidesPerView: 4,
+      centeredSlides: false,
+      loop: true,
+      watchOverflow: false,
+      navigation: {
+        nextEl: NewProduct_next,
+        prevEl: NewProduct_prev,
+      },
+    });
   }
 }
 

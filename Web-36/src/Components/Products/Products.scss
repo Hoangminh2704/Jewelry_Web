@@ -839,6 +839,8 @@ body {
         }
         .Select__filter-more {
           display: none;
+          gap: 12px;
+          flex-direction: column;
         }
         .Select__filter-item {
           box-sizing: border-box;

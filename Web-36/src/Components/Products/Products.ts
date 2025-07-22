@@ -347,7 +347,6 @@ function updatePriceFilter() {
   });
 }
 async function updatePaginationArrow() {
-  // Thêm async
   const prev = document.querySelector(
     ".products-pagination-prev"
   ) as HTMLElement;
@@ -481,11 +480,15 @@ function moreOptions() {
   const moreOptions = document.querySelector(
     ".Select__filter-more"
   ) as HTMLElement;
-  if (!moreOptionsArrow || !moreOptions) return;
+  const filterText = document.querySelector(
+    ".Select__filter-item-text"
+  ) as HTMLElement;
+  if (!moreOptionsArrow || !moreOptions || !filterText) return;
   moreOptionsArrow.addEventListener("click", () => {
     moreOptionsArrow.classList.toggle("active");
     if (moreOptionsArrow.classList.contains("active")) {
-      moreOptions.style.display = "block";
+      moreOptions.style.display = "flex";
+      filterText.textContent = "Thu gọn";
     } else {
       moreOptions.style.display = "none";
     }

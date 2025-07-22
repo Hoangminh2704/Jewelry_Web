@@ -357,7 +357,7 @@
     "oldPrice": 4500000,
     "discount": -22,
     "type": "Earring",
-    "isNew": false,
+    "isNew": true,
     "isSale": false,
     "isTop": false,
     "isFeatured": false,
