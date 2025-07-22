@@ -86,9 +86,10 @@ export function linkToProductDetail() {
         return;
       }
       localStorage.setItem("selectedProduct", JSON.stringify(product));
-      console.log(product);
+
       const productDetailPageUrl =
-        "/src/Components/ProductionDetail/ProductionDetail.html";
+        "/src/Components/ProductionDetail/ProductionDetail.html?productId=" +
+        product.id;
       window.location.href = productDetailPageUrl;
     });
   });

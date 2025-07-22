@@ -119,6 +119,20 @@ async function setupFeaturedProducts() {
       topProductContainer.querySelector(".Production-price");
     const topProductImage =
       topProductContainer.querySelector(".Production-image");
+    const buttonTop1 = document.querySelector(
+      ".Production__top1-button"
+    ) as HTMLElement;
+    if (buttonTop1) {
+      buttonTop1.setAttribute("data-product-id", topProduct.id.toString());
+      buttonTop1.addEventListener("click", (event) => {
+        event.preventDefault();
+        localStorage.setItem("selectedProduct", JSON.stringify(topProduct));
+        const productDetailPageUrl =
+          "/src/Components/ProductionDetail/ProductionDetail.html?productId=" +
+          topProduct.id;
+        window.location.href = productDetailPageUrl;
+      });
+    }
     if (topProductPriceContainer && topProductImage) {
       topProductPriceContainer.innerHTML = `
         <div class="Name">${topProduct.name}</div>
