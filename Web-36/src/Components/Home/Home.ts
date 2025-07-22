@@ -132,6 +132,7 @@ async function setupFeaturedProducts() {
       `;
       topProductImage.setAttribute("src", topProduct.image);
       topProductImage.setAttribute("alt", topProduct.name);
+      topProductImage.setAttribute("title", topProduct.name);
     }
 
     const saleProducts = products.filter((p) => p.isSale === true).slice(0, 2);

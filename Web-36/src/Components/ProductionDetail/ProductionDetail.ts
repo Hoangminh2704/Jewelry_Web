@@ -108,6 +108,7 @@ export function setupLinkToCart() {
   }
   linkToProductDetail();
 }
+// function renderProductDetail(product: ProductItem) {}
 
 document.addEventListener("DOMContentLoaded", async () => {
   products = await loadProducts();

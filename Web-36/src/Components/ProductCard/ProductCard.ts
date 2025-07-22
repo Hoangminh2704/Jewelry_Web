@@ -28,8 +28,9 @@ export function createProductCardHtml(product: ProductItem): string {
     <div class="Production__card">
       ${badgeHtml}
 
-      <img class="Production__card-image" src=${product.image} alt="">
-      
+      <img class="Production__card-image" src=${product.image} alt="${
+    product.name
+  }" title="${product.name}" />
 
       <div class="Production__card-information">
         <div class="Production__card-text">
@@ -47,7 +48,9 @@ export function createProductCardHtml(product: ProductItem): string {
           </div>
         </div>
         <div class="Production__card-select">
-          <div class="Production__card-select-watch">
+          <div class="Production__card-select-watch" data-product-id="${
+            product.id
+          }">
             <div class="icon">
               ${EyeLine()}
             </div>
@@ -71,9 +74,19 @@ export function linkToProductDetail() {
   const linkToProductDetail = document.querySelectorAll(
     ".Production__card-select-watch"
   ) as NodeListOf<HTMLElement>;
+
   linkToProductDetail.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
+      const button = event.currentTarget as HTMLElement;
+      const productId = button.dataset.productId;
+      const product = products.find((p) => p.id === parseInt(productId || "0"));
+      if (!product) {
+        console.error("Product not found");
+        return;
+      }
+      localStorage.setItem("selectedProduct", JSON.stringify(product));
+      console.log(product);
       const productDetailPageUrl =
         "/src/Components/ProductionDetail/ProductionDetail.html";
       window.location.href = productDetailPageUrl;
