@@ -9,7 +9,7 @@ import {
   SELECT_STORAGE_KEY,
   convertPriceToString,
 } from "../ProductCard/ProductCard.ts";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 let products: ProductItem[] = [];
 let currentProduct: ProductItem | null = null;
@@ -282,13 +282,9 @@ export function setupHeader() {
 }
 
 export function setupNewProductsSection() {
-  const addProductNewCard = document.querySelector(".NewProduct__content");
-
+  const swiperWrapper = document.querySelector(".NewProduct__content");
   const swiperContainer = document.querySelector(
     ".NewProduct__swiper"
-  ) as HTMLElement;
-  const swiperWrapper = document.querySelector(
-    ".NewProduct__wrapper"
   ) as HTMLElement;
   const NewProduct_next = document.querySelector(
     ".NewProduct__header-arrow-next"
@@ -296,30 +292,85 @@ export function setupNewProductsSection() {
   const NewProduct_prev = document.querySelector(
     ".NewProduct__header-arrow-back"
   ) as HTMLElement;
-  if (swiperContainer && addProductNewCard) {
-    addProductNewCard.innerHTML = `
-        ${products
-          .filter((p) => p.isNew === true)
-          .slice(0)
-          .map((product) => createProductCardHtml(product))
-          .join("")}
-    `;
-    linkToProductDetail();
+
+  if (swiperContainer && swiperWrapper) {
+    const newProducts = products.filter((p) => p.isNew === true);
+
+    // if (newProducts.length === 0) {
+    //   swiperWrapper.innerHTML =
+    //     '<div class="swiper-slide"><p class="no-products">Không có sản phẩm mới nào.</p></div>';
+    //   return;
+    // }
+
+    const productsPerSlide = 4;
+    const productGroups: ProductItem[][] = [];
+
+    for (let i = 0; i < newProducts.length; i += productsPerSlide) {
+      productGroups.push(newProducts.slice(i, i + productsPerSlide));
+    }
+    console.log(productGroups);
+
+    const slidesHTML = productGroups
+      .map(
+        (group) => `
+      <div class="swiper-slide">
+        <div class="slide-products-grid">
+          ${group.map((product) => createProductCardHtml(product)).join("")}
+        </div>
+      </div>
+    `
+      )
+      .join("");
+
+    swiperWrapper.innerHTML = slidesHTML;
+
+    setTimeout(() => {
+      linkToProductDetail();
+    }, 100);
+
+    setTimeout(() => {
+      initializeSwiper(
+        swiperContainer,
+        NewProduct_next,
+        NewProduct_prev,
+        productGroups.length
+      );
+    }, 200);
   }
-  if (swiperContainer && swiperWrapper && NewProduct_next && NewProduct_prev) {
-    new Swiper(".NewProduct__swiper", {
-      modules: [Navigation],
-      spaceBetween: 30,
-      slidesPerView: 4,
-      centeredSlides: false,
-      loop: true,
-      watchOverflow: false,
-      navigation: {
-        nextEl: NewProduct_next,
-        prevEl: NewProduct_prev,
-      },
-    });
-  }
+}
+
+function initializeSwiper(
+  swiperContainer: HTMLElement,
+  nextButton: HTMLElement,
+  prevButton: HTMLElement,
+  totalSlides: number
+) {
+  // const existingSwiper = (swiperContainer as HTMLElement & { swiper?: Swiper })
+  //   .swiper;
+  // if (existingSwiper) {
+  //   existingSwiper.destroy(true, true);
+  // }
+
+  new Swiper(swiperContainer, {
+    modules: [Navigation, Pagination],
+    slidesPerView: 1,
+    spaceBetween: 0,
+    centeredSlides: false,
+    watchOverflow: true,
+    navigation: {
+      nextEl: nextButton,
+      prevEl: prevButton,
+    },
+
+    pagination: {
+      el: ".NewProduct__pagination",
+      clickable: true,
+      dynamicBullets: true,
+    },
+  });
+
+  if (nextButton) nextButton.style.display = totalSlides > 1 ? "flex" : "none";
+  if (prevButton) prevButton.style.display = totalSlides > 1 ? "flex" : "none";
 }
 
 export function setupLinkToCart() {
@@ -385,38 +436,120 @@ function collapseInfomation(product: ProductItem) {
   detail_2Content.textContent = product.ProductionDetail_2;
   console.log(product);
   console.log("Description:", product.Description);
+  // let descriptionFlag = false;
+  // let detail_1Flag = false;
+  // let detail_2Flag = false;
+  // if (descriptionFlag) {
+  //   detail_1Flag = false;
+  //   detail_2Flag = false;
 
+  // }
   description.addEventListener("click", () => {
     description.classList.toggle("collapsed");
     if (description.classList.contains("collapsed")) {
       descriptionContent.style.display = "none";
       descriptionIcon.classList.add("collapsed");
+      // detail_1Content.style.display = "none";
+      // detail_1Icon.classList.remove("collapsed");
+      // detail_2Content.style.display = "none";
+      // detail_2Icon.classList.remove("collapsed");
     } else {
       descriptionContent.style.display = "block";
       descriptionIcon.classList.remove("collapsed");
     }
+    // toggleCollapseInfomation();
   });
   detail_1.addEventListener("click", () => {
     detail_1.classList.toggle("collapsed");
     if (detail_1.classList.contains("collapsed")) {
       detail_1Content.style.display = "block";
       detail_1Icon.classList.add("collapsed");
+      // detail_2Content.style.display = "none";
+      // detail_2Icon.classList.remove("collapsed");
+      // descriptionContent.style.display = "none";
+      // descriptionIcon.classList.remove("collapsed");
     } else {
       detail_1Content.style.display = "none";
       detail_1Icon.classList.remove("collapsed");
     }
+    // toggleCollapseInfomation();
   });
   detail_2.addEventListener("click", () => {
     detail_2.classList.toggle("collapsed");
     if (detail_2.classList.contains("collapsed")) {
       detail_2Content.style.display = "block";
       detail_2Icon.classList.add("collapsed");
+      // descriptionContent.style.display = "none";
+      // descriptionIcon.classList.remove("collapsed");
+      // detail_1Content.style.display = "none";
+      // detail_1Icon.classList.remove("collapsed");
     } else {
       detail_2Content.style.display = "none";
       detail_2Icon.classList.remove("collapsed");
     }
+    // toggleCollapseInfomation();
   });
 }
+// function toggleCollapseInfomation() {
+//   const description = document.querySelector(
+//     ".CardFeatures__information-title"
+//   ) as HTMLElement;
+//   const descriptionContent = document.querySelector(
+//     ".CardFeatures__information-content"
+//   ) as HTMLElement;
+//   const descriptionIcon = document.querySelector(
+//     ".CardFeatures__information-title-icon"
+//   ) as HTMLElement;
+//   const detail_1 = document.querySelector(
+//     ".CardFeatures__detail-title"
+//   ) as HTMLElement;
+//   const detail_1Content = document.querySelector(
+//     ".CardFeatures__detail-content"
+//   ) as HTMLElement;
+//   const detail_1Icon = document.querySelector(
+//     ".CardFeatures__detail-title-icon"
+//   ) as HTMLElement;
+
+//   const detail_2 = document.querySelector(
+//     ".CardFeatures__question-title"
+//   ) as HTMLElement;
+//   const detail_2Content = document.querySelector(
+//     ".CardFeatures__question-content"
+//   ) as HTMLElement;
+//   const detail_2Icon = document.querySelector(
+//     ".CardFeatures__question-title-icon"
+//   ) as HTMLElement;
+//   let descriptionFlag = false;
+//   let detail_1Flag = false;
+//   let detail_2Flag = false;
+//   if (description.classList.contains("collapsed")) {
+//     descriptionFlag = true;
+//   }
+//   if (detail_1.classList.contains("collapsed")) {
+//     detail_1Flag = true;
+//   }
+//   if (detail_2.classList.contains("collapsed")) {
+//     detail_2Flag = true;
+//   }
+//   if (descriptionFlag) {
+//     detail_1Content.style.display = "none";
+//     detail_1Icon.classList.remove("collapsed");
+//     detail_2Content.style.display = "none";
+//     detail_2Icon.classList.remove("collapsed");
+//   }
+//   if (detail_1Flag) {
+//     descriptionContent.style.display = "none";
+//     descriptionIcon.classList.remove("collapsed");
+//     detail_2Content.style.display = "none";
+//     detail_2Icon.classList.remove("collapsed");
+//   }
+//   if (detail_2Flag) {
+//     descriptionContent.style.display = "none";
+//     descriptionIcon.classList.remove("collapsed");
+//     detail_1Content.style.display = "none";
+//     detail_1Icon.classList.remove("collapsed");
+//   }
+// }
 
 document.addEventListener("DOMContentLoaded", async () => {
   await initProductDetail();
@@ -424,4 +557,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupNewProductsSection();
   setupLinkToCart();
   // collapseInfomation();
+  // toggleCollapseInfomation();
 });
