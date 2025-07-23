@@ -983,9 +983,12 @@ body {
       align-items: center;
       gap: 16px;
       cursor: pointer;
-      // &-icon.default {
-      //   transform: rotate(180deg);
-      // }
+      &-icon.default {
+        transform: rotate(180deg);
+        &.collapsed {
+          transform: rotate(0deg);
+        }
+      }
       &-icon.collapsed {
         transform: rotate(180deg);
         transition: transform 0.2s ease-in;

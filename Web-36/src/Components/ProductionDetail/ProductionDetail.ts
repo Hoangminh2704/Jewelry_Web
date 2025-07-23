@@ -404,95 +404,6 @@ async function initProductDetail() {
 
   setupAddToCartButton();
 }
-// function collapseInfomation(product: ProductItem) {
-//   const description = document.querySelector(
-//     ".CardFeatures__information-title"
-//   ) as HTMLElement;
-//   const descriptionContent = document.querySelector(
-//     ".CardFeatures__information-content"
-//   ) as HTMLElement;
-//   const descriptionIcon = document.querySelector(
-//     ".CardFeatures__information-title-icon"
-//   ) as HTMLElement;
-//   const detail_1 = document.querySelector(
-//     ".CardFeatures__detail-title"
-//   ) as HTMLElement;
-//   const detail_1Content = document.querySelector(
-//     ".CardFeatures__detail-content"
-//   ) as HTMLElement;
-//   const detail_1Icon = document.querySelector(
-//     ".CardFeatures__detail-title-icon"
-//   ) as HTMLElement;
-
-//   const detail_2 = document.querySelector(
-//     ".CardFeatures__question-title"
-//   ) as HTMLElement;
-//   const detail_2Content = document.querySelector(
-//     ".CardFeatures__question-content"
-//   ) as HTMLElement;
-//   const detail_2Icon = document.querySelector(
-//     ".CardFeatures__question-title-icon"
-//   ) as HTMLElement;
-//   descriptionContent.textContent = product.Description;
-//   detail_1Content.textContent = product.ProductionDetail_1;
-//   detail_2Content.textContent = product.ProductionDetail_2;
-//   console.log(product);
-//   console.log("Description:", product.Description);
-//   // let descriptionFlag = false;
-//   // let detail_1Flag = false;
-//   // let detail_2Flag = false;
-//   // if (descriptionFlag) {
-//   //   detail_1Flag = false;
-//   //   detail_2Flag = false;
-
-//   // }
-//   description.addEventListener("click", () => {
-//     description.classList.toggle("collapsed");
-//     if (description.classList.contains("collapsed")) {
-//       descriptionContent.style.display = "none";
-//       descriptionIcon.classList.add("collapsed");
-//       // detail_1Content.style.display = "none";
-//       // detail_1Icon.classList.remove("collapsed");
-//       // detail_2Content.style.display = "none";
-//       // detail_2Icon.classList.remove("collapsed");
-//     } else {
-//       descriptionContent.style.display = "block";
-//       descriptionIcon.classList.remove("collapsed");
-//     }
-//     // toggleCollapseInfomation();
-//   });
-//   detail_1.addEventListener("click", () => {
-//     detail_1.classList.toggle("collapsed");
-//     if (detail_1.classList.contains("collapsed")) {
-//       detail_1Content.style.display = "block";
-//       detail_1Icon.classList.add("collapsed");
-//       // detail_2Content.style.display = "none";
-//       // detail_2Icon.classList.remove("collapsed");
-//       // descriptionContent.style.display = "none";
-//       // descriptionIcon.classList.remove("collapsed");
-//     } else {
-//       detail_1Content.style.display = "none";
-//       detail_1Icon.classList.remove("collapsed");
-//     }
-//     // toggleCollapseInfomation();
-//   });
-//   detail_2.addEventListener("click", () => {
-//     detail_2.classList.toggle("collapsed");
-//     if (detail_2.classList.contains("collapsed")) {
-//       detail_2Content.style.display = "block";
-//       detail_2Icon.classList.add("collapsed");
-//       // descriptionContent.style.display = "none";
-//       // descriptionIcon.classList.remove("collapsed");
-//       // detail_1Content.style.display = "none";
-//       // detail_1Icon.classList.remove("collapsed");
-//     } else {
-//       detail_2Content.style.display = "none";
-//       detail_2Icon.classList.remove("collapsed");
-//     }
-//     // toggleCollapseInfomation();
-//   });
-// }
-// File: ProductionDetail.ts
 
 function collapseInfomation(product: ProductItem) {
   const sections = [
@@ -553,9 +464,9 @@ function collapseInfomation(product: ProductItem) {
     }
 
     currentSection.title.addEventListener("click", () => {
-      const isAlreadyOpen = currentSection.title.classList.contains("active");
+      const isActive = currentSection.title.classList.contains("active");
       closeAllSections();
-      if (!isAlreadyOpen) {
+      if (!isActive) {
         currentSection.title.classList.add("active");
         currentSection.content.style.display = "block";
         currentSection.icon.classList.add("collapsed");
