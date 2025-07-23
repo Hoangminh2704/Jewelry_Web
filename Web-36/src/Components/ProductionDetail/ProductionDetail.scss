@@ -1281,3 +1281,66 @@ body {
   z-index: 999;
   display: flex;
 }
+.CardFeatures__demo {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 16px;
+  margin-top: 40px;
+  @include m {
+    width: 96.56%;
+  }
+  @include xs {
+    width: 92.27%;
+  }
+
+  .CardFeatures__demo__information,
+  .CardFeatures__demo__detail,
+  .CardFeatures__demo__question {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-direction: column;
+    .CardFeatures__demo__information-title,
+    .CardFeatures__demo__detail-title,
+    .CardFeatures__demo__question-title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      &-icon.default {
+        transform: rotate(180deg);
+        &.collapsed {
+          transform: rotate(0deg);
+        }
+      }
+      &-icon.collapsed {
+        transform: rotate(180deg);
+        transition: transform 0.2s ease-in;
+      }
+      &-icon {
+        cursor: pointer;
+        transition: transform 0.2s ease-in;
+      }
+      &-text {
+        @include fonts.body-2-regular;
+        color: var(--neutral-text-900);
+      }
+    }
+    &-content {
+      padding: 0 40px;
+      @include fonts.body-2-regular;
+      color: var(--neutral-text-600);
+      @include xs {
+        padding-right: 16px;
+      }
+    }
+    .CardFeatures__detail-content,
+    .CardFeatures__question-content {
+      display: none;
+    }
+  }
+}

@@ -99,6 +99,7 @@ function renderProductDetail(product: ProductItem) {
     productDescription.textContent = product.ShortDescription;
   }
   collapseInfomation(product);
+  collapseInfomation__demo(product);
 }
 
 function setupAddToCartButton() {
@@ -474,12 +475,82 @@ function collapseInfomation(product: ProductItem) {
     });
   });
 }
+function collapseInfomation__demo(product: ProductItem) {
+  const sections = [
+    {
+      title: document.querySelector(
+        ".CardFeatures__demo__information-title"
+      ) as HTMLElement,
+      content: document.querySelector(
+        ".CardFeatures__demo__information-content"
+      ) as HTMLElement,
+      icon: document.querySelector(
+        ".CardFeatures__demo__information-title-icon"
+      ) as HTMLElement,
+    },
+    {
+      title: document.querySelector(
+        ".CardFeatures__demo__detail-title"
+      ) as HTMLElement,
+      content: document.querySelector(
+        ".CardFeatures__demo__detail-content"
+      ) as HTMLElement,
+      icon: document.querySelector(
+        ".CardFeatures__demo__detail-title-icon"
+      ) as HTMLElement,
+    },
+    {
+      title: document.querySelector(
+        ".CardFeatures__demo__question-title"
+      ) as HTMLElement,
+      content: document.querySelector(
+        ".CardFeatures__demo__question-content"
+      ) as HTMLElement,
+      icon: document.querySelector(
+        ".CardFeatures__demo__question-title-icon"
+      ) as HTMLElement,
+    },
+  ];
+
+  sections[0].content.textContent = product.Description;
+  sections[1].content.textContent = product.ProductionDetail_1;
+  sections[2].content.textContent = product.ProductionDetail_2;
+
+  // const closeAllSections = () => {
+  //   sections.forEach((sec) => {
+  //     sec.title.classList.remove("active");
+  //     sec.content.style.display = "none";
+  //     sec.icon.classList.remove("collapsed");
+  //   });
+  // };
+
+  sections.forEach((currentSection, index) => {
+    if (index === 0) {
+      currentSection.title.classList.add("active");
+      currentSection.content.style.display = "block";
+      currentSection.icon.classList.add("collapsed");
+    } else {
+      currentSection.content.style.display = "none";
+    }
+
+    currentSection.title.addEventListener("click", () => {
+      const isActive = currentSection.title.classList.contains("active");
+      if (isActive) {
+        currentSection.title.classList.remove("active");
+        currentSection.content.style.display = "none";
+        currentSection.icon.classList.remove("collapsed");
+      } else {
+        currentSection.title.classList.add("active");
+        currentSection.content.style.display = "block";
+        currentSection.icon.classList.add("collapsed");
+      }
+    });
+  });
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   await initProductDetail();
   setupHeader();
   setupNewProductsSection();
   setupLinkToCart();
-  // collapseInfomation();
-  // toggleCollapseInfomation();
 });
