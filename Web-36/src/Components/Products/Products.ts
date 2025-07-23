@@ -272,10 +272,9 @@ async function updatePagination(options: FilterOptions) {
   ) as NodeListOf<HTMLElement>;
   paginationLinks.forEach((link) => {
     link.addEventListener("click", async (event) => {
-      // Thêm async
       const target = event.currentTarget as HTMLElement;
       const page = parseInt(target.dataset.pageProducts || "1");
-      await renderProductsByFilter(page, DefaultFilter); // Thêm await
+      await renderProductsByFilter(page, DefaultFilter);
       paginationLinks.forEach((l) => {
         l.classList.remove("active");
       });
@@ -285,7 +284,7 @@ async function updatePagination(options: FilterOptions) {
   if (paginationLinks.length > 0) {
     paginationLinks[0].classList.add("active");
   }
-  await renderProductsByFilter(1, options); // Thêm await
+  await renderProductsByFilter(1, options);
 }
 async function applyFilters() {
   const options = getCurrentFilter();
@@ -376,7 +375,6 @@ async function updatePaginationArrow() {
   if (!prev && !next) return;
 
   prev.addEventListener("click", async () => {
-    // Thêm async
     const activeLink = document.querySelector(
       ".products-pagination-link.active"
     ) as HTMLElement;
@@ -384,7 +382,7 @@ async function updatePaginationArrow() {
       const currentPage = parseInt(activeLink.dataset.pageProducts || "1");
       if (currentPage > 1) {
         const prevPage = currentPage - 1;
-        await renderProductsByFilter(prevPage, DefaultFilter); // Thêm await
+        await renderProductsByFilter(prevPage, DefaultFilter);
         const paginationLinks = document.querySelectorAll(
           ".products-pagination-link"
         ) as NodeListOf<HTMLElement>;
@@ -405,7 +403,7 @@ async function updatePaginationArrow() {
     ) as HTMLElement;
     if (activeLink) {
       const currentPage = parseInt(activeLink.dataset.pageProducts || "1");
-      const total = await totalPagesbyFilter(DefaultFilter); // Thêm await
+      const total = await totalPagesbyFilter(DefaultFilter);
       if (currentPage < total) {
         const nextPage = currentPage + 1;
         await renderProductsByFilter(nextPage, DefaultFilter);
@@ -427,7 +425,7 @@ async function updatePaginationArrow() {
     ".products-pagination-link"
   ) as NodeListOf<HTMLElement>;
   if (Links) {
-    const totalPages = await totalPagesbyFilter(DefaultFilter); // Thêm await
+    const totalPages = await totalPagesbyFilter(DefaultFilter);
     Links.forEach((link) => {
       if (
         link.classList.contains("active") &&
@@ -436,7 +434,7 @@ async function updatePaginationArrow() {
         console.log("Disable prev");
       } else if (
         link.classList.contains("active") &&
-        link.dataset.pageProducts === `${totalPages}` // Sửa dòng này
+        link.dataset.pageProducts === `${totalPages}`
       ) {
         console.log("Disable next");
       }
