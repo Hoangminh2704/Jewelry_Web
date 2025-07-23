@@ -301,8 +301,14 @@ export function setupNewProductsSection() {
     //     '<div class="swiper-slide"><p class="no-products">Không có sản phẩm mới nào.</p></div>';
     //   return;
     // }
-
-    const productsPerSlide = 4;
+    let productsPerSlide = 4; // Default for larger screens
+    if (window.innerWidth < 768) {
+      productsPerSlide = 1;
+    } else if (window.innerWidth < 1280) {
+      productsPerSlide = 4;
+    } else {
+      productsPerSlide = 4;
+    }
     const productGroups: ProductItem[][] = [];
 
     for (let i = 0; i < newProducts.length; i += productsPerSlide) {
@@ -339,22 +345,16 @@ export function setupNewProductsSection() {
   }
 }
 
-function initializeSwiper(
+export function initializeSwiper(
   swiperContainer: HTMLElement,
   nextButton: HTMLElement,
   prevButton: HTMLElement,
   totalSlides: number
 ) {
-  // const existingSwiper = (swiperContainer as HTMLElement & { swiper?: Swiper })
-  //   .swiper;
-  // if (existingSwiper) {
-  //   existingSwiper.destroy(true, true);
-  // }
-
   new Swiper(swiperContainer, {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
-    spaceBetween: 0,
+    spaceBetween: 20,
     centeredSlides: false,
     watchOverflow: true,
     navigation: {
@@ -365,7 +365,6 @@ function initializeSwiper(
     pagination: {
       el: ".NewProduct__pagination",
       clickable: true,
-      dynamicBullets: true,
     },
   });
 

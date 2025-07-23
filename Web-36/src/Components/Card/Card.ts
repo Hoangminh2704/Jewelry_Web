@@ -2,11 +2,18 @@ import "./Card.scss";
 import type { ProductItem } from "../../Data/ProductDataType.ts";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Swiper from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
+
 import {
   createProductCardHtml,
   linkToProductDetail,
-  addToCart as addToCartFromProductCard,
+  // addToCart as addToCartFromProductCard,
 } from "../ProductCard/ProductCard.ts";
+// import {
+//   setupNewProductsSection,
+//   initializeSwiper,
+// } from "../ProductionDetail/ProductionDetail.ts";
 let products: ProductItem[] = [];
 
 async function loadProducts(): Promise<ProductItem[]> {
@@ -85,21 +92,111 @@ function setupHeader() {
   document.addEventListener("click", handleClickOutside);
 }
 
-async function setupNewProductsSection() {
-  if (products.length === 0) {
-    products = await loadProducts();
-  }
-  const addProductNewCard = document.querySelector(".NewProduct__content");
-  if (addProductNewCard) {
-    const newProductCard = products.filter((p) => p.isNew === true).slice(0, 4);
-    const createNewElement = newProductCard
-      .map((product) => createProductCardHtml(product))
+// async function setupNewProductsSection() {
+//   if (products.length === 0) {
+//     products = await loadProducts();
+//   }
+//   const addProductNewCard = document.querySelector(".NewProduct__content");
+//   if (addProductNewCard) {
+//     const newProductCard = products.filter((p) => p.isNew === true).slice(0, 4);
+//     const createNewElement = newProductCard
+//       .map((product) => createProductCardHtml(product))
+//       .join("");
+
+//     addProductNewCard.innerHTML = createNewElement;
+//     addToCartFromProductCard();
+//     linkToProductDetail();
+//   }
+// }
+export function setupNewProductsSection() {
+  const swiperWrapper = document.querySelector(".NewProduct__content");
+  const swiperContainer = document.querySelector(
+    ".NewProduct__swiper"
+  ) as HTMLElement;
+  const NewProduct_next = document.querySelector(
+    ".NewProduct__header-arrow-next"
+  ) as HTMLElement;
+  const NewProduct_prev = document.querySelector(
+    ".NewProduct__header-arrow-back"
+  ) as HTMLElement;
+
+  if (swiperContainer && swiperWrapper) {
+    const newProducts = products.filter((p) => p.isNew === true);
+
+    // if (newProducts.length === 0) {
+    //   swiperWrapper.innerHTML =
+    //     '<div class="swiper-slide"><p class="no-products">Không có sản phẩm mới nào.</p></div>';
+    //   return;
+    // }
+    let productsPerSlide = 4; // Default for larger screens
+    if (window.innerWidth < 768) {
+      productsPerSlide = 1;
+    } else if (window.innerWidth < 1280) {
+      productsPerSlide = 4;
+    } else {
+      productsPerSlide = 4;
+    }
+    const productGroups: ProductItem[][] = [];
+
+    for (let i = 0; i < newProducts.length; i += productsPerSlide) {
+      productGroups.push(newProducts.slice(i, i + productsPerSlide));
+    }
+    console.log(productGroups);
+
+    const slidesHTML = productGroups
+      .map(
+        (group) => `
+      <div class="swiper-slide">
+        <div class="slide-products-grid">
+          ${group.map((product) => createProductCardHtml(product)).join("")}
+        </div>
+      </div>
+    `
+      )
       .join("");
 
-    addProductNewCard.innerHTML = createNewElement;
-    addToCartFromProductCard();
-    linkToProductDetail();
+    swiperWrapper.innerHTML = slidesHTML;
+
+    setTimeout(() => {
+      linkToProductDetail();
+    }, 100);
+
+    setTimeout(() => {
+      initializeSwiper(
+        swiperContainer,
+        NewProduct_next,
+        NewProduct_prev,
+        productGroups.length
+      );
+    }, 200);
   }
+}
+
+export function initializeSwiper(
+  swiperContainer: HTMLElement,
+  nextButton: HTMLElement,
+  prevButton: HTMLElement,
+  totalSlides: number
+) {
+  new Swiper(swiperContainer, {
+    modules: [Navigation, Pagination],
+    slidesPerView: 1,
+    spaceBetween: 20,
+    centeredSlides: false,
+    watchOverflow: true,
+    navigation: {
+      nextEl: nextButton,
+      prevEl: prevButton,
+    },
+
+    pagination: {
+      el: ".NewProduct__pagination",
+      clickable: true,
+    },
+  });
+
+  if (nextButton) nextButton.style.display = totalSlides > 1 ? "flex" : "none";
+  if (prevButton) prevButton.style.display = totalSlides > 1 ? "flex" : "none";
 }
 
 function setupEventListeners() {
@@ -727,6 +824,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   setupHeader();
   await setupNewProductsSection();
+  // initializeSwiper();
   setupEventListeners();
   // initCart();
   await renderCartItems();
