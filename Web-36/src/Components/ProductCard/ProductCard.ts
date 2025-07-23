@@ -106,21 +106,19 @@ export async function addToCart() {
     products = await loadProducts();
   }
 
-  const addToCartButtons = document.querySelectorAll(
-    ".Production__card-select-more"
-  ) as NodeListOf<HTMLElement>;
+  document.body.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    const addButton = target.closest(".Production__card-select-more");
+    if (!addButton) {
+      return;
+    }
+    event.preventDefault();
+    const productId = (addButton as HTMLElement).dataset.productId;
 
-  addToCartButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-      const button = event.currentTarget as HTMLElement;
-      const productId = button.dataset.productId;
-
-      if (productId) {
-        const id = parseInt(productId);
-        showProductSelector(id);
-      }
-    });
+    if (productId) {
+      const id = parseInt(productId);
+      showProductSelector(id);
+    }
   });
 }
 
@@ -292,17 +290,26 @@ function createSelectorHtml(product: ProductItem): string {
       </div>
   `;
 }
+
 function showProductSelector(productId: number) {
   const product = products.find((p) => p.id === productId);
   if (!product) return;
+
   const existingSelector = document.querySelector(".Product__option");
   if (existingSelector) {
     existingSelector.remove();
   }
+  const existingBackdrop = document.querySelector(".product-selector-backdrop");
+  if (existingBackdrop) {
+    existingBackdrop.remove();
+  }
+
   const backdropHtml = `<div class="product-selector-backdrop"></div>`;
   document.body.insertAdjacentHTML("beforeend", backdropHtml);
+
   const selectorHtml = createSelectorHtml(product);
   document.body.insertAdjacentHTML("beforeend", selectorHtml);
+
   setupSelectorEvent(productId);
 }
 

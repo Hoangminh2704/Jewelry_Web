@@ -8,7 +8,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import {
   createProductCardHtml,
   linkToProductDetail,
-  // addToCart as addToCartFromProductCard,
+  addToCart as addToCartFromProductCard,
 } from "../ProductCard/ProductCard.ts";
 // import {
 //   setupNewProductsSection,
@@ -142,7 +142,15 @@ export function setupNewProductsSection() {
       productGroups.push(newProducts.slice(i, i + productsPerSlide));
     }
     console.log(productGroups);
-
+    setTimeout(async () => {
+      linkToProductDetail();
+      addToCartFromProductCard();
+      // updateCartDisplay();
+      // await renderCartItems();
+      // CartEmpty();
+      // updateCartOverall();
+      // cartAction();
+    }, 100);
     const slidesHTML = productGroups
       .map(
         (group) => `

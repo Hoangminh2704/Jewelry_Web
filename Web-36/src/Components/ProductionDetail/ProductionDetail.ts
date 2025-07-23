@@ -8,7 +8,6 @@ import {
   linkToProductDetail,
   SELECT_STORAGE_KEY,
   convertPriceToString,
-  addToCart,
 } from "../ProductCard/ProductCard.ts";
 import { Navigation, Pagination } from "swiper/modules";
 
@@ -119,7 +118,7 @@ function setupAddToCartButton() {
         return;
       }
 
-      import("../Card/Card.js").then(({ addToCart }) => {
+      import("../Card/Card.ts").then(({ addToCart }) => {
         addToCart(currentProduct!.id, selectedSize);
         showAddToCartNotification(currentProduct!, 1, selectedSize);
       });
@@ -316,9 +315,9 @@ export function setupNewProductsSection() {
       productGroups.push(newProducts.slice(i, i + productsPerSlide));
     }
     console.log(productGroups);
-    setTimeout(() => {
+    setTimeout(async () => {
       linkToProductDetail();
-      addToCart();
+      // addToCart();
     }, 100);
     const slidesHTML = productGroups
       .map(
@@ -405,92 +404,163 @@ async function initProductDetail() {
 
   setupAddToCartButton();
 }
+// function collapseInfomation(product: ProductItem) {
+//   const description = document.querySelector(
+//     ".CardFeatures__information-title"
+//   ) as HTMLElement;
+//   const descriptionContent = document.querySelector(
+//     ".CardFeatures__information-content"
+//   ) as HTMLElement;
+//   const descriptionIcon = document.querySelector(
+//     ".CardFeatures__information-title-icon"
+//   ) as HTMLElement;
+//   const detail_1 = document.querySelector(
+//     ".CardFeatures__detail-title"
+//   ) as HTMLElement;
+//   const detail_1Content = document.querySelector(
+//     ".CardFeatures__detail-content"
+//   ) as HTMLElement;
+//   const detail_1Icon = document.querySelector(
+//     ".CardFeatures__detail-title-icon"
+//   ) as HTMLElement;
+
+//   const detail_2 = document.querySelector(
+//     ".CardFeatures__question-title"
+//   ) as HTMLElement;
+//   const detail_2Content = document.querySelector(
+//     ".CardFeatures__question-content"
+//   ) as HTMLElement;
+//   const detail_2Icon = document.querySelector(
+//     ".CardFeatures__question-title-icon"
+//   ) as HTMLElement;
+//   descriptionContent.textContent = product.Description;
+//   detail_1Content.textContent = product.ProductionDetail_1;
+//   detail_2Content.textContent = product.ProductionDetail_2;
+//   console.log(product);
+//   console.log("Description:", product.Description);
+//   // let descriptionFlag = false;
+//   // let detail_1Flag = false;
+//   // let detail_2Flag = false;
+//   // if (descriptionFlag) {
+//   //   detail_1Flag = false;
+//   //   detail_2Flag = false;
+
+//   // }
+//   description.addEventListener("click", () => {
+//     description.classList.toggle("collapsed");
+//     if (description.classList.contains("collapsed")) {
+//       descriptionContent.style.display = "none";
+//       descriptionIcon.classList.add("collapsed");
+//       // detail_1Content.style.display = "none";
+//       // detail_1Icon.classList.remove("collapsed");
+//       // detail_2Content.style.display = "none";
+//       // detail_2Icon.classList.remove("collapsed");
+//     } else {
+//       descriptionContent.style.display = "block";
+//       descriptionIcon.classList.remove("collapsed");
+//     }
+//     // toggleCollapseInfomation();
+//   });
+//   detail_1.addEventListener("click", () => {
+//     detail_1.classList.toggle("collapsed");
+//     if (detail_1.classList.contains("collapsed")) {
+//       detail_1Content.style.display = "block";
+//       detail_1Icon.classList.add("collapsed");
+//       // detail_2Content.style.display = "none";
+//       // detail_2Icon.classList.remove("collapsed");
+//       // descriptionContent.style.display = "none";
+//       // descriptionIcon.classList.remove("collapsed");
+//     } else {
+//       detail_1Content.style.display = "none";
+//       detail_1Icon.classList.remove("collapsed");
+//     }
+//     // toggleCollapseInfomation();
+//   });
+//   detail_2.addEventListener("click", () => {
+//     detail_2.classList.toggle("collapsed");
+//     if (detail_2.classList.contains("collapsed")) {
+//       detail_2Content.style.display = "block";
+//       detail_2Icon.classList.add("collapsed");
+//       // descriptionContent.style.display = "none";
+//       // descriptionIcon.classList.remove("collapsed");
+//       // detail_1Content.style.display = "none";
+//       // detail_1Icon.classList.remove("collapsed");
+//     } else {
+//       detail_2Content.style.display = "none";
+//       detail_2Icon.classList.remove("collapsed");
+//     }
+//     // toggleCollapseInfomation();
+//   });
+// }
+// File: ProductionDetail.ts
+
 function collapseInfomation(product: ProductItem) {
-  const description = document.querySelector(
-    ".CardFeatures__information-title"
-  ) as HTMLElement;
-  const descriptionContent = document.querySelector(
-    ".CardFeatures__information-content"
-  ) as HTMLElement;
-  const descriptionIcon = document.querySelector(
-    ".CardFeatures__information-title-icon"
-  ) as HTMLElement;
-  const detail_1 = document.querySelector(
-    ".CardFeatures__detail-title"
-  ) as HTMLElement;
-  const detail_1Content = document.querySelector(
-    ".CardFeatures__detail-content"
-  ) as HTMLElement;
-  const detail_1Icon = document.querySelector(
-    ".CardFeatures__detail-title-icon"
-  ) as HTMLElement;
+  const sections = [
+    {
+      title: document.querySelector(
+        ".CardFeatures__information-title"
+      ) as HTMLElement,
+      content: document.querySelector(
+        ".CardFeatures__information-content"
+      ) as HTMLElement,
+      icon: document.querySelector(
+        ".CardFeatures__information-title-icon"
+      ) as HTMLElement,
+    },
+    {
+      title: document.querySelector(
+        ".CardFeatures__detail-title"
+      ) as HTMLElement,
+      content: document.querySelector(
+        ".CardFeatures__detail-content"
+      ) as HTMLElement,
+      icon: document.querySelector(
+        ".CardFeatures__detail-title-icon"
+      ) as HTMLElement,
+    },
+    {
+      title: document.querySelector(
+        ".CardFeatures__question-title"
+      ) as HTMLElement,
+      content: document.querySelector(
+        ".CardFeatures__question-content"
+      ) as HTMLElement,
+      icon: document.querySelector(
+        ".CardFeatures__question-title-icon"
+      ) as HTMLElement,
+    },
+  ];
 
-  const detail_2 = document.querySelector(
-    ".CardFeatures__question-title"
-  ) as HTMLElement;
-  const detail_2Content = document.querySelector(
-    ".CardFeatures__question-content"
-  ) as HTMLElement;
-  const detail_2Icon = document.querySelector(
-    ".CardFeatures__question-title-icon"
-  ) as HTMLElement;
-  descriptionContent.textContent = product.Description;
-  detail_1Content.textContent = product.ProductionDetail_1;
-  detail_2Content.textContent = product.ProductionDetail_2;
-  console.log(product);
-  console.log("Description:", product.Description);
-  // let descriptionFlag = false;
-  // let detail_1Flag = false;
-  // let detail_2Flag = false;
-  // if (descriptionFlag) {
-  //   detail_1Flag = false;
-  //   detail_2Flag = false;
+  sections[0].content.textContent = product.Description;
+  sections[1].content.textContent = product.ProductionDetail_1;
+  sections[2].content.textContent = product.ProductionDetail_2;
 
-  // }
-  description.addEventListener("click", () => {
-    description.classList.toggle("collapsed");
-    if (description.classList.contains("collapsed")) {
-      descriptionContent.style.display = "none";
-      descriptionIcon.classList.add("collapsed");
-      // detail_1Content.style.display = "none";
-      // detail_1Icon.classList.remove("collapsed");
-      // detail_2Content.style.display = "none";
-      // detail_2Icon.classList.remove("collapsed");
+  const closeAllSections = () => {
+    sections.forEach((sec) => {
+      sec.title.classList.remove("active");
+      sec.content.style.display = "none";
+      sec.icon.classList.remove("collapsed");
+    });
+  };
+
+  sections.forEach((currentSection, index) => {
+    if (index === 0) {
+      currentSection.title.classList.add("active");
+      currentSection.content.style.display = "block";
+      currentSection.icon.classList.add("collapsed");
     } else {
-      descriptionContent.style.display = "block";
-      descriptionIcon.classList.remove("collapsed");
+      currentSection.content.style.display = "none";
     }
-    // toggleCollapseInfomation();
-  });
-  detail_1.addEventListener("click", () => {
-    detail_1.classList.toggle("collapsed");
-    if (detail_1.classList.contains("collapsed")) {
-      detail_1Content.style.display = "block";
-      detail_1Icon.classList.add("collapsed");
-      // detail_2Content.style.display = "none";
-      // detail_2Icon.classList.remove("collapsed");
-      // descriptionContent.style.display = "none";
-      // descriptionIcon.classList.remove("collapsed");
-    } else {
-      detail_1Content.style.display = "none";
-      detail_1Icon.classList.remove("collapsed");
-    }
-    // toggleCollapseInfomation();
-  });
-  detail_2.addEventListener("click", () => {
-    detail_2.classList.toggle("collapsed");
-    if (detail_2.classList.contains("collapsed")) {
-      detail_2Content.style.display = "block";
-      detail_2Icon.classList.add("collapsed");
-      // descriptionContent.style.display = "none";
-      // descriptionIcon.classList.remove("collapsed");
-      // detail_1Content.style.display = "none";
-      // detail_1Icon.classList.remove("collapsed");
-    } else {
-      detail_2Content.style.display = "none";
-      detail_2Icon.classList.remove("collapsed");
-    }
-    // toggleCollapseInfomation();
+
+    currentSection.title.addEventListener("click", () => {
+      const isAlreadyOpen = currentSection.title.classList.contains("active");
+      closeAllSections();
+      if (!isAlreadyOpen) {
+        currentSection.title.classList.add("active");
+        currentSection.content.style.display = "block";
+        currentSection.icon.classList.add("collapsed");
+      }
+    });
   });
 }
 
