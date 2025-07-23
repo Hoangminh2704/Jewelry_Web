@@ -583,7 +583,23 @@ function cartAction() {
   const removeItemFromCartIcon = document.querySelectorAll(
     ".header--search-hover-item-remove"
   ) as NodeListOf<HTMLElement>;
+  const checkAllCheckbox = document.querySelector(
+    ".checkAll"
+  ) as HTMLInputElement;
 
+  if (checkAllCheckbox) {
+    checkAllCheckbox.addEventListener("change", async () => {
+      const isChecked = checkAllCheckbox.checked;
+      cart.forEach((item) => {
+        item.isCheck = isChecked;
+      });
+      saveToStorage();
+      await renderCartItems();
+      CartEmpty();
+      updateCartOverall();
+      cartAction();
+    });
+  }
   sizeSelects.forEach((select) => {
     select.addEventListener("change", async () => {
       const productId = parseInt(select.dataset.productId || "0");
@@ -605,23 +621,6 @@ function cartAction() {
         }
 
         saveToStorage();
-        await renderCartItems();
-        CartEmpty();
-        updateCartOverall();
-        cartAction();
-      }
-    });
-  });
-
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", async (event) => {
-      const target = event.target as HTMLInputElement;
-      const productId = parseInt(target.dataset.productId || "0");
-      const size = target.dataset.size || "";
-
-      if (productId) {
-        updateCheckboxStatus(productId, target.checked, size);
-
         await renderCartItems();
         CartEmpty();
         updateCartOverall();
@@ -699,15 +698,22 @@ function cartAction() {
       }
     });
   });
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.classList.contains("checkAll")) return;
+
+    checkbox.addEventListener("change", async (event) => {
+      const target = event.target as HTMLInputElement;
+      const productId = parseInt(target.dataset.productId || "0");
+      const size = target.dataset.size || "";
+
+      if (productId) {
+        updateCheckboxStatus(productId, target.checked, size);
+        updateCartOverall();
+      }
+    });
+  });
 }
-// function updateCheckboxStatus(productId: number, isChecked: boolean): void {
-//   const item = cart.find((item) => item.productId === productId);
-//   if (item) {
-//     item.isCheck = isChecked;
-//     saveToStorage();
-//     updateCartOverall();
-//   }
-// }
+
 function updateCheckboxStatus(
   productId: number,
   isChecked: boolean,
@@ -723,11 +729,15 @@ function updateCheckboxStatus(
     updateCartOverall();
   }
 }
+
 function updateCartOverall() {
   if (!window.location.pathname.includes("Card.html")) {
     return;
   }
 
+  const checkAllCheckbox = document.querySelector(
+    ".checkAll"
+  ) as HTMLInputElement;
   const cartCount = getCartCount();
   const cartCountCheck = cart.reduce((count, item) => {
     return item.isCheck ? count + item.quantity : count;
@@ -767,6 +777,7 @@ function updateCartOverall() {
   }
 
   isCheck.forEach((checkbox) => {
+    if (checkbox.classList.contains("checkAll")) return;
     const productId = parseInt(checkbox.dataset.productId || "0");
     const item = cart.find(
       (item) =>
@@ -777,6 +788,12 @@ function updateCartOverall() {
       checkbox.checked = item.isCheck;
     }
   });
+
+  if (checkAllCheckbox) {
+    const allItemsChecked =
+      cart.length > 0 && cart.every((item) => item.isCheck);
+    checkAllCheckbox.checked = allItemsChecked;
+  }
 
   const total = cart.reduce((acc, item) => {
     const product = products.find((p) => p.id === item.productId);
