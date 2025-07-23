@@ -131,6 +131,9 @@ function getCurrentFilter(): FilterOptions {
   const Chain = document.querySelector(
     ".Select__filter-Chain"
   ) as HTMLInputElement;
+  const Ring = document.querySelector(
+    ".Select__filter-Ring"
+  ) as HTMLInputElement;
   const PriceFrom = document.querySelector(
     ".Select__filter-price-from"
   ) as HTMLInputElement;
@@ -158,7 +161,10 @@ function getCurrentFilter(): FilterOptions {
     type = "Earring";
   } else if (Chain?.checked) {
     type = "Chain";
+  } else if (Ring?.checked) {
+    type = "Ring";
   }
+  console.log("type:", type);
   const minPrice = PriceFrom?.value ? parseInt(PriceFrom.value) : null;
   const maxPrice = PriceTo?.value ? parseInt(PriceTo.value) : null;
   console.log("DoubleCheck", { type, minPrice, maxPrice });
@@ -295,11 +301,15 @@ async function renderProduct() {
   const Chain = document.querySelector(
     ".Select__filter-Chain"
   ) as HTMLInputElement;
+  const Ring = document.querySelector(
+    ".Select__filter-Ring"
+  ) as HTMLInputElement;
   await updatePagination({ type: "", minPrice: null, maxPrice: null });
   Necklet.addEventListener("click", async () => {
     if (Necklet.checked) {
       Earring.checked = false;
       Chain.checked = false;
+      Ring.checked = false;
     }
     await applyFilters();
   });
@@ -307,6 +317,7 @@ async function renderProduct() {
     if (Earring.checked) {
       Necklet.checked = false;
       Chain.checked = false;
+      Ring.checked = false;
     }
     console.log("Current", getCurrentFilter());
     await applyFilters();
@@ -316,6 +327,15 @@ async function renderProduct() {
     if (Chain.checked) {
       Necklet.checked = false;
       Earring.checked = false;
+      Ring.checked = false;
+    }
+    await applyFilters();
+  });
+  Ring.addEventListener("click", async () => {
+    if (Ring.checked) {
+      Necklet.checked = false;
+      Earring.checked = false;
+      Chain.checked = false;
     }
     await applyFilters();
   });
@@ -491,6 +511,7 @@ function moreOptions() {
       filterText.textContent = "Thu gọn";
     } else {
       moreOptions.style.display = "none";
+      filterText.textContent = "Xem thêm";
     }
   });
 }

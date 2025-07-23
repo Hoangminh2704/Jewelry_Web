@@ -5,7 +5,7 @@ export interface ProductItem {
   price: number;
   oldPrice: number;
   discount: number;
-  type: "Necklet" | "Earring" | "Chain";
+  type: "Necklet" | "Earring" | "Chain" | "Ring";
   isNew?: boolean;
   isSale?: boolean;
   isTop?: boolean;
