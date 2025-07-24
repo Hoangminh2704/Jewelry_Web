@@ -511,21 +511,21 @@ async function renderCartItems(): Promise<void> {
               <div class="Card__item-content-size">
                 <span class="Card__item-content-size-label">Size:</span>
                 <div class="Card__item-content-size-selected">
-                  <div class="custom-select" 
+                  <div class="Card__custom-select" 
                        data-product-id="${item.productId}"
                        data-cart-index="${index}"
                        data-selected="${item.sizeSelected}">
-                    <div class="custom-select-trigger">
-                      <span class="custom-select-value">${
+                    <div class="Card__custom-select-trigger">
+                      <span class="Card__custom-select-value">${
                         item.sizeSelected
                       }</span>
                       ${arrowSVG()}
                     </div>
-                    <div class="custom-select-options">
+                    <div class="Card__custom-select-options">
                       ${item.size
                         .map(
                           (size) => `
-                        <div class="custom-select-option ${
+                        <div class="Card__custom-select-option ${
                           size === item.sizeSelected ? "selected" : ""
                         }" 
                              data-value="${size}">
@@ -573,19 +573,21 @@ async function renderCartItems(): Promise<void> {
 }
 
 function setupCustomSelects() {
-  const customSelects = document.querySelectorAll(".custom-select");
+  const customSelects = document.querySelectorAll(".Card__custom-select");
 
   customSelects.forEach((select) => {
     const trigger = select.querySelector(
-      ".custom-select-trigger"
+      ".Card__custom-select-trigger"
     ) as HTMLElement;
 
-    const optionElements = select.querySelectorAll(".custom-select-option");
+    const optionElements = select.querySelectorAll(
+      ".Card__custom-select-option"
+    );
 
     trigger.addEventListener("click", (e) => {
       e.stopPropagation();
       document
-        .querySelectorAll(".custom-select.open")
+        .querySelectorAll(".Card__custom-select.open")
         .forEach((otherSelect) => {
           if (otherSelect !== select) {
             otherSelect.classList.remove("open");
@@ -600,7 +602,7 @@ function setupCustomSelects() {
 
         const value = (option as HTMLElement).dataset.value;
         const valueSpan = select.querySelector(
-          ".custom-select-value"
+          ".Card__custom-select-value"
         ) as HTMLElement;
         const productId = parseInt(
           (select as HTMLElement).dataset.productId || "0"
@@ -644,7 +646,7 @@ function setupCustomSelects() {
   });
 
   document.addEventListener("click", () => {
-    document.querySelectorAll(".custom-select.open").forEach((select) => {
+    document.querySelectorAll(".Card__custom-select.open").forEach((select) => {
       select.classList.remove("open");
     });
   });

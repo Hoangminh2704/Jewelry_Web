@@ -1162,12 +1162,12 @@ body {
               }
             }
 
-            .custom-select {
+            .Card__custom-select {
               position: relative;
               width: 66px;
               height: 38px;
 
-              .custom-select-trigger {
+              .Card__custom-select-trigger {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -1180,7 +1180,7 @@ body {
 
                 cursor: pointer;
 
-                .custom-select-value {
+                .Card__custom-select-value {
                   color: var(--theme-secondary-DarkGray);
                   @include fonts.body-1;
                 }
@@ -1193,7 +1193,7 @@ body {
                 }
               }
 
-              .custom-select-options {
+              .Card__custom-select-options {
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -1206,7 +1206,7 @@ body {
                 display: none;
                 border-top: none;
 
-                .custom-select-option {
+                .Card__custom-select-option {
                   padding: 8px 12px;
                   cursor: pointer;
                   color: var(--neutral-text-600);
@@ -1238,12 +1238,12 @@ body {
               }
 
               &.open {
-                .custom-select-trigger {
+                .Card__custom-select-trigger {
                   .Card__item-content-size-arrow {
                     transform: rotate(180deg);
                   }
                 }
-                .custom-select-options {
+                .Card__custom-select-options {
                   display: block;
                 }
               }
