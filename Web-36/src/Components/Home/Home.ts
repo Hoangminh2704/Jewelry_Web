@@ -1,6 +1,6 @@
 import "./Home.scss";
 import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -96,12 +96,18 @@ function setupHeader() {
 }
 
 function setupMainSlider() {
+  // add autoplay
   new Swiper(".slides-swiper", {
-    modules: [Pagination],
+    modules: [Pagination, Autoplay],
     spaceBetween: 30,
     pagination: {
       el: ".slides-pagination",
       clickable: true,
+    },
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
     },
   });
 }
@@ -171,7 +177,7 @@ function setupTestimonials() {
 
   if (swiperWrapper && prevButton && nextButton) {
     new Swiper(".test-swiper", {
-      modules: [Navigation, Pagination],
+      modules: [Navigation, Pagination, Autoplay],
       spaceBetween: 20,
       slidesPerView: 2.5,
       centeredSlides: false,
@@ -184,6 +190,11 @@ function setupTestimonials() {
       pagination: {
         el: ".test-swiper-pagination",
         clickable: true,
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        reverseDirection: true,
       },
       breakpoints: {
         0: { slidesPerView: 1, spaceBetween: 0, centeredSlides: true },

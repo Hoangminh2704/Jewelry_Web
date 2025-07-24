@@ -467,6 +467,8 @@ function initCart(): void {
   updateCartDisplay();
   console.log(cart);
 }
+// ...existing code...
+
 async function renderCartItems(): Promise<void> {
   if (products.length === 0) {
     products = await loadProducts();
@@ -509,22 +511,31 @@ async function renderCartItems(): Promise<void> {
               <div class="Card__item-content-size">
                 <span class="Card__item-content-size-label">Size:</span>
                 <div class="Card__item-content-size-selected">
-                  <select
-                    title="Size"
-                    class="Card__item-content-size-select"
-                    data-product-id="${item.productId}"
-                    data-cart-index="${index}"
-                  >
-                    ${item.size
-                      .map(
-                        (size) =>
-                          `<option value="${size}" ${
-                            size === item.sizeSelected ? "selected" : ""
-                          }>${size}</option>`
-                      )
-                      .join("")}
-                  </select>
-                  ${arrowSVG()}
+                  <div class="custom-select" 
+                       data-product-id="${item.productId}"
+                       data-cart-index="${index}"
+                       data-selected="${item.sizeSelected}">
+                    <div class="custom-select-trigger">
+                      <span class="custom-select-value">${
+                        item.sizeSelected
+                      }</span>
+                      ${arrowSVG()}
+                    </div>
+                    <div class="custom-select-options">
+                      ${item.size
+                        .map(
+                          (size) => `
+                        <div class="custom-select-option ${
+                          size === item.sizeSelected ? "selected" : ""
+                        }" 
+                             data-value="${size}">
+                          ${size}
+                        </div>
+                      `
+                        )
+                        .join("")}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="Card__item-content-count">
@@ -556,9 +567,88 @@ async function renderCartItems(): Promise<void> {
         `;
       }
     });
+
+    setupCustomSelects();
   }
 }
-// function setDefaultCartSize() {}
+
+function setupCustomSelects() {
+  const customSelects = document.querySelectorAll(".custom-select");
+
+  customSelects.forEach((select) => {
+    const trigger = select.querySelector(
+      ".custom-select-trigger"
+    ) as HTMLElement;
+
+    const optionElements = select.querySelectorAll(".custom-select-option");
+
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      document
+        .querySelectorAll(".custom-select.open")
+        .forEach((otherSelect) => {
+          if (otherSelect !== select) {
+            otherSelect.classList.remove("open");
+          }
+        });
+      select.classList.toggle("open");
+    });
+
+    optionElements.forEach((option) => {
+      option.addEventListener("click", async (e) => {
+        e.stopPropagation();
+
+        const value = (option as HTMLElement).dataset.value;
+        const valueSpan = select.querySelector(
+          ".custom-select-value"
+        ) as HTMLElement;
+        const productId = parseInt(
+          (select as HTMLElement).dataset.productId || "0"
+        );
+        const cartIndex = parseInt(
+          (select as HTMLElement).dataset.cartIndex || "0"
+        );
+
+        if (value && valueSpan) {
+          valueSpan.textContent = value;
+          select.setAttribute("data-selected", value);
+
+          optionElements.forEach((opt) => opt.classList.remove("selected"));
+          option.classList.add("selected");
+
+          select.classList.remove("open");
+
+          if (cart[cartIndex]) {
+            const oldSize = cart[cartIndex].sizeSelected;
+            const existingNewItem = cart.find(
+              (item) =>
+                item.productId === productId && item.sizeSelected === value
+            );
+
+            if (existingNewItem && value !== oldSize) {
+              existingNewItem.quantity += cart[cartIndex].quantity;
+              cart.splice(cartIndex, 1);
+            } else {
+              cart[cartIndex].sizeSelected = value;
+            }
+
+            saveToStorage();
+            await renderCartItems();
+            CartEmpty();
+            updateCartOverall();
+            cartAction();
+          }
+        }
+      });
+    });
+  });
+
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".custom-select.open").forEach((select) => {
+      select.classList.remove("open");
+    });
+  });
+}
 
 function cartAction() {
   const minusButtons = document.querySelectorAll(

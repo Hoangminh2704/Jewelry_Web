@@ -1139,6 +1139,7 @@ body {
             @include Card-layout {
               grid-column: 1/6;
             }
+
             .Card__item-content-size {
               max-width: 186px;
               width: 100%;
@@ -1153,47 +1154,109 @@ body {
                 @include fonts.body-2-regular;
                 color: var(--neutral-text-600);
               }
+
               &-selected {
-                box-sizing: border-box;
-                padding: 5px 16px;
-                border: 1px solid var(--neutral-border-200);
-                border-radius: 2px;
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+              }
+            }
+
+            .custom-select {
+              position: relative;
+              width: 66px;
+              height: 38px;
+
+              .custom-select-trigger {
                 display: flex;
                 align-items: center;
+                justify-content: center;
+                gap: 8px;
+                // padding: 6px 12px;
+                background: var(--neutral-background-white);
+                border: 1px solid var(--neutral-border-200);
+                border-radius: 2px;
+                height: 100%;
+
                 cursor: pointer;
-                max-width: 66px;
-                width: 100%;
-                .Card__item-content-size-select {
-                  outline: none;
-                  border: none;
-                  background: transparent;
-                  cursor: pointer;
+
+                .custom-select-value {
+                  color: var(--theme-secondary-DarkGray);
                   @include fonts.body-1;
+                }
+
+                .Card__item-content-size-arrow {
+                  width: 12px;
+                  height: 12px;
+                  transition: transform 0.3s;
                   color: var(--neutral-text-600);
-                  appearance: none;
-                  width: fit-content;
-                  padding: 0;
-                  margin: 0;
+                }
+              }
 
-                  -webkit-appearance: none;
-                  -moz-appearance: none;
-                  appearance: none;
+              .custom-select-options {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--neutral-background-white);
+                border: 1px solid var(--neutral-border-200);
+                border-radius: 2px;
+                // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+                display: none;
+                border-top: none;
 
-                  &::-ms-expand {
-                    display: none;
+                .custom-select-option {
+                  padding: 8px 12px;
+                  cursor: pointer;
+                  color: var(--neutral-text-600);
+                  @include fonts.body-1;
+                  // text-align: ;
+                  padding-right: 10px;
+
+                  &:hover {
+                    background: var(--neutral-background-100);
                   }
-                  option {
-                    @include fonts.body-1;
-                    color: var(--theme-secondary-DarkGray);
+
+                  &.selected {
+                    background: var(--functional-info-400);
+                    color: var(--neutral-background-white);
+                  }
+
+                  &:first-child {
+                    border-radius: 2px 2px 0 0;
+                  }
+
+                  &:last-child {
+                    border-radius: 0 0 2px 2px;
+                  }
+
+                  &:only-child {
+                    border-radius: 2px;
                   }
                 }
-                .Card__item-content-size-arrow {
-                  width: 32px;
-                  height: 16px;
-                  .Card__item-content-size-selected:focus-within & {
+              }
+
+              &.open {
+                .custom-select-trigger {
+                  .Card__item-content-size-arrow {
                     transform: rotate(180deg);
                   }
                 }
+                .custom-select-options {
+                  display: block;
+                }
+              }
+            }
+
+            .Card__item-content-remove {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              cursor: pointer;
+              span {
+                @include fonts.body-2-regular;
+                color: var(--neutral-text-600);
               }
             }
             .Card__item-content-remove {

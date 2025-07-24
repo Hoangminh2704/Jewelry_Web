@@ -82,7 +82,8 @@ function renderProductDetail(product: ProductItem) {
     ".Information__content-size-select-selected"
   ) as HTMLSelectElement;
   if (sizeSelect) {
-    sizeSelect.innerHTML = '<option value="">Chọn kích cỡ</option>';
+    sizeSelect.innerHTML =
+      '<option value="" disabled selected hidden>Chọn kích cỡ</option>';
 
     product.Size.forEach((size) => {
       const option = document.createElement("option");
